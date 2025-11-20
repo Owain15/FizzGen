@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="2D\TopDown\" />
+    <Folder Include="2D\Platform\" />
+  </ItemGroup>
+
 </Project>
