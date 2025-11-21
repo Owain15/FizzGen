@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FizzGen.TestWindow"
         mc:Ignorable="d"
-        Title="FzGen-TetsWindow" Height="450" Width="800">
+        Title="FizzGen-TetsWindow" Height="500" Width="500">
     <Grid x:Name="grid" Background="#FF325CA8">
-        <Canvas x:Name="canvas" Background="Black" Cursor="None" Margin="30,30,30,30" UseLayoutRounding="False" ScrollViewer.VerticalScrollBarVisibility="Disabled"/>
 
     </Grid>
 </Window>

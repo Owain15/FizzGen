@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="2D\Code\" />
     <Folder Include="2D\TopDown\" />
     <Folder Include="2D\Platform\" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using FizzGen.Object;
+using System.Text;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,20 +20,21 @@ namespace FizzGen.TestWindow
     public partial class MainWindow : Window
     {
 
-        double frameRate = 20;
+        double frameRate = 100;
 
 		DispatcherTimer gameTimer;
 
-        FizzGen.Code.GameData gameData;
+        GameData gameData;
 
-        //Canvas backCanvas;
+        Canvas canvas;
 
 
         public MainWindow()
         {
+
             InitializeComponent();
 
-            gameData = new Code.GameData();
+            gameData = new GameData();
             //InitializeBackCanvas();
             InitializeCanvas();
 
@@ -40,48 +42,20 @@ namespace FizzGen.TestWindow
 
         }
 
-
-
-        //private void InitializeBackCanvas()
-        //      {
-        //          backCanvas = new Canvas();
-        //          backCanvas.Background = Brushes.Brown;
-
-        //      }
-
         private void InitializeCanvas()
         {
-            Ellipse c1 = new Ellipse();
+			//< Canvas x: Name = "canvas" Background = "Black" Cursor = "None"
+            //Margin = "30,30,30,30" UseLayoutRounding = "False"
+            //ScrollViewer.VerticalScrollBarVisibility = "Disabled" />
 
-            (long x, long y) position = gameData.p1.Position;
+            canvas = new Canvas();
+            canvas.Cursor = Cursors.None;
+            canvas.Margin = new Thickness(30);
+            canvas.Background = Brushes.Black;
 
-			long radius = gameData.p1.Radius;
+            grid.Children.Add(canvas);
 
-            c1.Height = radius;
-            c1.Width = radius;
-
-            c1.Fill = Brushes.WhiteSmoke;
-            c1.Tag = gameData.p1.Id.ToString();
-
-            canvas.Children.Add(c1);
-
-            Canvas.SetTop(c1,(position.y - (radius/2)));
-            Canvas.SetLeft(c1, (position.x - (radius / 2)));
-
-			//Ellipse c1c = new Ellipse();
-
-
-			//c1c.Height = 1;
-			//c1c.Width = 1;
-
-			//c1c.Fill = Brushes.Red;
-
-			//canvas.Children.Add(c1c);
-
-			//Canvas.SetTop(c1c, position.y) ;
-			//Canvas.SetLeft(c1c, position.x);
-
-		}
+        }
 
         private void InitializeGameTimer()
 		{
@@ -103,8 +77,6 @@ namespace FizzGen.TestWindow
             //UpdateInputs();
             UpdateGameData();
             UpdateCanvas();
-            //UpdateBackCanvas();
-            //canvas = backCanvas;
         }
 
         private void UpdateGameData()
@@ -112,22 +84,42 @@ namespace FizzGen.TestWindow
 
         private void UpdateCanvas()
         {
-			foreach(var shape in canvas.Children.OfType<Ellipse>())
-            {
-                if((string)shape.Tag == gameData.p1.Id.ToString())
-                {
-                    Canvas.SetTop(shape, gameData.p1.Position.x -(gameData.p1.Radius/2));
-                    Canvas.SetLeft(shape, gameData.p1.Position.y -(gameData.p1.Radius / 2));
-                }
-            }
+            canvas.Children.Clear();
+
+            AddRectanglToCanvas(gameData.gameBoard.tileGrid[0, 0], canvas);
+
+            AddCircelToCanvas(gameData.p1, canvas);
 
 		}
 
-		//private void UpdateBackCanvas()
-		//{
-		//	backCanvas.Background = Brushes.Teal;
-		//}
+        internal void AddRectanglToCanvas(FizzGen.GameTile.GameTile tile, Canvas targetCanvas)
+        {
+			Rectangle rec = new Rectangle();
+			rec.Height = tile.Size;
+			rec.Width = tile.Size;
+			rec.Fill = Brushes.Pink;
 
+			targetCanvas.Children.Add(rec);
+		}
 
-	}
+        internal void AddCircelToCanvas(FizzGen.Object.Circle circle, Canvas targetCanvas)
+        {
+			Ellipse c1 = new Ellipse();
+
+			(long x, long y) position = circle.Position;
+
+			long radius = circle.Radius;
+
+			c1.Height = radius;
+			c1.Width = radius;
+
+			c1.Fill = Brushes.WhiteSmoke;
+
+			targetCanvas.Children.Add(c1);
+
+			Canvas.SetTop(c1, (position.y - (radius / 2)));
+			Canvas.SetLeft(c1, (position.x - (radius / 2)));
+		}
+
+    }
 }

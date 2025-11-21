@@ -6,8 +6,29 @@ using System.Threading.Tasks;
 
 namespace FizzGen.Object
 {
-    internal class FizzObject
-    {
+	public class FizzObject
+	{
+		public bool isPisyicsActive { get; set; }
 
-    }
+		public (long x, long y) GridIndex {  get; set; }
+		public (long x ,long y) Position { get; set; }
+		public long Mass { get; set; }
+		public (long x, long y) Valocity { get; set; }
+
+
+		public FizzObject()
+		{
+			isPisyicsActive = false;
+
+			CurrentGridId = 0;
+
+			Position = (0, 0);
+
+			Mass = 0;
+
+			Valocity = (0, 0);
+		
+		}
+
+	}
 }
