@@ -20,7 +20,7 @@ namespace FizzGen.Object
 		{
 			isPisyicsActive = false;
 
-			CurrentGridId = 0;
+			GridIndex = (0,0);
 
 			Position = (0, 0);
 

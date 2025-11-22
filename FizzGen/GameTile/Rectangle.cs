@@ -10,9 +10,22 @@ namespace FizzGen.GameTile
 	{
 		public Rectangle()
 		{ 
-			Id = 0;
 			Size = 400;
 			GridPosition = (0,0);
 		}
+
+		public Rectangle((int x, int y) gridPosition)
+		{
+			Size = 100;
+			GridPosition = gridPosition;
+		}
+
+		public Rectangle(long tileSize, (int x, int y) gridPosition)
+		{
+			Size = tileSize;
+			GridPosition = gridPosition;
+		}
+
+
 	}
 }

@@ -16,9 +16,9 @@ namespace FizzGen.TestWindow
 
 			public GameData()
 			{
-				gameBoard = new GameBoard.SquareGrid(1);
+				gameBoard = new GameBoard.SquareGrid(2);
 
-				p1 = new Circle(0,0,10,10,20,10,5,5);
+				p1 = new Circle(0,0,95,95,20,10,5,5);
 			}
 
 			public void Update()

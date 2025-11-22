@@ -35,10 +35,12 @@ namespace FizzGen.TestWindow
             InitializeComponent();
 
             gameData = new GameData();
-            //InitializeBackCanvas();
+
             InitializeCanvas();
 
-			InitializeGameTimer();
+			gameTimer = InitializeGameTimer();
+
+            gameTimer.Start();
 
         }
 
@@ -57,13 +59,14 @@ namespace FizzGen.TestWindow
 
         }
 
-        private void InitializeGameTimer()
+        private DispatcherTimer InitializeGameTimer()
 		{
-            gameTimer = new DispatcherTimer();
-            gameTimer.Interval = TimeSpan.FromMilliseconds(frameRate);
-            gameTimer.Tick += RunGameLoop;
+            DispatcherTimer result = new DispatcherTimer();
+   
+			result.Interval = TimeSpan.FromMilliseconds(frameRate);
+			result.Tick += RunGameLoop;
 
-            gameTimer.Start();
+            return result;
 		}
 
         private void RunGameLoop(object sender, EventArgs e)
@@ -86,9 +89,12 @@ namespace FizzGen.TestWindow
         {
             canvas.Children.Clear();
 
-            AddRectanglToCanvas(gameData.gameBoard.tileGrid[0, 0], canvas);
+            foreach (var tile in gameData.gameBoard.tileGrid)
+            {
+				AddRectanglToCanvas(tile, canvas);
+			}
 
-            AddCircelToCanvas(gameData.p1, canvas);
+            AddCircelToCanvas(gameData.p1, gameData.gameBoard, canvas);
 
 		}
 
@@ -98,28 +104,31 @@ namespace FizzGen.TestWindow
 			rec.Height = tile.Size;
 			rec.Width = tile.Size;
 			rec.Fill = Brushes.Pink;
+            rec.Stroke = Brushes.Black;
 
 			targetCanvas.Children.Add(rec);
+
+            Canvas.SetTop(rec,(tile.GridPosition.y * tile.Size));
+            Canvas.SetLeft(rec,(tile.GridPosition.x * tile.Size));
+
 		}
 
-        internal void AddCircelToCanvas(FizzGen.Object.Circle circle, Canvas targetCanvas)
+        internal void AddCircelToCanvas(FizzGen.Object.Circle circle, FizzGen.GameBoard.SquareGrid gridData, Canvas targetCanvas)
         {
 			Ellipse c1 = new Ellipse();
 
-			(long x, long y) position = circle.Position;
-
-			long radius = circle.Radius;
-
-			c1.Height = radius;
-			c1.Width = radius;
+			c1.Height = circle.Radius;
+			c1.Width = circle.Radius;
 
 			c1.Fill = Brushes.WhiteSmoke;
+            c1.Stroke = Brushes.Black;
 
 			targetCanvas.Children.Add(c1);
 
-			Canvas.SetTop(c1, (position.y - (radius / 2)));
-			Canvas.SetLeft(c1, (position.x - (radius / 2)));
+			Canvas.SetTop (c1, ((circle.GridIndex.y * 100) + circle.Position.y - (circle.Radius / 2)));
+			Canvas.SetLeft(c1, ((circle.GridIndex.x * 100) + circle.Position.x - (circle.Radius / 2)));
 		}
 
     }
+
 }

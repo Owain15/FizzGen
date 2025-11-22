@@ -9,8 +9,6 @@ namespace FizzGen.GameTile
 	public class GameTile
 	{
 
-		public int Id { get; set; }
-
 		public long Size { get; set; }
 
 		public (int x, int y) GridPosition{ get; set; }
