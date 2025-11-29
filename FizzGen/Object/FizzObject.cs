@@ -14,19 +14,22 @@ namespace FizzGen.Object
 		public (long x ,long y) Position { get; set; }
 		public long Mass { get; set; }
 		public (long x, long y) Valocity { get; set; }
+		public (long x, long y) Acceleration { get; set; }
 
 
 		public FizzObject()
 		{
 			isPisyicsActive = false;
 
-			GridIndex = (0,0);
+			GridIndex = (0, 0);
 
 			Position = (0, 0);
 
 			Mass = 0;
 
 			Valocity = (0, 0);
+
+			Acceleration = (0, 0);
 		
 		}
 

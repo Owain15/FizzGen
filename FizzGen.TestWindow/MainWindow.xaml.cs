@@ -20,7 +20,7 @@ namespace FizzGen.TestWindow
     public partial class MainWindow : Window
     {
 
-        double frameRate = 100;
+        double frameRate = 80;
 
 		DispatcherTimer gameTimer;
 
@@ -36,7 +36,7 @@ namespace FizzGen.TestWindow
 
             gameData = new GameData();
 
-            InitializeCanvas();
+            canvas = InitializeCanvas();
 
 			gameTimer = InitializeGameTimer();
 
@@ -44,20 +44,21 @@ namespace FizzGen.TestWindow
 
         }
 
-        private void InitializeCanvas()
+        private Canvas InitializeCanvas()
         {
 			//< Canvas x: Name = "canvas" Background = "Black" Cursor = "None"
             //Margin = "30,30,30,30" UseLayoutRounding = "False"
             //ScrollViewer.VerticalScrollBarVisibility = "Disabled" />
 
-            canvas = new Canvas();
-            canvas.Cursor = Cursors.None;
-            canvas.Margin = new Thickness(30);
-            canvas.Background = Brushes.Black;
+            Canvas result = new Canvas();
+			result.Cursor = Cursors.None;
+			result.Margin = new Thickness(30);
+			result.Background = Brushes.Black;
 
-            grid.Children.Add(canvas);
+            grid.Children.Add(result);
 
-        }
+            return result;
+		}
 
         private DispatcherTimer InitializeGameTimer()
 		{
@@ -69,7 +70,7 @@ namespace FizzGen.TestWindow
             return result;
 		}
 
-        private void RunGameLoop(object sender, EventArgs e)
+        private void RunGameLoop(object? sender, EventArgs e)
         {
             GameLoop();
         }
@@ -94,7 +95,11 @@ namespace FizzGen.TestWindow
 				AddRectanglToCanvas(tile, canvas);
 			}
 
-            AddCircelToCanvas(gameData.p1, gameData.gameBoard, canvas);
+            foreach (var circle in gameData.GetGameObjects().OfType<Circle>())
+            {
+
+                AddCircelToCanvas(circle, gameData.gameBoard, canvas);
+            }
 
 		}
 

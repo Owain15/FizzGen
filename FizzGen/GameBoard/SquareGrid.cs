@@ -24,6 +24,13 @@ namespace FizzGen.GameBoard
 		
 		}
 
+		public SquareGrid(int dimentions, bool isLooped)
+		{
+			isGridLooped = isLooped;
+
+			tileGrid = intalizeGrid(dimentions);
+		}
+
 		private GameTile.Rectangle[,] intalizeGrid(int dimentions)
 		{
 			GameTile.Rectangle[,] result = new GameTile.Rectangle[dimentions, dimentions];
