@@ -3,8 +3,8 @@
     <Platform Name="ARM64" />
     <Platform Name="x64" />
   </Configurations>
+  <Project Path="SandBox/SandBox.vcxproj" Id="0e10f939-b1b9-4177-8911-77901989fbcf" />
   <Project Path="FizzGen/FizzGen.vcxproj" Id="1ce3bd86-3720-4465-9ab1-61f03339863d">
     <Platform Solution="Debug|ARM64" Project="Win32" />
   </Project>
-  <Project Path="SandBox/SandBox.vcxproj" Id="0e10f939-b1b9-4177-8911-77901989fbcf" />
 </Solution>
