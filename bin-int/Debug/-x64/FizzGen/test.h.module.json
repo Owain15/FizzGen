@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "C:\\Users\\owain\\source\\repos\\FizzGenProject\\bin-int\\Debug\\-x64\\FizzGen\\test.h.obj",
+            "outputs": [
+                "C:\\Users\\owain\\source\\repos\\FizzGenProject\\bin-int\\Debug\\-x64\\FizzGen\\vc145.pdb",
+                "C:\\Users\\owain\\source\\repos\\FizzGenProject\\bin-int\\Debug\\-x64\\FizzGen\\",
+                "C:\\Users\\owain\\source\\repos\\FizzGenProject\\bin-int\\Debug\\-x64\\FizzGen\\test.h.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "src\\headders\\test.h",
+                    "source-path": "c:\\users\\owain\\source\\repos\\fizzgenproject\\fizzgen\\src\\headders\\test.h",
+                    "lookup-method": "absolute"
+                }
+            ],
+            "requires": []
+        }
+    ]
+}
