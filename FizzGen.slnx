@@ -3,8 +3,11 @@
     <Platform Name="ARM64" />
     <Platform Name="x64" />
   </Configurations>
+  <Folder Name="/Solution Items/">
+    <File Path="documentation/persinalNotes.md" />
+    <File Path="documentation/README.md" />
+    <File Path="documentation/todo.md" />
+  </Folder>
+  <Project Path="FizzGen/FizzGen.vcxproj" Id="1ce3bd86-3720-4465-9ab1-61f03339863d" />
   <Project Path="SandBox/SandBox.vcxproj" Id="0e10f939-b1b9-4177-8911-77901989fbcf" />
-  <Project Path="FizzGen/FizzGen.vcxproj" Id="1ce3bd86-3720-4465-9ab1-61f03339863d">
-    <Platform Solution="Debug|ARM64" Project="Win32" />
-  </Project>
 </Solution>

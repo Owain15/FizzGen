@@ -1,7 +1,2 @@
-﻿  Scanning sources for module dependencies...
-  test.h
-  Compiling...
-  test.h
-  test.cpp
-     Creating library C:\Users\owain\source\repos\FizzGenProject\bin\Debug\-x64\FizzGen\FizzGen.lib and object C:\Users\owain\source\repos\FizzGenProject\bin\Debug\-x64\FizzGen\FizzGen.exp
+﻿  Application.cpp
   FizzGen.vcxproj -> C:\Users\owain\source\repos\FizzGenProject\bin\Debug\-x64\FizzGen\FizzGen.dll
