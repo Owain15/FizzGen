@@ -1,0 +1,15 @@
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\bin\Debug\net10.0\OJLogging.exe
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\bin\Debug\net10.0\OJLogging.deps.json
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\bin\Debug\net10.0\OJLogging.runtimeconfig.json
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\bin\Debug\net10.0\OJLogging.dll
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\bin\Debug\net10.0\OJLogging.pdb
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\OJLogging.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\OJLogging.AssemblyInfoInputs.cache
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\OJLogging.AssemblyInfo.cs
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\OJLogging.csproj.CoreCompileInputs.cache
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\OJLogging.sourcelink.json
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\OJLogging.dll
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\refint\OJLogging.dll
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\OJLogging.pdb
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\OJLogging.genruntimeconfig.cache
+C:\Users\owain\source\repos\FizzGenProject\OJLogging\obj\Debug\net10.0\ref\OJLogging.dll
