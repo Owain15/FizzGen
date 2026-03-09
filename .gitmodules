@@ -1,0 +1,3 @@
+[submodule "FizzGen/vendor/spdlog"]
+	path = FizzGen/vendor/spdlog
+	url = https://github.com/gabime/spdlog

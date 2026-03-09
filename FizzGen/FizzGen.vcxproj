@@ -27,12 +27,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\FizzGen\Log.h" />
     <ClInclude Include="src\FizzGen.h" />
     <ClInclude Include="src\FizzGen\Application.h" />
     <ClInclude Include="src\FizzGen\Core.h" />
     <ClInclude Include="src\FizzGen\EnteryPoint.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\FizzGen\Log.cpp" />
     <ClCompile Include="src\FizzGen\Application.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -149,6 +151,8 @@
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_BUILD_DLL_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)FizzGen\vendor\spdlog\include;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -164,6 +168,8 @@
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_BUILD_DLLNDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>$(SolutionDir)FizzGen\vendor\spdlog\include;</AdditionalIncludeDirectories>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

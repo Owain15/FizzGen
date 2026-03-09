@@ -1,5 +1,6 @@
 <Solution>
   <Configurations>
+    <Platform Name="Any CPU" />
     <Platform Name="ARM64" />
     <Platform Name="x64" />
   </Configurations>
@@ -9,5 +10,6 @@
     <File Path="documentation/todo.md" />
   </Folder>
   <Project Path="FizzGen/FizzGen.vcxproj" Id="1ce3bd86-3720-4465-9ab1-61f03339863d" />
+  <Project Path="OJLogging/OJLogging.csproj" Id="9aaef10c-0b7d-498d-ba08-41b44e652a25" />
   <Project Path="SandBox/SandBox.vcxproj" Id="0e10f939-b1b9-4177-8911-77901989fbcf" />
 </Solution>
