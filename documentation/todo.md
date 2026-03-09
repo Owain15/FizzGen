@@ -6,7 +6,7 @@ Summery
 .complete game engin baised apon the game engine corse by "the cherno". youtude.com
 
 GameEnginePlaylist
-[7/123]
+[8/123]
 
 ----------------
 Current Support
@@ -52,6 +52,31 @@ Overview
 
 .Memory Systems
     []
+
+.Event System
+   
+   [] Application Events
+        [] App Tick Events
+        [] App Update Events
+        [] App Render Events
+
+    [] Mouse Events
+        [] Mouse Button Events
+        []Mouse Position Events
+        [] Mouse Move Events
+        [] Mouse Scroll Events
+    
+    [] Keyboard Events
+        [] Key Press Events
+        [] Key Release Events
+        [] Key Repeat Events
+    
+    [] Window Events
+        [] Window Close Events
+        [] Window Resize Events
+        [] Window Focus Events
+        [] Window Lost Focus Events
+        [] Window Moved Events
 
 .ECS (Entity Component System)
     []

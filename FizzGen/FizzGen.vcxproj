@@ -159,6 +159,10 @@
     <ClInclude Include="src\FizzGen\Application.h" />
     <ClInclude Include="src\FizzGen\Core.h" />
     <ClInclude Include="src\FizzGen\EnteryPoint.h" />
+    <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\FizzGen\Events\Event.h" />
+    <ClInclude Include="src\FizzGen\Events\KeyEvent.h" />
+    <ClInclude Include="src\FizzGen\Events\MouseEvent.h" />
     <ClInclude Include="src\FizzGen\Log.h" />
   </ItemGroup>
   <ItemGroup>

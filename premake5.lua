@@ -1,5 +1,7 @@
 workspace "FizzGen"
 	architecture "x64"
+	startproject "Sandbox"
+
 	configurations {
 		"Debug",
 		"Release",
