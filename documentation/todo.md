@@ -6,7 +6,7 @@ Summery
 .complete game engin baised apon the game engine corse by "the cherno". youtude.com
 
 GameEnginePlaylist
-[5/123]
+[7/123]
 
 ----------------
 Current Support
@@ -17,6 +17,9 @@ Current Support
     
     Renderer
      []OpenGL
+
+     Logging Sysetem
+     []spdlog
 
 ----------------
 Overview
