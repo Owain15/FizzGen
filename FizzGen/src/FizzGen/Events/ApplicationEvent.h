@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace FizzGen
 {
 	class FIZZGEN_API WindowResizeEvent : public Event

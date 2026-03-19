@@ -1,10 +1,8 @@
 #pragma once
 
-#include "FizzGen/Core.h"
-//#include "../Core.h"
+#include "fgpch.h"
 
-#include <string>
-#include <functional>
+#include "FizzGen/Core.h"
 
 // Events in FizzGen are currently blocking, meaning when an event occurs it 
 // immediately gets dispatched and must be dealt with right then and there.

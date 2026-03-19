@@ -1,4 +1,6 @@
-#include <iostream>
+
+#include "fgpch.h"
+
 #include "Application.h"
 
 #include "FizzGen/Events/ApplicationEvent.h"

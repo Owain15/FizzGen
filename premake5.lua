@@ -8,6 +8,18 @@ workspace "FizzGen"
 		"Dist"
 	}
 
+	-- Solution Items appear under the Solution Items node in Visual Studio.
+	-- Add any files you want visible in the .sln but not part of a specific project.
+		if _G.solutionitems then
+		solutionitems {
+			"todo.md",
+			"persinalNotes.md",
+			"premake5.lua",
+			".gitignore"
+		}
+	end
+
+
 	outDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 	project "FizzGen"
@@ -18,6 +30,9 @@ workspace "FizzGen"
 		targetdir ("bin/" .. outDir .. "/%{prj.name}")
 		objdir ("bin-int/" .. outDir .. "/%{prj.name}")
 		buildoptions "/utf-8"
+
+		pchheader "fgpch.h"
+		pchsource "FizzGen/src/fgpch.cpp"
 
 		files {
 			"%{prj.name}/src/**.h",

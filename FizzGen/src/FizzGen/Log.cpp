@@ -1,3 +1,6 @@
+
+#include "fgpch.h"
+
 #include "Log.h"
 
 namespace FizzGen

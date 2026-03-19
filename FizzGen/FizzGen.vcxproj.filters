@@ -4,6 +4,9 @@
     <Filter Include="FizzGen">
       <UniqueIdentifier>{62B3FD0D-CE92-7CA9-D7AA-07804309E30A}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FizzGen\Events">
+      <UniqueIdentifier>{067DDF13-F24A-D319-DBDE-4340C74BAF7E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\FizzGen.h" />
@@ -16,13 +19,22 @@
     <ClInclude Include="src\FizzGen\EnteryPoint.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h">
+      <Filter>FizzGen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Events\Event.h">
+      <Filter>FizzGen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Events\KeyEvent.h">
+      <Filter>FizzGen\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Events\MouseEvent.h">
+      <Filter>FizzGen\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Log.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h" />
-    <ClInclude Include="src\FizzGen\Events\Event.h" />
-    <ClInclude Include="src\FizzGen\Events\KeyEvent.h" />
-    <ClInclude Include="src\FizzGen\Events\MouseEvent.h" />
+    <ClInclude Include="src\fgpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -31,5 +43,6 @@
     <ClCompile Include="src\FizzGen\Log.cpp">
       <Filter>FizzGen</Filter>
     </ClCompile>
+    <ClCompile Include="src\fgpch.cpp" />
   </ItemGroup>
 </Project>
