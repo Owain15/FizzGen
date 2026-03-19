@@ -19,6 +19,10 @@
     <ClInclude Include="src\FizzGen\Log.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\FizzGen\Events\Event.h" />
+    <ClInclude Include="src\FizzGen\Events\KeyEvent.h" />
+    <ClInclude Include="src\FizzGen\Events\MouseEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">

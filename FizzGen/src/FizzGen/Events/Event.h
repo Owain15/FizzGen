@@ -1,6 +1,7 @@
 #pragma once
 
 #include "FizzGen/Core.h"
+//#include "../Core.h"
 
 #include <string>
 #include <functional>
@@ -61,12 +62,12 @@ namespace FizzGen
 	
 	};
 
-	class eventDispatcher
+	class EventDispatcher
 	{
 		template<typename T>
 		using EventFn = std::function<bool(T&)>;
 		public:
-			eventDispatcher(Event& event)
+			EventDispatcher(Event& event)
 				: m_Event(event)
 			{
 			}
@@ -83,6 +84,11 @@ namespace FizzGen
 		private:
 			Event& m_Event;
 	};
+
+	inline std::ostream& operator<<(std::ostream& os, const Event& e)
+	{
+		return os << e.ToString();
+	}
 
 }
 

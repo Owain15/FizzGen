@@ -8,6 +8,7 @@
   <Folder Name="/Solution Items/">
     <File Path="documentation/persinalNotes.md" />
     <File Path="documentation/todo.md" />
+    <File Path="premake5.lua" />
   </Folder>
   <Project Path="FizzGen/FizzGen.vcxproj" Id="62b3fd0d-ce92-7ca9-d7aa-07804309e30a" />
   <Project Path="SandBox/SandBox.vcxproj" Id="f4c124e3-60a1-a37e-69b9-2e55d5170ae0" />
