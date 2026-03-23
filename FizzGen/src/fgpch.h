@@ -23,8 +23,8 @@
 
 //Platform detection
 
-#ifdef FZ_PLATFORM_WINDOWS
+#ifdef FG_PLATFORM_WINDOWS
 	#include <Windows.h>
-#endif // FZ_PLATFORM_WINDOWS
+#endif // FG_PLATFORM_WINDOWS
 
 

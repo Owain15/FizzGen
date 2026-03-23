@@ -12,10 +12,7 @@ namespace FizzGen
 		return new WindowsWindow(props);
 	}
 
-	//static void GLFWErrorCallback(int error, const char* description)
-	//{
-	//	FZ_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
-	//}
+	
 
 	WindowsWindow::WindowsWindow(const WindowProperties& props)
 	{
@@ -37,11 +34,25 @@ namespace FizzGen
 
 		if (!s_GLFWInitialized)
 		{
+#ifdef FG_USE_ANGLE
+			glfwInitHint(GLFW_ANGLE_PLATFORM_TYPE, GLFW_ANGLE_PLATFORM_TYPE_D3D11);
+#endif
 			int success = glfwInit();
-			FZ_CORE_ASSERT(success, "Could not initialize GLFW!");
-			//glfwSetErrorCallback(GLFWErrorCallback);
+			FG_CORE_ASSERT(success, "Could not initialize GLFW!");
+			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
+
+#ifdef FG_USE_ANGLE
+		glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
+		glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+#else
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#endif
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 
@@ -77,4 +88,8 @@ namespace FizzGen
 		return m_Data.VSync;
 	}
 
+	void WindowsWindow::GLFWErrorCallback(int error, const char* description)
+	{
+		FG_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
+	}
 }

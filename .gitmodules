@@ -1,6 +1,6 @@
 [submodule "FizzGen/vendor/spdlog"]
 	path = FizzGen/vendor/spdlog
 	url = https://github.com/gabime/spdlog
-[submodule "FizzGenPrpject/vendor/GLFW"]
+[submodule "FizzGen/vendor/GLFW"]
 	path = FizzGen/vendor/GLFW
 	url = https://github.com/TheCherno/glfw

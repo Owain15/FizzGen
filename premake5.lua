@@ -1,5 +1,47 @@
+-- Auto-download desktop ANGLE binaries from mmozeiko/build-angle GitHub releases
+local angleDir = "FizzGen/vendor/ANGLE"
+if not os.isfile(angleDir .. "/ARM64/bin/libEGL.dll") then
+    local repo = "mmozeiko/build-angle"
+    local archs = { "arm64", "x64" }
+
+    -- Query latest release tag
+    print("Querying latest ANGLE release from " .. repo .. "...")
+    local tagFile = os.tmpname()
+    os.execute('powershell -Command "(Invoke-RestMethod -Uri \'https://api.github.com/repos/' .. repo .. '/releases/latest\').tag_name | Out-File -Encoding ascii \'' .. tagFile .. '\'"')
+    local f = io.open(tagFile, "r")
+    local tag = f:read("*l"):match("^%s*(.-)%s*$")
+    f:close()
+    os.remove(tagFile)
+    print("Latest ANGLE release: " .. tag)
+
+    for _, arch in ipairs(archs) do
+        local destDir = angleDir .. "/" .. string.upper(arch)
+        local zipName = "angle-" .. arch .. "-" .. tag .. ".zip"
+        local url = "https://github.com/" .. repo .. "/releases/download/" .. tag .. "/" .. zipName
+        local tmp = os.tmpname() .. ".zip"
+        local extractDir = os.tmpname() .. "_angle_" .. arch
+
+        print("Downloading ANGLE " .. arch .. " from " .. url .. "...")
+        os.execute('powershell -Command "Invoke-WebRequest -Uri \'' .. url .. '\' -OutFile \'' .. tmp .. '\'"')
+
+        os.execute('powershell -Command "Expand-Archive -Path \'' .. tmp .. '\' -DestinationPath \'' .. extractDir .. '\' -Force"')
+
+        -- The zip contains angle-{arch}/ with bin/, lib/, include/ subdirs
+        local innerDir = extractDir .. "/angle-" .. arch
+        os.execute('powershell -Command "New-Item -ItemType Directory -Force -Path \'' .. destDir .. '\'"')
+        os.execute('powershell -Command "Copy-Item -Recurse -Force \'' .. innerDir .. '/bin\' \'' .. destDir .. '/\'"')
+        os.execute('powershell -Command "Copy-Item -Recurse -Force \'' .. innerDir .. '/lib\' \'' .. destDir .. '/\'"')
+        os.execute('powershell -Command "Copy-Item -Recurse -Force \'' .. innerDir .. '/include\' \'' .. destDir .. '/\'"')
+
+        -- Cleanup
+        os.remove(tmp)
+        os.execute('powershell -Command "Remove-Item -Recurse -Force \'' .. extractDir .. '\'"')
+        print("ANGLE " .. arch .. " binaries installed to " .. destDir)
+    end
+end
+
 workspace "FizzGen"
-	architecture "x64"
+	platforms { "x64", "ARM64" }
 	startproject "Sandbox"
 
 	configurations {
@@ -8,9 +50,18 @@ workspace "FizzGen"
 		"Dist"
 	}
 
+	filter "platforms:x64"
+		architecture "x64"
+
+	filter "platforms:ARM64"
+		architecture "ARM64"
+
+	filter {}
+
 	-- Include directories relative to root folder (solution directory)
 	IncludeDir = {}
 	IncludeDir["GLFW"] = "FizzGen/vendor/GLFW/include"
+	IncludeDir["ANGLE"] = "FizzGen/vendor/ANGLE/ARM64/include"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -56,15 +107,25 @@ workspace "FizzGen"
 		}
 
 		links {
-			"GLFW",
-			"opengl32.lib"
+			"GLFW"
 		}
+
+		filter "platforms:x64"
+			links { "opengl32.lib" }
+
+		filter "platforms:ARM64"
+			defines { "FG_USE_ANGLE" }
+			includedirs { "%{IncludeDir.ANGLE}" }
+			links { "libEGL.dll", "libGLESv2.dll" }
+			libdirs { "%{prj.name}/vendor/ANGLE/ARM64/lib" }
+
+		filter {}
 
 		filter "system:windows"
 			cppdialect "C++17"
 			staticruntime "On"
 			systemversion "latest"
-			
+
 			defines {
 				"FG_PLATFORM_WINDOWS",
 				"FG_BUILD_DLL"
@@ -74,16 +135,27 @@ workspace "FizzGen"
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outDir .. "/Sandbox")
 		}
 
+		filter { "platforms:ARM64", "system:windows" }
+			postbuildcommands {
+				("{COPY} %{wks.location}/FizzGen/vendor/ANGLE/ARM64/bin/*.dll ../bin/" .. outDir .. "/Sandbox"),
+				("{COPY} %{wks.location}/FizzGen/vendor/ANGLE/ARM64/bin/*.dll ../bin/" .. outDir .. "/FizzGen")
+			}
+
+		filter {}
+
 		filter "configurations:Debug"
 			defines "FG_DEBUG"
+			runtime "Debug"
 			symbols "On"
 
 		filter "configurations:Release"
 			defines "FG_RELEASE"
+			runtime "Release"
 			optimize "On"
 
 		filter "configurations:Dist"
 			defines "FG_DIST"
+			runtime "Release"
 			optimize "On"
 
 
@@ -124,12 +196,15 @@ project "Sandbox"
 	
 	filter "configurations:Debug"
 		defines "FG_DEBUG"
+		runtime "Debug"
 		symbols "On"
-	
+
 	filter "configurations:Release"
 		defines "FG_RELEASE"
+		runtime "Release"
 		optimize "On"
-	
+
 	filter "configurations:Dist"
 		defines "FG_DIST"
+		runtime "Release"
 		optimize "On"

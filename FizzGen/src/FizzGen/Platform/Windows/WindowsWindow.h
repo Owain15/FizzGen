@@ -23,8 +23,9 @@ namespace FizzGen
 			inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; };
 			void SetVSync(bool enabled) override;
 			bool IsVSync() const override;
+
+			static void GLFWErrorCallback(int error, const char* description);
 		
-			//static Window* Create(const WindowProperties& props = WindowProperties());
 
 		private:
 		
