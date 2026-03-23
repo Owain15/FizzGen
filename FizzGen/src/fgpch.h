@@ -18,7 +18,7 @@
 #include <unordered_map>
 #include <unordered_set>
 
-
+#include "FizzGen/Log.h"
 
 
 //Platform detection

@@ -8,6 +8,16 @@ workspace "FizzGen"
 		"Dist"
 	}
 
+	-- Include directories relative to root folder (solution directory)
+	IncludeDir = {}
+	IncludeDir["GLFW"] = "FizzGen/vendor/GLFW/include"
+
+	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+	include "FizzGen/vendor/GLFW"
+	
+	
+
 	-- Solution Items appear under the Solution Items node in Visual Studio.
 	-- Add any files you want visible in the .sln but not part of a specific project.
 		if _G.solutionitems then
@@ -41,7 +51,13 @@ workspace "FizzGen"
 
 		includedirs{
 			"%{prj.name}/src",
-			"%{prj.name}/vendor/spdlog/include"
+			"%{prj.name}/vendor/spdlog/include",
+			"%{IncludeDir.GLFW}"
+		}
+
+		links {
+			"GLFW",
+			"opengl32.lib"
 		}
 
 		filter "system:windows"

@@ -14,7 +14,7 @@ int main(int argc, char** argv)
 	FG_INFO("Welcome to FizzGen!");
 
 	auto app = FizzGen::CreateApplication();
-	app->run();
+	app->Run();
 	delete app;
 
 	return 0;

@@ -7,6 +7,12 @@
     <Filter Include="FizzGen\Events">
       <UniqueIdentifier>{067DDF13-F24A-D319-DBDE-4340C74BAF7E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FizzGen\Platform">
+      <UniqueIdentifier>{F6DDD0A5-E2D6-EFF7-0B09-D57CF760CF03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FizzGen\Platform\Windows">
+      <UniqueIdentifier>{301E0059-1C43-4FD9-458E-346931124EF7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\FizzGen.h" />
@@ -34,6 +40,12 @@
     <ClInclude Include="src\FizzGen\Log.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\Windows\WindowsWindow.h">
+      <Filter>FizzGen\Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Window.h">
+      <Filter>FizzGen</Filter>
+    </ClInclude>
     <ClInclude Include="src\fgpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -42,6 +54,9 @@
     </ClCompile>
     <ClCompile Include="src\FizzGen\Log.cpp">
       <Filter>FizzGen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\Windows\WindowsWindow.cpp">
+      <Filter>FizzGen\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\fgpch.cpp" />
   </ItemGroup>

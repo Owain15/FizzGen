@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "Events/Event.h"
+#include "Window.h"
 
 namespace FizzGen
 {
@@ -12,8 +13,12 @@ namespace FizzGen
 			Application();
 			virtual ~Application();
 		
-			void run();
-	
+			void Run();
+
+		private:
+
+			std::unique_ptr<Window> m_Window;
+			bool m_Running = true;
 	};
 
 	// To be defined in client

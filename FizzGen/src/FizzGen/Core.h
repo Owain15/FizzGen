@@ -15,6 +15,16 @@
 
 #endif // FG_PLATFORM_WINDOWS
 
+
+#ifdef FZ_ENABLE_ASSERTS
+    #define FZ_ASSERT(x, ...) { if(!(x)) { FZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+    #define FZ_CORE_ASSERT(x, ...) { if(!(x)) { FZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#else
+    #define FZ_ASSERT(x, ...)
+    #define FZ_CORE_ASSERT(x, ...)
+#endif // FZ_ENABLE_ASSERTS
+
+
 #define BIT(x) (1 << x)
 
 
