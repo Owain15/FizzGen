@@ -123,7 +123,7 @@ workspace "FizzGen"
 
 		filter "system:windows"
 			cppdialect "C++17"
-			staticruntime "On"
+			staticruntime "Off"
 			systemversion "latest"
 
 			defines {
@@ -188,7 +188,7 @@ project "Sandbox"
 	
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
+		staticruntime "Off"
 		systemversion "latest"
 		defines {
 			"FG_PLATFORM_WINDOWS"

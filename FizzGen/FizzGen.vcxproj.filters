@@ -37,6 +37,12 @@
     <ClInclude Include="src\FizzGen\Events\MouseEvent.h">
       <Filter>FizzGen\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Layer.h">
+      <Filter>FizzGen</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\LayerStack.h">
+      <Filter>FizzGen</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Log.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
+      <Filter>FizzGen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Layer.cpp">
+      <Filter>FizzGen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\LayerStack.cpp">
       <Filter>FizzGen</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Log.cpp">

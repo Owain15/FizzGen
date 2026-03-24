@@ -18,6 +18,17 @@ namespace FizzGen
 
 	Application::~Application()
 	{
+
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_LayerStack.PushLayer(layer);
+	}
+
+	void Application::PushOverlay(Layer* layer)
+	{
+		m_LayerStack.PushOverlay(layer);
 	}
 
 	void Application::Run()
@@ -27,7 +38,15 @@ namespace FizzGen
 	
 		while (m_Running)
 		{
+
+			for (Layer* layer : m_LayerStack)
+			{
+				layer->OnUpdate();
+			}
+		
+
 			m_Window->OnUpdate();
+		
 		}
 	}
 
@@ -38,8 +57,16 @@ namespace FizzGen
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
 		FG_CORE_TRACE("{0}", e);
-		if (e.GetEventType() == EventType::WindowClose)
-			m_Running = false;
+		/*if (e.GetEventType() == EventType::WindowClose)
+			m_Running = false;*/
+
+		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
+		{
+			(*--it)->OnEvent(e);
+			if (e.IsHandled())
+			{ break; }
+		}
+		
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e)
