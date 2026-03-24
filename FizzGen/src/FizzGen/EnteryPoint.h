@@ -10,8 +10,10 @@ int main(int argc, char** argv)
 {
 
 	FizzGen::Log::Init();
-	FG_CORE_CRITICAL("Initialized Log!");
+
 	FG_INFO("Welcome to FizzGen!");
+	FG_CORE_CRITICAL("Initialized Log!");
+	
 
 	auto app = FizzGen::CreateApplication();
 	app->Run();

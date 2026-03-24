@@ -24,15 +24,14 @@ namespace FizzGen
 			void SetVSync(bool enabled) override;
 			bool IsVSync() const override;
 
-			static void GLFWErrorCallback(int error, const char* description);
-		
-
 		private:
 		
 			virtual void Init(const WindowProperties& props);
 			virtual void Shutdown();
 
-		private:
+			static void GLFWErrorCallback(int error, const char* description);
+	
+	private:
 			
 			GLFWwindow* m_Window;
 			struct WindowData
