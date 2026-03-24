@@ -61,11 +61,13 @@ workspace "FizzGen"
 	-- Include directories relative to root folder (solution directory)
 	IncludeDir = {}
 	IncludeDir["GLFW"] = "FizzGen/vendor/GLFW/include"
+	IncludeDir["Glad"] = "FizzGen/vendor/Glad/include"
 	IncludeDir["ANGLE"] = "FizzGen/vendor/ANGLE/ARM64/include"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 	include "FizzGen/vendor/GLFW"
+	include "FizzGen/vendor/Glad"
 	
 	
 
@@ -103,11 +105,14 @@ workspace "FizzGen"
 		includedirs{
 			"%{prj.name}/src",
 			"%{prj.name}/vendor/spdlog/include",
-			"%{IncludeDir.GLFW}"
+			"%{IncludeDir.GLFW}",
+			"%{IncludeDir.Glad}"
 		}
 
 		links {
-			"GLFW"
+			"GLFW",
+			"Glad",
+			"opengl32.lib"
 		}
 
 		filter "platforms:x64"
