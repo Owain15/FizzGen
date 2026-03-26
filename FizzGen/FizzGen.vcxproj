@@ -143,7 +143,7 @@
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -168,8 +168,8 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FG_USE_ANGLE;FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -198,7 +198,7 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -227,8 +227,8 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FG_USE_ANGLE;FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -261,7 +261,7 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -290,8 +290,8 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FG_USE_ANGLE;FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_BUILD_DLL;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -327,22 +327,28 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ClInclude Include="src\FizzGen\Events\Event.h" />
     <ClInclude Include="src\FizzGen\Events\KeyEvent.h" />
     <ClInclude Include="src\FizzGen\Events\MouseEvent.h" />
+    <ClInclude Include="src\FizzGen\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\FizzGen\Layer.h" />
     <ClInclude Include="src\FizzGen\LayerStack.h" />
     <ClInclude Include="src\FizzGen\Log.h" />
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\FizzGen\Window.h" />
     <ClInclude Include="src\fgpch.h" />
+    <ClInclude Include="vendor\ImGui\backends\imgui_impl_opengl3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp" />
+    <ClCompile Include="src\FizzGen\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\FizzGen\Layer.cpp" />
     <ClCompile Include="src\FizzGen\LayerStack.cpp" />
     <ClCompile Include="src\FizzGen\Log.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\fgpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\ImGui\backends\imgui_impl_opengl3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
@@ -350,6 +356,9 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\ImGui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

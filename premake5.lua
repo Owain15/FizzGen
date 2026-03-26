@@ -62,12 +62,14 @@ workspace "FizzGen"
 	IncludeDir = {}
 	IncludeDir["GLFW"] = "FizzGen/vendor/GLFW/include"
 	IncludeDir["Glad"] = "FizzGen/vendor/Glad/include"
+	IncludeDir["ImGui"] = "FizzGen/vendor/ImGui"
 	IncludeDir["ANGLE"] = "FizzGen/vendor/ANGLE/ARM64/include"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 	include "FizzGen/vendor/GLFW"
 	include "FizzGen/vendor/Glad"
+	include "FizzGen/vendor/ImGui"
 	
 	
 
@@ -106,12 +108,14 @@ workspace "FizzGen"
 			"%{prj.name}/src",
 			"%{prj.name}/vendor/spdlog/include",
 			"%{IncludeDir.GLFW}",
-			"%{IncludeDir.Glad}"
+			"%{IncludeDir.Glad}",
+			"%{IncludeDir.ImGui}"
 		}
 
 		links {
 			"GLFW",
 			"Glad",
+			"ImGui",
 			"opengl32.lib"
 		}
 
@@ -119,7 +123,7 @@ workspace "FizzGen"
 			links { "opengl32.lib" }
 
 		filter "platforms:ARM64"
-			defines { "FG_USE_ANGLE" }
+			defines { "FG_USE_ANGLE", "IMGUI_IMPL_OPENGL_ES3" }
 			includedirs { "%{IncludeDir.ANGLE}" }
 			links { "libEGL.dll", "libGLESv2.dll" }
 			libdirs { "%{prj.name}/vendor/ANGLE/ARM64/lib" }

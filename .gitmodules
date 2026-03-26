@@ -4,3 +4,7 @@
 [submodule "FizzGen/vendor/GLFW"]
 	path = FizzGen/vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "FizzGen/vendor/ImGui"]
+	path = FizzGen/vendor/ImGui
+	url = https://github.com/ocornut/imgui.git
+	branch = docking

@@ -7,8 +7,14 @@
     <Filter Include="FizzGen\Events">
       <UniqueIdentifier>{067DDF13-F24A-D319-DBDE-4340C74BAF7E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FizzGen\ImGui">
+      <UniqueIdentifier>{0CAA0BBB-786A-87F1-41A5-D06EAD24CCCD}</UniqueIdentifier>
+    </Filter>
     <Filter Include="FizzGen\Platform">
       <UniqueIdentifier>{F6DDD0A5-E2D6-EFF7-0B09-D57CF760CF03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FizzGen\Platform\OpenGL">
+      <UniqueIdentifier>{6A7635BA-D6AD-7D51-DFB7-E1744B6EA44A}</UniqueIdentifier>
     </Filter>
     <Filter Include="FizzGen\Platform\Windows">
       <UniqueIdentifier>{301E0059-1C43-4FD9-458E-346931124EF7}</UniqueIdentifier>
@@ -37,6 +43,9 @@
     <ClInclude Include="src\FizzGen\Events\MouseEvent.h">
       <Filter>FizzGen\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\ImGui\ImGuiLayer.h">
+      <Filter>FizzGen\ImGui</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Layer.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
@@ -53,10 +62,15 @@
       <Filter>FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\fgpch.h" />
+    <ClInclude Include="vendor\ImGui\backends\imgui_impl_opengl3.h" />
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
       <Filter>FizzGen</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\ImGui\ImGuiLayer.cpp">
+      <Filter>FizzGen\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Layer.cpp">
       <Filter>FizzGen</Filter>
@@ -71,5 +85,7 @@
       <Filter>FizzGen\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\fgpch.cpp" />
+    <ClCompile Include="vendor\ImGui\backends\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
   </ItemGroup>
 </Project>

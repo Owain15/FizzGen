@@ -25,6 +25,7 @@ class Sandbox : public FizzGen::Application
 		Sandbox()
 		{
 			PushLayer(new ExampleLayer());
+			PushOverlay(new FizzGen::ImGuiLayer());
 		}
 	
 		~Sandbox()
