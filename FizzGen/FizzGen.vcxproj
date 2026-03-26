@@ -335,7 +335,6 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ClInclude Include="src\FizzGen\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\FizzGen\Window.h" />
     <ClInclude Include="src\fgpch.h" />
-    <ClInclude Include="vendor\ImGui\backends\imgui_impl_opengl3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp" />
@@ -348,7 +347,6 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ClCompile Include="src\fgpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vendor\ImGui\backends\imgui_impl_opengl3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

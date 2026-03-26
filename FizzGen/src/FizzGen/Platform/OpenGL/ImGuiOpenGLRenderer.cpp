@@ -128,7 +128,9 @@
 #include "imgui.h"
 #ifndef IMGUI_DISABLE
 #include "ImGuiOpenGLRenderer.h"
+#if !defined(IMGUI_IMPL_OPENGL_ES2) && !defined(IMGUI_IMPL_OPENGL_ES3)
 #include "glad/glad.h"
+#endif
 #include <stdio.h>
 #include <stdint.h>     // intptr_t
 #if defined(__APPLE__)
