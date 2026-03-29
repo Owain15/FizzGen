@@ -2,7 +2,7 @@
 
 #include "FizzGen/Layer.h"
 
-#include "FizzGen/Events/ApplicationEvents.h"
+#include "FizzGen/Events/ApplicationEvent.h"
 #include "FizzGen/Events/KeyEvent.h"
 #include "FizzGen/Events/MouseEvent.h"
 

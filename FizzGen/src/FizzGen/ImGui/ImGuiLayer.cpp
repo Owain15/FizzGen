@@ -9,7 +9,7 @@
 
 //temerary 
 #include <GLFW/glfw3.h>
-#include <glad/glad.h>
+//#include <glad/glad.h>
 
 namespace FizzGen
 {
@@ -87,15 +87,15 @@ namespace FizzGen
 		EventDispatcher dispatcher(event);
 	
 		dispatcher.Dispatch<MouseButtonPressedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonPressedEvent));
-		dispatcher.Dispatch<MouseButtonReleasedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::MouseButtonReleasedEvent));
-		dispatcher.Dispatch<MouseMovedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::MouseMovedEvent));
-		dispatcher.Dispatch<MouseScrolledEvent>(FG_BIND_EVENT_FN(ImGuiLayer::MouseScrolledEvent));
+		dispatcher.Dispatch<MouseButtonReleasedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::OnMouseButtonReleasedEvent));
+		dispatcher.Dispatch<MouseMovedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::OnMouseMovedEvent));
+		dispatcher.Dispatch<MouseScrolledEvent>(FG_BIND_EVENT_FN(ImGuiLayer::OnMouseScrolledEvent));
 
-		dispatcher.Dispatch<KeyPressedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::KeyPressedEvent));
-		dispatcher.Dispatch<KeyTypedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::KeyTypedEvent));
-		dispatcher.Dispatch<KeyReleasedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::KeyReleasedEvent));
+		dispatcher.Dispatch<KeyPressedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::OnKeyPressedEvent));
+		dispatcher.Dispatch<KeyTypedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::OnKeyTypedEvent));
+		dispatcher.Dispatch<KeyReleasedEvent>(FG_BIND_EVENT_FN(ImGuiLayer::OnKeyReleasedEvent));
 
-		dispatcher.Dispatch<WindowResizeEvent>(FG_BIND_EVENT_FN(ImGuiLayer::WindowResizeEvent));
+		dispatcher.Dispatch<WindowResizeEvent>(FG_BIND_EVENT_FN(ImGuiLayer::OnWindowResizeEvent));
 
 
 	}
@@ -138,12 +138,12 @@ namespace FizzGen
 	bool ImGuiLayer::OnKeyPressedEvent(KeyPressedEvent& event)
 	{
 		ImGuiIO& io = ImGui::GetIO();
-		io.KeysDown[event.GetKeyCode()] = true;
+		//io.KeysDown[event.GetKeyCode()] = true;
 
-		io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
-		io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
-		io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
-		io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+		//io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
+		//io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
+		//io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
+		//io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
 
 		return false;
 	}
@@ -151,7 +151,9 @@ namespace FizzGen
 	bool ImGuiLayer::OnKeyReleasedEvent(KeyReleasedEvent& event)
 	{
 		ImGuiIO& io = ImGui::GetIO();
-		io.KeyDown[event.GetKeyCode()] = false;
+		//io.KeyDown[event.GetKeyCode()] = false;
+		//io.KeysData->Down[event.GetKeyCode()] = false;
+		return false;
 	}
 
 	bool ImGuiLayer::OnKeyTypedEvent(KeyTypedEvent& event)

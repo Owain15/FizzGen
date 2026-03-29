@@ -49,35 +49,40 @@ namespace FizzGen
 
 	class FIZZGEN_API KeyReleasedEvent : public KeyEvent
 	{
-		public:
+	public:
 
-			KeyReleasedEvent(int keycode)
-				: KeyEvent(keycode) {}
+		KeyReleasedEvent(int keycode)
+			: KeyEvent(keycode) {
+		}
 
-			std::string ToString() const override
-			{
-				std::stringstream ss;
-				ss << GetName() << ": " << m_KeyCode;
-				return ss.str();
-			}
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << GetName() << ": " << m_KeyCode;
+			return ss.str();
+		}
 
-			EVENT_CLASS_TYPE(KeyReleased)
+		EVENT_CLASS_TYPE(KeyReleased)
 
 	};
 
 	class FIZZGEN_API KeyTypedEvent : public KeyEvent
 	{
-		public:
-			KeyTypedEvent(int keycode)
-				: KeyEvent(keycode) {}
-			std::string ToString() const override
-			{
-				std::stringstream ss;
-				ss << GetName() << ": " << m_KeyCode;
-				return ss.str();
-			}
-			EVENT_CLASS_TYPE(KeyTyped)
+	public:
+		KeyTypedEvent(int keycode)
+			: KeyEvent(keycode) {
+		}
 
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << GetName() << ": " << m_KeyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyTyped)
+
+
+	};
 
 }
-

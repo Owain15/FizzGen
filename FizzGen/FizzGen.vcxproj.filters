@@ -55,15 +55,16 @@
     <ClInclude Include="src\FizzGen\Log.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Platform\Windows\WindowsWindow.h">
+    <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h">
       <Filter>FizzGen\Platform\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Window.h">
+    <ClInclude Include="src\FizzGen\WindowInterface.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\fgpch.h" />
-    <ClInclude Include="vendor\ImGui\backends\imgui_impl_opengl3.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
+    <ClInclude Include="src\FizzGen\InputInterface.h" />
+    <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -81,11 +82,11 @@
     <ClCompile Include="src\FizzGen\Log.cpp">
       <Filter>FizzGen</Filter>
     </ClCompile>
-    <ClCompile Include="src\FizzGen\Platform\Windows\WindowsWindow.cpp">
+    <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp">
       <Filter>FizzGen\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\fgpch.cpp" />
-    <ClCompile Include="vendor\ImGui\backends\imgui_impl_opengl3.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

@@ -1,13 +1,13 @@
 #pragma once
 
-#include "FizzGen/Window.h"
+#include "FizzGen/WindowInterface.h"
 
 #include <GLFW/glfw3.h>
 
 
 namespace FizzGen
 {
-	class WindowsWindow : public Window
+	class WindowsWindow : public WindowInterface
 	{
 		public:
 	
@@ -18,13 +18,15 @@ namespace FizzGen
 			
 			inline unsigned int GetWidth() const override { return m_Data.Width; }
 			inline unsigned int GetHeight() const override { return m_Data.Height; }
-			void* GetNativeWindow() const override { return m_Window; }
+			
 
 			// Window attributes
 			inline void SetEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; };
 			void SetVSync(bool enabled) override;
 			bool IsVSync() const override;
 
+			inline virtual void* GetNativeWindow() const override { return m_Window; }
+		
 		private:
 		
 			virtual void Init(const WindowProperties& props);
@@ -32,7 +34,7 @@ namespace FizzGen
 
 			static void GLFWErrorCallback(int error, const char* description);
 	
-	private:
+		private:
 			
 			GLFWwindow* m_Window;
 			struct WindowData

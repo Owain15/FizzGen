@@ -13,7 +13,7 @@ namespace FizzGen
 {
 	static bool s_GLFWInitialized = false;
 
-	Window* Window::Create(const WindowProperties& props)
+	WindowInterface* WindowInterface::Create(const WindowProperties& props)
 	{
 		return new WindowsWindow(props);
 	}
