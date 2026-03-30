@@ -7,7 +7,7 @@
 
 namespace FizzGen
 {
-	class WindowsWindow : public WindowInterface
+	class WindowsWindow : public Window
 	{
 		public:
 	

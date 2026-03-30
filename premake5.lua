@@ -114,21 +114,30 @@ workspace "FizzGen"
 
 		links {
 			"GLFW",
-			"Glad",
+			--"Glad",
 			"ImGui",
-			"opengl32.lib"
+			--"opengl32.lib"
 		}
 
 		filter "platforms:x64"
-			links { "opengl32.lib" }
+			links {
+				"Glad",
+				"opengl32.lib" 
+			}
+
+	
 
 		filter "platforms:ARM64"
 			defines { "FG_USE_ANGLE", "IMGUI_IMPL_OPENGL_ES3" }
 			includedirs { "%{IncludeDir.ANGLE}" }
-			links { "libEGL.dll", "libGLESv2.dll" }
-			libdirs { "%{prj.name}/vendor/ANGLE/ARM64/lib" }
+			--links { "libEGL.dll", "libGLESv2.dll" }
+			libdirs { "%{prj.name}/vendor/ANGLE/ARM64/lib", "%{prj.name}/vendor/ANGLE/ARM64/bin" }
 
-		filter {}
+	       -- Link import libs so linker can resolve symbols for ARM64
+	       links { "Glad" }
+	       linkoptions { "libEGL.dll.lib", "libGLESv2.dll.lib" }
+
+		--filter {}
 
 		filter "system:windows"
 			cppdialect "C++17"

@@ -4,7 +4,7 @@
 
 namespace FizzGen
 {
-	class FIZZGEN_API InputInterface
+	class FIZZGEN_API Input
 	{
 
 		public:
@@ -35,7 +35,7 @@ namespace FizzGen
 
 		private:
 
-			static InputInterface* s_Instance;
+			static Input* s_Instance;
 
 	};
 

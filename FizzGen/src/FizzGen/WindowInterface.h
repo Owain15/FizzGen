@@ -22,13 +22,13 @@ namespace FizzGen
 	};
 
 	// Interface representing a desktop system based Window
-	class FIZZGEN_API WindowInterface
+	class FIZZGEN_API Window
 	{
 		public:
 			
 			using EventCallbackFn = std::function<void(Event&)>;
 
-			virtual ~WindowInterface() {}
+			virtual ~Window() {}
 
 			virtual void OnUpdate() = 0;
 
@@ -43,7 +43,7 @@ namespace FizzGen
 
 			virtual void* GetNativeWindow() const = 0;
 
-			static WindowInterface* Create(const WindowProperties& props = WindowProperties());
+			static Window* Create(const WindowProperties& props = WindowProperties());
 
 	};
 

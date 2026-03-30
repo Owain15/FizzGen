@@ -4,7 +4,7 @@
 #include "FizzGen/LayerStack.h"
 #include "Events/Event.h"
 #include "FizzGen/Events/ApplicationEvent.h"
-#include "Window.h"
+#include "WindowInterface.h"
 
 namespace FizzGen
 {

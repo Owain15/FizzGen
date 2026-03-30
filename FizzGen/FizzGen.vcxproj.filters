@@ -10,6 +10,9 @@
     <Filter Include="FizzGen\ImGui">
       <UniqueIdentifier>{0CAA0BBB-786A-87F1-41A5-D06EAD24CCCD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FizzGen\InputCodes">
+      <UniqueIdentifier>{2F188F6C-1BFC-4FC2-845C-4A15705F3A44}</UniqueIdentifier>
+    </Filter>
     <Filter Include="FizzGen\Platform">
       <UniqueIdentifier>{F6DDD0A5-E2D6-EFF7-0B09-D57CF760CF03}</UniqueIdentifier>
     </Filter>
@@ -18,6 +21,12 @@
     </Filter>
     <Filter Include="FizzGen\Platform\Windows">
       <UniqueIdentifier>{301E0059-1C43-4FD9-458E-346931124EF7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FizzGen\Platform\Windows\Inputs">
+      <UniqueIdentifier>{82F88910-EEDB-9850-F7DE-C68C63415FA1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FizzGen\Platform\Windows\Window">
+      <UniqueIdentifier>{1755D630-8338-E570-8C3B-13ADF89DABC1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,6 +55,15 @@
     <ClInclude Include="src\FizzGen\ImGui\ImGuiLayer.h">
       <Filter>FizzGen\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\InputCodes\Keycodes.h">
+      <Filter>FizzGen\InputCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\InputCodes\MouseButtonCodes.h">
+      <Filter>FizzGen\InputCodes</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\InputInterface.h">
+      <Filter>FizzGen</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Layer.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
@@ -55,16 +73,19 @@
     <ClInclude Include="src\FizzGen\Log.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.h">
+      <Filter>FizzGen\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h">
+      <Filter>FizzGen\Platform\Windows\Inputs</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h">
-      <Filter>FizzGen\Platform\Windows</Filter>
+      <Filter>FizzGen\Platform\Windows\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\WindowInterface.h">
       <Filter>FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\fgpch.h" />
-    <ClInclude Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
-    <ClInclude Include="src\FizzGen\InputInterface.h" />
-    <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -82,11 +103,15 @@
     <ClCompile Include="src\FizzGen\Log.cpp">
       <Filter>FizzGen</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
+      <Filter>FizzGen\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp">
+      <Filter>FizzGen\Platform\Windows\Inputs</Filter>
+    </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp">
-      <Filter>FizzGen\Platform\Windows</Filter>
+      <Filter>FizzGen\Platform\Windows\Window</Filter>
     </ClCompile>
     <ClCompile Include="src\fgpch.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp" />
   </ItemGroup>
 </Project>

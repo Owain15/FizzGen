@@ -4,7 +4,7 @@
 
 namespace FizzGen
 {
-	class WindowsInput : public InputInterface
+	class WindowsInput : public Input
 	{
 		
 		protected:
