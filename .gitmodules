@@ -8,3 +8,6 @@
 	path = FizzGen/vendor/ImGui
 	url = https://github.com/ocornut/imgui.git
 	branch = docking
+[submodule "FizzGen/vendor/glm"]
+	path = FizzGen/vendor/glm
+	url = http://github.com/g-truc/glm

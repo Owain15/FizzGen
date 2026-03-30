@@ -1,117 +1,138 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="FizzGen">
-      <UniqueIdentifier>{62B3FD0D-CE92-7CA9-D7AA-07804309E30A}</UniqueIdentifier>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FizzGen\Events">
-      <UniqueIdentifier>{067DDF13-F24A-D319-DBDE-4340C74BAF7E}</UniqueIdentifier>
+    <Filter Include="src\FizzGen">
+      <UniqueIdentifier>{79B33717-E568-B00C-6E5D-AAE3DA11A710}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FizzGen\ImGui">
-      <UniqueIdentifier>{0CAA0BBB-786A-87F1-41A5-D06EAD24CCCD}</UniqueIdentifier>
+    <Filter Include="src\FizzGen\Events">
+      <UniqueIdentifier>{3D9DC371-2981-84C7-92E1-7E1A7EE46E49}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FizzGen\InputCodes">
-      <UniqueIdentifier>{2F188F6C-1BFC-4FC2-845C-4A15705F3A44}</UniqueIdentifier>
+    <Filter Include="src\FizzGen\ImGui">
+      <UniqueIdentifier>{631F4132-CF35-3FC8-18AD-CAE984021050}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FizzGen\Platform">
-      <UniqueIdentifier>{F6DDD0A5-E2D6-EFF7-0B09-D57CF760CF03}</UniqueIdentifier>
+    <Filter Include="src\FizzGen\InputCodes">
+      <UniqueIdentifier>{E67B6663-D275-8FB5-BBE2-25C6A77BF521}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FizzGen\Platform\OpenGL">
-      <UniqueIdentifier>{6A7635BA-D6AD-7D51-DFB7-E1744B6EA44A}</UniqueIdentifier>
+    <Filter Include="src\FizzGen\Platform">
+      <UniqueIdentifier>{EDE73D0D-D976-C7D6-8295-DBD16E03D87C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FizzGen\Platform\Windows">
-      <UniqueIdentifier>{301E0059-1C43-4FD9-458E-346931124EF7}</UniqueIdentifier>
+    <Filter Include="src\FizzGen\Platform\OpenGL">
+      <UniqueIdentifier>{81C40229-EDD1-300F-76B8-2CFAE2C4FCC5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FizzGen\Platform\Windows\Inputs">
-      <UniqueIdentifier>{82F88910-EEDB-9850-F7DE-C68C63415FA1}</UniqueIdentifier>
+    <Filter Include="src\FizzGen\Platform\Windows">
+      <UniqueIdentifier>{272F77A1-13EA-664D-BCA1-DF97A83BB1DD}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FizzGen\Platform\Windows\Window">
-      <UniqueIdentifier>{1755D630-8338-E570-8C3B-13ADF89DABC1}</UniqueIdentifier>
+    <Filter Include="src\FizzGen\Platform\Windows\Inputs">
+      <UniqueIdentifier>{996DF35D-0527-5E08-8E86-78E2FA3E1478}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FizzGen\Platform\Windows\Window">
+      <UniqueIdentifier>{2ECA3F7E-9A83-AA28-23E3-C4028F9B6098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\glm">
+      <UniqueIdentifier>{829FC5A8-6E57-07F6-D75E-E051C335A2E6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\FizzGen.h" />
+    <ClInclude Include="src\FizzGen.h">
+      <Filter>src</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Application.h">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Core.h">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\EnteryPoint.h">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h">
-      <Filter>FizzGen\Events</Filter>
+      <Filter>src\FizzGen\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Events\Event.h">
-      <Filter>FizzGen\Events</Filter>
+      <Filter>src\FizzGen\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Events\KeyEvent.h">
-      <Filter>FizzGen\Events</Filter>
+      <Filter>src\FizzGen\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Events\MouseEvent.h">
-      <Filter>FizzGen\Events</Filter>
+      <Filter>src\FizzGen\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\ImGui\ImGuiLayer.h">
-      <Filter>FizzGen\ImGui</Filter>
+      <Filter>src\FizzGen\ImGui</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\InputCodes\Keycodes.h">
-      <Filter>FizzGen\InputCodes</Filter>
+      <Filter>src\FizzGen\InputCodes</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\InputCodes\MouseButtonCodes.h">
-      <Filter>FizzGen\InputCodes</Filter>
+      <Filter>src\FizzGen\InputCodes</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\InputInterface.h">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Layer.h">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\LayerStack.h">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Log.h">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.h">
-      <Filter>FizzGen\Platform\OpenGL</Filter>
+      <Filter>src\FizzGen\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h">
-      <Filter>FizzGen\Platform\Windows\Inputs</Filter>
+      <Filter>src\FizzGen\Platform\Windows\Inputs</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h">
-      <Filter>FizzGen\Platform\Windows\Window</Filter>
+      <Filter>src\FizzGen\Platform\Windows\Window</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\WindowInterface.h">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClInclude>
-    <ClInclude Include="src\fgpch.h" />
+    <ClInclude Include="src\fgpch.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm.hpp">
+      <Filter>vendor\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\glm\glm.inl">
+      <Filter>vendor\glm</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\ImGui\ImGuiLayer.cpp">
-      <Filter>FizzGen\ImGui</Filter>
+      <Filter>src\FizzGen\ImGui</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Layer.cpp">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\LayerStack.cpp">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Log.cpp">
-      <Filter>FizzGen</Filter>
+      <Filter>src\FizzGen</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
-      <Filter>FizzGen\Platform\OpenGL</Filter>
+      <Filter>src\FizzGen\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp">
-      <Filter>FizzGen\Platform\Windows\Inputs</Filter>
+      <Filter>src\FizzGen\Platform\Windows\Inputs</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp">
-      <Filter>FizzGen\Platform\Windows\Window</Filter>
+      <Filter>src\FizzGen\Platform\Windows\Window</Filter>
     </ClCompile>
-    <ClCompile Include="src\fgpch.cpp" />
+    <ClCompile Include="src\fgpch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

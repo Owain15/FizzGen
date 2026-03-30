@@ -8,5 +8,8 @@ Logging lib
 initial rederer api opengl. 
 . look into renderer for android use. vulken is most commonly used indesty wide.
 
+Math lib
+. cosider using directX lib, look into creating my own math library.
+
 Premake
 . look into premake, cmake, meson, and other build systems. premake
