@@ -5,6 +5,7 @@
 #include "Events/Event.h"
 #include "FizzGen/Events/ApplicationEvent.h"
 #include "WindowInterface.h"
+#include "ImGui/ImGuiLayer.h"
 
 namespace FizzGen
 {
@@ -32,6 +33,7 @@ namespace FizzGen
 			bool OnWindowClose(WindowCloseEvent& e);
 
 			std::unique_ptr<Window> m_Window;
+			ImGuiLayer* m_ImGuiLayer;
 			bool m_Running = true;
 			LayerStack m_LayerStack;
 

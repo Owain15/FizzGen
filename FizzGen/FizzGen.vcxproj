@@ -334,7 +334,6 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ClInclude Include="src\FizzGen\Layer.h" />
     <ClInclude Include="src\FizzGen\LayerStack.h" />
     <ClInclude Include="src\FizzGen\Log.h" />
-    <ClInclude Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h" />
     <ClInclude Include="src\FizzGen\WindowInterface.h" />
@@ -344,11 +343,11 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp" />
+    <ClCompile Include="src\FizzGen\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\FizzGen\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\FizzGen\Layer.cpp" />
     <ClCompile Include="src\FizzGen\LayerStack.cpp" />
     <ClCompile Include="src\FizzGen\Log.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp" />
     <ClCompile Include="src\fgpch.cpp">

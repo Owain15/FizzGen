@@ -84,9 +84,6 @@
     <ClInclude Include="src\FizzGen\Log.h">
       <Filter>src\FizzGen</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.h">
-      <Filter>src\FizzGen\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h">
       <Filter>src\FizzGen\Platform\Windows\Inputs</Filter>
     </ClInclude>
@@ -122,9 +119,6 @@
     <ClCompile Include="src\FizzGen\Log.cpp">
       <Filter>src\FizzGen</Filter>
     </ClCompile>
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\ImGuiOpenGLRenderer.cpp">
-      <Filter>src\FizzGen\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp">
       <Filter>src\FizzGen\Platform\Windows\Inputs</Filter>
     </ClCompile>
@@ -134,5 +128,6 @@
     <ClCompile Include="src\fgpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>

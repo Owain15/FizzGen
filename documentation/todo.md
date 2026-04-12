@@ -5,8 +5,9 @@ Summery
 ----------------
 .complete game engin baised apon the game engine corse by "the cherno". youtude.com
 
-GameEnginePlaylist
-[21/123] "Render Maths"  
+
+GameEnginePlaylist 
+[23/123] "render intro"  
 
 ----------------
 Current Support
@@ -19,7 +20,10 @@ Current Support
     Renderer
      []OpenGL
 
-     Logging Sysetem
+    Math Libuary
+     []glm
+
+    Logging Sysetem
      []spdlog
 
 ----------------
@@ -55,7 +59,6 @@ Overview
     []
 
 .Event System
-   
    [] Application Events
         [] App Tick Events
         [] App Update Events
