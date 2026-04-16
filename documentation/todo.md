@@ -7,7 +7,7 @@ Summery
 
 
 GameEnginePlaylist 
-[23/123] "render intro"  
+[24/123] "render architecture"  
 
 ----------------
 Current Support
@@ -99,3 +99,59 @@ Overview
     .Hotspot ability
 
 ----------------
+render architecture
+----------------
+
+    ------------
+    render API (API platform specific)
+    ------------
+    .render context
+    .swap chain
+    .frame buffer
+    .vertex buffer
+    .index buffer
+    .texture
+    .shader
+    .states
+    .pipeline
+    .render pass
+    .command buffer
+
+    ------------
+    Renderer (API platform agnostic) abstraction
+    ------------
+    .2D renderer
+        
+    .3D renderer
+
+    .scene graph
+
+    .sorting
+
+    .culling
+
+    .materrials
+
+    .LOD (Level of Detail)
+
+    .animation
+
+    .camera
+
+    .vfx
+
+    .post fx system
+
+----------------
+current renderer support
+----------------
+    []OpenGL
+    
+    .future renderer support
+    
+    []vulken
+    []directX 12
+
+-----------------
+    
+        
