@@ -19,9 +19,6 @@
     <Filter Include="src\FizzGen\Platform">
       <UniqueIdentifier>{EDE73D0D-D976-C7D6-8295-DBD16E03D87C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\FizzGen\Platform\OpenGL">
-      <UniqueIdentifier>{81C40229-EDD1-300F-76B8-2CFAE2C4FCC5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src\FizzGen\Platform\Windows">
       <UniqueIdentifier>{272F77A1-13EA-664D-BCA1-DF97A83BB1DD}</UniqueIdentifier>
     </Filter>
@@ -107,6 +104,9 @@
     <ClCompile Include="src\FizzGen\Application.cpp">
       <Filter>src\FizzGen</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\ImGui\ImGuiBuild.cpp">
+      <Filter>src\FizzGen\ImGui</Filter>
+    </ClCompile>
     <ClCompile Include="src\FizzGen\ImGui\ImGuiLayer.cpp">
       <Filter>src\FizzGen\ImGui</Filter>
     </ClCompile>
@@ -128,6 +128,5 @@
     <ClCompile Include="src\fgpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\FizzGen\ImGui\ImGuiBuild.cpp" />
   </ItemGroup>
 </Project>

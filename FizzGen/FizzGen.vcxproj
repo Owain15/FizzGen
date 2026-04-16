@@ -160,7 +160,8 @@
     <ProjectReference>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF NOT EXIST ..\bin\Debug-windows-x86_64\Sandbox (mkdir ..\bin\Debug-windows-x86_64\Sandbox)
+IF EXIST ..\bin\Debug-windows-x86_64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Debug-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -187,7 +188,8 @@
     <ProjectReference>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-AARCH64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Debug-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Debug-windows-AARCH64\Sandbox &gt; nul)
+      <Command>IF NOT EXIST ..\bin\Debug-windows-AARCH64\Sandbox (mkdir ..\bin\Debug-windows-AARCH64\Sandbox)
+IF EXIST ..\bin\Debug-windows-AARCH64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Debug-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Debug-windows-AARCH64\Sandbox &gt; nul)
 IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Debug-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Debug-windows-AARCH64\Sandbox &gt; nul)
 IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Debug-windows-AARCH64\FizzGen &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Debug-windows-AARCH64\FizzGen &gt; nul)</Command>
     </PostBuildEvent>
@@ -219,7 +221,8 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ProjectReference>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF NOT EXIST ..\bin\Release-windows-x86_64\Sandbox (mkdir ..\bin\Release-windows-x86_64\Sandbox)
+IF EXIST ..\bin\Release-windows-x86_64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Release-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -250,7 +253,8 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ProjectReference>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-AARCH64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Release-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Release-windows-AARCH64\Sandbox &gt; nul)
+      <Command>IF NOT EXIST ..\bin\Release-windows-AARCH64\Sandbox (mkdir ..\bin\Release-windows-AARCH64\Sandbox)
+IF EXIST ..\bin\Release-windows-AARCH64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Release-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Release-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Release-windows-AARCH64\Sandbox &gt; nul)
 IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Release-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Release-windows-AARCH64\Sandbox &gt; nul)
 IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Release-windows-AARCH64\FizzGen &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Release-windows-AARCH64\FizzGen &gt; nul)</Command>
     </PostBuildEvent>
@@ -282,7 +286,8 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ProjectReference>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
+      <Command>IF NOT EXIST ..\bin\Dist-windows-x86_64\Sandbox (mkdir ..\bin\Dist-windows-x86_64\Sandbox)
+IF EXIST ..\bin\Dist-windows-x86_64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\FizzGen\FizzGen.dll ..\bin\Dist-windows-x86_64\Sandbox &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">
@@ -313,7 +318,8 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ProjectReference>
     </ProjectReference>
     <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-AARCH64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Dist-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Dist-windows-AARCH64\Sandbox &gt; nul)
+      <Command>IF NOT EXIST ..\bin\Dist-windows-AARCH64\Sandbox (mkdir ..\bin\Dist-windows-AARCH64\Sandbox)
+IF EXIST ..\bin\Dist-windows-AARCH64\FizzGen\FizzGen.dll\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Dist-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-AARCH64\FizzGen\FizzGen.dll ..\bin\Dist-windows-AARCH64\Sandbox &gt; nul)
 IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Dist-windows-AARCH64\Sandbox &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Dist-windows-AARCH64\Sandbox &gt; nul)
 IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Dist-windows-AARCH64\FizzGen &gt; nul) ELSE (xcopy /Q /Y /I $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll ..\bin\Dist-windows-AARCH64\FizzGen &gt; nul)</Command>
     </PostBuildEvent>
@@ -358,7 +364,7 @@ IF EXIST $(SolutionDir)\FizzGen\vendor\ANGLE\ARM64\bin\*.dll\ (xcopy /Q /E /Y /I
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
     </ProjectReference>
-    <ProjectReference Include="vendor\ImGui\ImGui.vcxproj">
+    <ProjectReference Include="vendor\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">

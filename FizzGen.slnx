@@ -7,14 +7,12 @@
     <Platform Name="x64" />
   </Configurations>
   <Folder Name="/Solution Items/">
-    <File Path="documentation/persinalNotes.md" />
-    <File Path="documentation/README.md" />
-    <File Path="documentation/todo.md" />
+    <File Path="generateProjects.bat" />
     <File Path="premake5.lua" />
   </Folder>
   <Project Path="FizzGen\FizzGen.vcxproj" Id="62b3fd0d-ce92-7ca9-d7aa-07804309e30a" />
   <Project Path="FizzGen\vendor\Glad\Glad.vcxproj" Id="bdd6857c-a90d-870d-52fa-6c103e10030f" />
   <Project Path="FizzGen\vendor\GLFW\GLFW.vcxproj" Id="154b857c-0182-860d-aa6e-6c109684020f" />
-  <Project Path="FizzGen\vendor\ImGui\ImGui.vcxproj" Id="c0ff640d-2c14-8dbe-f595-301e616989ef" />
+  <Project Path="FizzGen\vendor\ImGui.vcxproj" Id="c0ff640d-2c14-8dbe-f595-301e616989ef" />
   <Project Path="Sandbox\Sandbox.vcxproj" Id="f4c124e3-60a1-a37e-69b9-2e55d5170ae0" />
 </Solution>

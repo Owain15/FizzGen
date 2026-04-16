@@ -2,7 +2,7 @@
 local angleDir = "FizzGen/vendor/ANGLE"
 if not os.isfile(angleDir .. "/ARM64/bin/libEGL.dll") then
     local repo = "mmozeiko/build-angle"
-    local archs = { "arm64", "x64" }
+    local archs = { "arm64" }
 
     -- Query latest release tag
     print("Querying latest ANGLE release from " .. repo .. "...")
@@ -70,13 +70,13 @@ workspace "FizzGen"
 
 	include "FizzGen/vendor/GLFW"
 	include "FizzGen/vendor/Glad"
-	include "FizzGen/vendor/ImGui"
+	include "FizzGen/vendor/ImGui.lua"
 	
 	
 
 	-- Solution Items appear under the Solution Items node in Visual Studio.
 	-- Add any files you want visible in the .sln but not part of a specific project.
-		if _G.solutionitems then
+	if _G.solutionitems then
 		solutionitems {
 			"todo.md",
 			"persinalNotes.md",
@@ -154,6 +154,7 @@ workspace "FizzGen"
 			}
 
 		postbuildcommands {
+			("{MKDIR} ../bin/" .. outDir .. "/Sandbox"),
 			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outDir .. "/Sandbox")
 		}
 
