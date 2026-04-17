@@ -142,10 +142,10 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -153,8 +153,10 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>..\bin\Debug-windows-x86_64\FizzGen\FizzGen.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
@@ -162,10 +164,10 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -173,22 +175,29 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\FizzGen\vendor\ANGLE\ARM64\lib;..\FizzGen\vendor\ANGLE\ARM64\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>libEGL.dll.lib libGLESv2.dll.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <ProjectReference>
     </ProjectReference>
+    <PostBuildEvent>
+      <Command>IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll" "..\bin\Debug-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll" "..\bin\Debug-windows-AARCH64\Sandbox" &gt; nul)
+IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll" "..\bin\Debug-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll" "..\bin\Debug-windows-AARCH64\Sandbox" &gt; nul)
+IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll" "..\bin\Debug-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll" "..\bin\Debug-windows-AARCH64\Sandbox" &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -197,8 +206,10 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\bin\Release-windows-x86_64\FizzGen\FizzGen.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
@@ -206,13 +217,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -221,22 +232,29 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\FizzGen\vendor\ANGLE\ARM64\lib;..\FizzGen\vendor\ANGLE\ARM64\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>libEGL.dll.lib libGLESv2.dll.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <ProjectReference>
     </ProjectReference>
+    <PostBuildEvent>
+      <Command>IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll" "..\bin\Release-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll" "..\bin\Release-windows-AARCH64\Sandbox" &gt; nul)
+IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll" "..\bin\Release-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll" "..\bin\Release-windows-AARCH64\Sandbox" &gt; nul)
+IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll" "..\bin\Release-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll" "..\bin\Release-windows-AARCH64\Sandbox" &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -245,8 +263,10 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>..\bin\Dist-windows-x86_64\FizzGen\FizzGen.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">
@@ -254,13 +274,13 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
@@ -269,9 +289,16 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>..\FizzGen\vendor\ANGLE\ARM64\lib;..\FizzGen\vendor\ANGLE\ARM64\bin;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>libEGL.dll.lib libGLESv2.dll.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
     <ProjectReference>
     </ProjectReference>
+    <PostBuildEvent>
+      <Command>IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll" "..\bin\Dist-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libEGL.dll" "..\bin\Dist-windows-AARCH64\Sandbox" &gt; nul)
+IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll" "..\bin\Dist-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\libGLESv2.dll" "..\bin\Dist-windows-AARCH64\Sandbox" &gt; nul)
+IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll"\ (xcopy /Q /E /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll" "..\bin\Dist-windows-AARCH64\Sandbox" &gt; nul) ELSE (xcopy /Q /Y /I "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll" "..\bin\Dist-windows-AARCH64\Sandbox" &gt; nul)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\SandboxApp.cpp" />
@@ -279,6 +306,9 @@
   <ItemGroup>
     <ProjectReference Include="..\FizzGen\FizzGen.vcxproj">
       <Project>{62B3FD0D-CE92-7CA9-D7AA-07804309E30A}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\FizzGen\vendor\Glad\Glad.vcxproj">
+      <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

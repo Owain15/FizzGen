@@ -3,6 +3,8 @@
 #include "ImGuiLayer.h"
 
 #include "imgui.h"
+
+#define IMGUI_IMPL_API
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_glfw.h"
 
@@ -48,6 +50,7 @@ namespace FizzGen
 		
 		// Use GLES shader string when using ANGLE / OpenGL ES (ARM64 target). Otherwise use desktop GLSL.
 		// premake defines FG_USE_ANGLE for ARM64 in your workspace; adjust if you use a different define.
+		
 		#ifdef FG_USE_ANGLE
 			ImGui_ImplOpenGL3_Init("#version 300 es");
 		#else

@@ -90,8 +90,10 @@ workspace "FizzGen"
 
 	project "FizzGen"
 		location "FizzGen"
-		kind "sharedlib"
+		kind "staticlib"
 		language "C++"
+		cppdialect "C++17"
+		staticruntime "on"
 
 		targetdir ("bin/" .. outDir .. "/%{prj.name}")
 		objdir ("bin-int/" .. outDir .. "/%{prj.name}")
@@ -141,45 +143,34 @@ workspace "FizzGen"
 	       links { "Glad" }
 	       linkoptions { "libEGL.dll.lib", "libGLESv2.dll.lib" }
 
-		--filter {}
-
+		
 		filter "system:windows"
-			cppdialect "C++17"
-			staticruntime "Off"
+
 			systemversion "latest"
 
 			defines {
-				"FG_PLATFORM_WINDOWS",
-				"FG_BUILD_DLL"
+				"FG_PLATFORM_WINDOWS"
 			}
 
-		postbuildcommands {
-			("{MKDIR} ../bin/" .. outDir .. "/Sandbox"),
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outDir .. "/Sandbox")
-		}
 
 		filter { "platforms:ARM64", "system:windows" }
-			postbuildcommands {
-				("{COPY} %{wks.location}/FizzGen/vendor/ANGLE/ARM64/bin/*.dll ../bin/" .. outDir .. "/Sandbox"),
-				("{COPY} %{wks.location}/FizzGen/vendor/ANGLE/ARM64/bin/*.dll ../bin/" .. outDir .. "/FizzGen")
-			}
+	
 
-		filter {}
 
 		filter "configurations:Debug"
 			defines "FG_DEBUG"
 			runtime "Debug"
-			symbols "On"
+			symbols "on"
 
 		filter "configurations:Release"
 			defines "FG_RELEASE"
 			runtime "Release"
-			optimize "On"
+			optimize "on"
 
 		filter "configurations:Dist"
 			defines "FG_DIST"
 			runtime "Release"
-			optimize "On"
+			optimize "on"
 
 
 
@@ -190,7 +181,9 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	
+	cppdialect "C++17"
+	staticruntime "on"
+
 	targetdir ("bin/" .. outDir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outDir .. "/%{prj.name}")
 	buildoptions "/utf-8"
@@ -203,16 +196,29 @@ project "Sandbox"
 	includedirs {
 		"FizzGen/vendor/spdlog/include",
 		"FizzGen/src",
+		"FizzGen/vendor",
 		"%{IncludeDir.glm}"
 	}
 	
 	links {
 		"FizzGen"
 	}
-	
+
+	filter "platforms:ARM64"
+		libdirs {
+			"FizzGen/vendor/ANGLE/ARM64/lib",
+			"FizzGen/vendor/ANGLE/ARM64/bin"
+		}
+		links { "Glad" }
+		linkoptions { "libEGL.dll.lib", "libGLESv2.dll.lib" }
+		postbuildcommands {
+			'{COPY} "%{wks.location}FizzGen/vendor/ANGLE/ARM64/bin/libEGL.dll" "%{cfg.targetdir}"',
+			'{COPY} "%{wks.location}FizzGen/vendor/ANGLE/ARM64/bin/libGLESv2.dll" "%{cfg.targetdir}"',
+			'{COPY} "%{wks.location}FizzGen/vendor/ANGLE/ARM64/bin/d3dcompiler_47.dll" "%{cfg.targetdir}"'
+		}
+
 	filter "system:windows"
-		cppdialect "C++17"
-		staticruntime "Off"
+
 		systemversion "latest"
 		defines {
 			"FG_PLATFORM_WINDOWS"
@@ -221,14 +227,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "FG_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "FG_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "FG_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
