@@ -13,3 +13,5 @@ Math lib
 
 Premake
 . look into premake, cmake, meson, and other build systems. premake
+
+consider a Renderer cofig file to prepar solution for different architecturs. ie. ARM or X64.

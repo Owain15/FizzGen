@@ -310,8 +310,10 @@
     <ClInclude Include="src\FizzGen\Layer.h" />
     <ClInclude Include="src\FizzGen\LayerStack.h" />
     <ClInclude Include="src\FizzGen\Log.h" />
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h" />
+    <ClInclude Include="src\FizzGen\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\FizzGen\WindowInterface.h" />
     <ClInclude Include="src\fgpch.h" />
     <ClInclude Include="vendor\glm\glm.hpp" />
@@ -324,6 +326,7 @@
     <ClCompile Include="src\FizzGen\Layer.cpp" />
     <ClCompile Include="src\FizzGen\LayerStack.cpp" />
     <ClCompile Include="src\FizzGen\Log.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp" />
     <ClCompile Include="src\fgpch.cpp">

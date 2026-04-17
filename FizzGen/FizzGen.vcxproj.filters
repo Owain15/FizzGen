@@ -99,6 +99,8 @@
     <ClInclude Include="vendor\glm\glm.inl">
       <Filter>vendor\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -128,5 +130,6 @@
     <ClCompile Include="src\fgpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.cpp" />
   </ItemGroup>
 </Project>

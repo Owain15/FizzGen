@@ -4,6 +4,7 @@
 #include "Application.h"
 
 #include "FizzGen/Log.h"
+#include "FizzGen/Platform/OpenGL/OpenGLBuild.h"
 
 namespace FizzGen
 {
@@ -48,6 +49,9 @@ namespace FizzGen
 	
 		while (m_Running)
 		{
+			glClearColor(0,0,0,0);
+			glClear(GL_COLOR_BUFFER_BIT);
+
 			for (Layer* layer : m_LayerStack)
 			{
 				layer->OnUpdate();

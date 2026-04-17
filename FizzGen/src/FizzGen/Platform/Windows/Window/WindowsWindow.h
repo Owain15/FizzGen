@@ -1,9 +1,9 @@
 #pragma once
 
 #include "FizzGen/WindowInterface.h"
+#include "FizzGen/Renderer/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
-
 
 namespace FizzGen
 {
@@ -37,6 +37,9 @@ namespace FizzGen
 		private:
 			
 			GLFWwindow* m_Window;
+
+			GraphicsContext* m_Context;
+
 			struct WindowData
 			{
 				std::string Title;
