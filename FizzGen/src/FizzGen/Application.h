@@ -7,6 +7,9 @@
 #include "WindowInterface.h"
 #include "ImGui/ImGuiLayer.h"
 
+//temp
+#include "FizzGen/Renderer/Shader.h"
+
 namespace FizzGen
 {
 	class FIZZGEN_API Application
@@ -40,6 +43,7 @@ namespace FizzGen
 
 			//temp render code
 				unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
+				std::unique_ptr<Shader> m_Shader;
 			//
 
 		private:

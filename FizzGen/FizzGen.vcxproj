@@ -314,6 +314,7 @@
     <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h" />
     <ClInclude Include="src\FizzGen\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\FizzGen\Renderer\Shader.h" />
     <ClInclude Include="src\FizzGen\WindowInterface.h" />
     <ClInclude Include="src\fgpch.h" />
     <ClInclude Include="vendor\glm\glm.hpp" />
@@ -332,6 +333,7 @@
     <ClCompile Include="src\fgpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

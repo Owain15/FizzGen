@@ -49,6 +49,60 @@ namespace FizzGen
 
 			unsigned int indices[3] = { 0, 1, 2 };
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+		
+			#ifdef FG_USE_ANGLE
+			std::string vertexShaderSource = 
+				"#version 300 es\n"
+				"layout(location = 0) in vec3 a_Position;\n"
+				"void main()\n"
+				"{\n"
+					"gl_Position = vec4(a_Position, 1.0);\n"
+				"}";
+ 
+
+				std::string fragmentShaderSource = 
+         
+					"#version 300 es\n"
+         
+					"precision mediump float;\n"
+					"out vec4 f_Color;\n"
+         
+					"void main()\n"
+					"{\n"
+						"f_Color = vec4(1.0, 0.0, 0.0, 1.0);\n"
+					"}";
+				
+				
+			#else
+				std::string vertexShaderSource = 
+         
+					"#version 330 core\n"
+         
+					"layout(location = 0) in vec3 a_Position;\n"
+         
+					"void main()\n"
+					"{\n"
+						"gl_Position = vec4(a_Position, 1.0);\n"
+					"}";
+				
+				
+				std::string fragmentShaderSource =
+
+					"#version 330 core\n"
+
+					"out vec4 f_Color;\n"
+
+					"void main()\n"
+					"{\n"
+						"f_Color = vec4(1.0, 0.0, 0.0, 1.0);\n"
+					"}";
+     
+				
+			
+			#endif
+
+			m_Shader.reset(new Shader(vertexShaderSource, fragmentShaderSource));
+			
 		//
 
 
@@ -80,10 +134,18 @@ namespace FizzGen
 		{
 			//background
 			glClearColor(0.1f, 0.1f, 0.1f, 1);
+			//glClearColor(1, 1, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			//temp render code
+				
+				m_Shader->Bind();
 				glBindVertexArray(m_VertexArray);
+
+				#ifdef FG_USE_ANGLE
+					glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBuffer);
+				#endif
+
 				glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, nullptr);
 			//
 

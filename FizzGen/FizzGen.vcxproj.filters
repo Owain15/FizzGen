@@ -101,6 +101,7 @@
     </ClInclude>
     <ClInclude Include="src\FizzGen\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.h" />
+    <ClInclude Include="src\FizzGen\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -131,5 +132,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.cpp" />
+    <ClCompile Include="src\FizzGen\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>
