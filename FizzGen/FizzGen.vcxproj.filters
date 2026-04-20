@@ -102,6 +102,9 @@
     <ClInclude Include="src\FizzGen\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Renderer\Shader.h" />
+    <ClInclude Include="src\FizzGen\Renderer\Buffer.h" />
+    <ClInclude Include="src\FizzGen\Renderer\Renderer.h" />
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\AngleBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -133,5 +136,10 @@
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Shader.cpp" />
+    <ClCompile Include="src\FizzGen\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\FizzGen\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\AngleBuffer.cpp" />
   </ItemGroup>
 </Project>

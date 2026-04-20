@@ -9,6 +9,7 @@
 
 //temp
 #include "FizzGen/Renderer/Shader.h"
+#include "FizzGen/Renderer/Buffer.h"
 
 namespace FizzGen
 {
@@ -40,11 +41,11 @@ namespace FizzGen
 			bool m_Running = true;
 			LayerStack m_LayerStack;
 
-
-			//temp render code
-				unsigned int m_VertexArray, m_VertexBuffer, m_IndexBuffer;
-				std::unique_ptr<Shader> m_Shader;
-			//
+			unsigned int m_VertexArray;
+			std::unique_ptr<FizzGen::VertexBuffer> m_VertexBuffer;
+			std::unique_ptr<FizzGen::IndexBuffer> m_IndexBuffer;
+			std::unique_ptr<Shader> m_Shader;
+			
 
 		private:
 
