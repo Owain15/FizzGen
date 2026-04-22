@@ -4,7 +4,12 @@
 #include "Application.h"
 
 #include "FizzGen/Log.h"
-#include "FizzGen/Platform/OpenGL/OpenGLBuild.h"
+//tep
+#ifdef FG_USE_ANGLE                                                                                                                       
+#include <GLES3/gl3.h>                                                                                                                    
+#else
+#include <glad/glad.h>
+#endif
 
 namespace FizzGen
 {
@@ -13,28 +18,6 @@ namespace FizzGen
 
 	Application* Application::s_Instance = nullptr;
 
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-			case ShaderDataType::Float:		return GL_FLOAT;
-			case ShaderDataType::Float2:	return GL_FLOAT;
-			case ShaderDataType::Float3:	return GL_FLOAT;
-			case ShaderDataType::Float4:	return GL_FLOAT;
-			case ShaderDataType::Mat3:		return GL_FLOAT;
-			case ShaderDataType::Mat4:		return GL_FLOAT;
-			case ShaderDataType::Int:		return GL_INT;
-			case ShaderDataType::Int2:		return GL_INT;
-			case ShaderDataType::Int3:		return GL_INT;
-			case ShaderDataType::Int4:		return GL_INT;
-			case ShaderDataType::Bool:		return GL_BOOL;
-		}
-	
-		FG_CORE_ASSERT(false, "Unknown ShaderDataType!");
-
-	
-		return 0; 
-	}
 
 	Application::Application()
 	{
@@ -47,12 +30,9 @@ namespace FizzGen
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
 
-		//temp render code
-			glGenVertexArrays(1, &m_VertexArray);
-			glBindVertexArray(m_VertexArray);
+		m_VertexArray.reset(FizzGen::VertexArray::Create());
 
-			//glGenBuffers(1, &m_VertexBuffer);
-			//glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
+		//temp render code
 
 			float vertices[3 * 7] = 
 			{
@@ -61,40 +41,52 @@ namespace FizzGen
 				 0.0f,  0.5f, 0.0f,		1.0f, 0.5f, 0.0f, 1.0f
 			};
 			
-			m_VertexBuffer.reset(FizzGen::VertexBuffer::Create(vertices, sizeof(vertices)));
-			{
-
-				BufferLayout layout =
-				{
-					{ ShaderDataType::Float3, "a_Position" },
-					{ ShaderDataType::Float4, "a_Color" }
-				};
-
-				m_VertexBuffer->SetLayout(layout);
-			}
-
-			uint32_t index = 0;
-			const auto& layout = m_VertexBuffer->GetLayout();
-			for (const auto& element : layout)
-			{
-				glEnableVertexAttribArray(index);
-				glVertexAttribPointer
-				(
-					index, 
-					element.GetComponentCount(), 
-					ShaderDataTypeToOpenGLBaseType(element.Type), 
-					element.Normalized ? GL_TRUE : GL_FALSE, 
-					layout.GetStride(), 
-					(const void*)element.Offset
-				);
-				index++;
-			}
+			std::shared_ptr<VertexBuffer> vertexBuffer;
+			vertexBuffer.reset(VertexBuffer::Create(vertices, sizeof(vertices)));
 			
+			BufferLayout layout =
+			{
+				{ ShaderDataType::Float3, "a_Position" },
+				{ ShaderDataType::Float4, "a_Color" }
+			};
+
+			vertexBuffer->SetLayout(layout);
+			m_VertexArray->AddVertexBuffer(vertexBuffer);
 			
 			uint32_t indices[3] = { 0, 1, 2 };
-			m_IndexBuffer.reset(FizzGen::IndexBuffer::Create(indices, (sizeof(indices) / sizeof(uint32_t))));
 
+			std::shared_ptr<IndexBuffer> indexBuffer;
+			indexBuffer.reset(IndexBuffer::Create(indices, (sizeof(indices) / sizeof(uint32_t))));
+			m_VertexArray->SetIndexBuffer(indexBuffer);
 	
+
+
+			m_SquareVA.reset(FizzGen::VertexArray::Create());
+			
+			float squareVertices[3 * 4] =
+			{
+				-0.75f, -0.75f, 0.0f,
+				 0.75f, -0.75f, 0.0f,
+				 0.75f,  0.75f, 0.0f,
+				-0.75f,  0.75f, 0.0f
+			};
+			
+			std::shared_ptr<FizzGen::VertexBuffer> squareVB;
+			squareVB.reset(FizzGen::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
+
+			BufferLayout squareLayout =
+			{
+				{ ShaderDataType::Float3, "a_Position" }
+			};
+
+			squareVB->SetLayout(squareLayout);
+			m_SquareVA->AddVertexBuffer(squareVB);
+
+			uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
+			std::shared_ptr<FizzGen::IndexBuffer> squareIB;
+			squareIB.reset(FizzGen::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
+			m_SquareVA->SetIndexBuffer(squareIB);
+
 			#ifdef FG_USE_ANGLE
 			std::string vertexShaderSource =
 				"#version 300 es\n"
@@ -111,14 +103,12 @@ namespace FizzGen
 				std::string fragmentShaderSource =
 
 					"#version 300 es\n"
-
 					"precision mediump float;\n"
 					"in vec4 v_Color;\n"
 					"out vec4 FragColor;\n"
-
 					"void main()\n"
 					"{\n"
-						"FragColor = v_Color;\n"
+					"FragColor = v_Color;\n"
 					"}";
 
 
@@ -155,7 +145,71 @@ namespace FizzGen
 			#endif
 
 			m_Shader.reset(new Shader(vertexShaderSource, fragmentShaderSource));
-			
+		
+#ifdef FG_USE_ANGLE
+			std::string vertexShaderSource2 =
+				"#version 300 es\n"
+				
+				"layout(location = 0) in vec3 a_Position;\n"
+				"out vec3 v_Position;\n"
+				
+				"void main()\n"
+				"{\n"
+					"v_Position = a_Position;\n"
+					"gl_Position = vec4(a_Position, 1.0);\n"
+				"}";
+
+
+			std::string fragmentShaderSource2 =
+
+				"#version 300 es\n"
+
+				"precision mediump float;\n"
+				
+				"in vec3 v_Position;\n"
+				"out vec4 FragColor;\n"
+
+				"void main()\n"
+				"{\n"
+					"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
+				"}";
+
+
+#else
+			std::string vertexShaderSource2 =
+
+				"#version 330 core\n"
+
+				"layout(location = 0) in vec3 a_Position;\n"
+
+				"out vec3 v_Position;\n"
+
+				"void main()\n"
+				"{\n"
+					"v_Position = a_Position;\n"
+					"gl_Position = vec4(a_Position, 1.0);\n"
+				"}";
+
+
+			std::string fragmentShaderSource2 =
+
+				"#version 330 core\n"
+
+				"layout(location = 0) in vec3 a_Position;\n"
+
+				"in vec3 v_Position;\n"
+				"in vec4 v_Color;\n"
+
+				"void main()\n"
+				"{\n"
+					"color = vec4(0.2,0.3,0.8,1.0);\n"
+				"}";
+
+
+
+#endif
+			m_Shader2.reset(new Shader(vertexShaderSource2, fragmentShaderSource2));
+
 		//
 
 
@@ -191,13 +245,14 @@ namespace FizzGen
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			//temp render code
-				
+				m_Shader2->Bind();
+				m_SquareVA->Bind();
+				glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+
 				m_Shader->Bind();
-				glBindVertexArray(m_VertexArray);
+				m_VertexArray->Bind();
 
-				m_IndexBuffer->Bind();
-
-				glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, nullptr);
+				glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 			//
 
 			for (Layer* layer : m_LayerStack)

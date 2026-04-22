@@ -3,7 +3,12 @@
 
 #include "Shader.h"
 
-#include "FizzGen/Platform/OpenGL/OpenGLBuild.h"
+
+#ifdef FG_USE_ANGLE
+#include <GLES3/gl3.h>
+#else
+#include <glad/glad.h>
+#endif
 
 namespace FizzGen
 {	

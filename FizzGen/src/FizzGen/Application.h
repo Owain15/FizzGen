@@ -10,6 +10,7 @@
 //temp
 #include "FizzGen/Renderer/Shader.h"
 #include "FizzGen/Renderer/Buffer.h"
+#include "FizzGen/Renderer/VertexArray.h"
 
 namespace FizzGen
 {
@@ -41,11 +42,11 @@ namespace FizzGen
 			bool m_Running = true;
 			LayerStack m_LayerStack;
 
-			unsigned int m_VertexArray;
-			std::unique_ptr<FizzGen::VertexBuffer> m_VertexBuffer;
-			std::unique_ptr<FizzGen::IndexBuffer> m_IndexBuffer;
-			std::unique_ptr<Shader> m_Shader;
-			
+			std::shared_ptr<FizzGen::VertexArray> m_VertexArray;
+			std::shared_ptr<Shader> m_Shader;
+
+			std::shared_ptr<FizzGen::VertexArray> m_SquareVA;
+			std::shared_ptr<Shader> m_Shader2;
 
 		private:
 

@@ -3,8 +3,8 @@
 
 #include "OpenGLGraphicsContext.h"
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
-#include "OpenGLBuild.h"
 
 namespace FizzGen
 {
@@ -16,13 +16,11 @@ namespace FizzGen
 
 	void OpenGLGraphicsContext::Init()
 	{
-		FG_CORE_INFO("Creating OpenGL graphics context");
+		FG_CORE_INFO("Creating GLAD OpenGL graphics context");
 		glfwMakeContextCurrent(m_windowHandle);
 
-		#ifndef FG_USE_ANGLE
-			int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-			FG_CORE_ASSERT(status, "Failed to initialize Glad!");
-		#endif
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		FG_CORE_ASSERT(status, "Failed to initialize Glad!");
 
 			FG_CORE_INFO("OpenGL Info:");
 			FG_CORE_INFO("  Vendor: {0}", (const char*)glGetString(GL_VENDOR));

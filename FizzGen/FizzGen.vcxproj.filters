@@ -96,9 +96,6 @@
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\FizzGen\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLBuild.h">
-      <Filter>src\FizzGen\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.h">
       <Filter>src\FizzGen\Platform\OpenGL</Filter>
     </ClInclude>
@@ -132,6 +129,10 @@
     <ClInclude Include="vendor\glm\glm.inl">
       <Filter>vendor\glm</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Renderer\VertexArray.h" />
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEVertexArray.h" />
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEGraphicsContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -176,5 +177,9 @@
     <ClCompile Include="src\fgpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEVertexArray.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEGraphicsContext.cpp" />
   </ItemGroup>
 </Project>

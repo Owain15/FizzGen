@@ -6,6 +6,7 @@
 #include "FizzGen/Events/KeyEvent.h"
 
 #include "FizzGen/Platform/OpenGL/OpenGLGraphicsContext.h"
+#include "FizzGen/Platform/Angle/AngleGraphicsContext.h"
 
 //#include <Glad/glad.h>
 
@@ -66,7 +67,11 @@ namespace FizzGen
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, m_Data.Title.c_str(), nullptr, nullptr);
 		
-		m_Context = new OpenGLGraphicsContext(m_Window);
+		#ifdef FG_USE_ANGLE
+			m_Context = new ANGLEGraphicsContext(m_Window);
+		#else
+			m_Context = new OpenGLGraphicsContext(m_Window);
+		#endif
 		m_Context->Init();
 		
 		//glfwMakeContextCurrent(m_Window);

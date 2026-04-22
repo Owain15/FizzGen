@@ -311,15 +311,18 @@
     <ClInclude Include="src\FizzGen\LayerStack.h" />
     <ClInclude Include="src\FizzGen\Log.h" />
     <ClInclude Include="src\FizzGen\Platform\ANGLE\AngleBuffer.h" />
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEGraphicsContext.h" />
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEVertexArray.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLBuild.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.h" />
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h" />
     <ClInclude Include="src\FizzGen\Renderer\Buffer.h" />
     <ClInclude Include="src\FizzGen\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Renderer\Renderer.h" />
     <ClInclude Include="src\FizzGen\Renderer\Shader.h" />
+    <ClInclude Include="src\FizzGen\Renderer\VertexArray.h" />
     <ClInclude Include="src\FizzGen\WindowInterface.h" />
     <ClInclude Include="src\fgpch.h" />
     <ClInclude Include="vendor\glm\glm.hpp" />
@@ -332,8 +335,11 @@
     <ClCompile Include="src\FizzGen\LayerStack.cpp" />
     <ClCompile Include="src\FizzGen\Log.cpp" />
     <ClCompile Include="src\FizzGen\Platform\ANGLE\AngleBuffer.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEGraphicsContext.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEVertexArray.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Buffer.cpp" />
@@ -342,6 +348,7 @@
     <ClCompile Include="src\fgpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
