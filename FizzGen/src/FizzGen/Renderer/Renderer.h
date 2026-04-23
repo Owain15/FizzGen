@@ -1,27 +1,20 @@
 #pragma once
 
+#include "RenderCommand.h"
+
 namespace FizzGen
 {
-
-	enum class RendererAPI
-	{
-		None = 0, 
-		OpenGL = 1,
-		ANGLE = 2
-
-	};
 
 	class Renderer
 	{
 		public:
 
-			inline static RendererAPI GetAPI() { return s_RendererAPI; }
-			
-			//set?
-		
-		private:
+			static void BeginScene();
+			static void EndScene();
 
-			static RendererAPI s_RendererAPI;
+			static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
+
+			inline static RendererAPI::API GetAPI() { return RendererAPI::GetAPI(); }
 
 	};
 

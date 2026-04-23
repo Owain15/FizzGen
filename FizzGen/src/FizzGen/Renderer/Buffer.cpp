@@ -4,9 +4,8 @@
 #include "Buffer.h"
 
 #include "Renderer.h"
-#include "FizzGen/Platform/OpenGL/OpenGLBuffer.h"
 
-//ifdef ARM?
+#include "FizzGen/Platform/OpenGL/OpenGLBuffer.h"
 #include "FizzGen/Platform/ANGLE/ANGLEBuffer.h"
 
 
@@ -19,9 +18,9 @@ namespace FizzGen
 	{
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: FG_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLVertexBuffer(vertices, size);
-			case RendererAPI::ANGLE: return new AngleVertexBuffer(vertices, size);
+			case RendererAPI::API::None: FG_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLVertexBuffer(vertices, size);
+			case RendererAPI::API::ANGLE: return new ANGLEVertexBuffer(vertices, size);
 		}
 		
 		FG_ASSERT(false, "Unknown RendererAPI!");
@@ -39,9 +38,9 @@ namespace FizzGen
 		
 		switch (Renderer::GetAPI())
 		{
-			case RendererAPI::None: FG_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
-			case RendererAPI::OpenGL: return new OpenGLIndexBuffer(indices, size);
-			case RendererAPI::ANGLE: return new AngleIndexBuffer(indices, size);
+			case RendererAPI::API::None: FG_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
+			case RendererAPI::API::OpenGL: return new OpenGLIndexBuffer(indices, size);
+			case RendererAPI::API::ANGLE: return new ANGLEIndexBuffer(indices, size);
 		}
 
 		

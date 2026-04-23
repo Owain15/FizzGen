@@ -5,7 +5,20 @@
 
 namespace FizzGen
 {
-	//RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
-	RendererAPI Renderer::s_RendererAPI = RendererAPI::ANGLE;
-}
 
+	void Renderer::BeginScene()
+	{
+		//m_SceneData->ViewProjectionMatrix = camera.GetViewProjectionMatrix();
+	}
+
+	void Renderer::EndScene()
+	{
+	}
+
+	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray)
+	{
+		vertexArray->Bind();
+		RenderCommand::DrawIndexed(vertexArray);
+	}
+
+}

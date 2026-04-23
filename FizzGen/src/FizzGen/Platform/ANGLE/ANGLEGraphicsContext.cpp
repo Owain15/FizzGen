@@ -15,7 +15,7 @@ namespace FizzGen
 
 	void ANGLEGraphicsContext::Init()
 	{
-		FG_CORE_INFO("Creating ANGLE OpenGL graphics context");
+		FG_CORE_INFO("Creating OpenGL ANGLE graphics context");
 		glfwMakeContextCurrent(m_windowHandle);
 
 		FG_CORE_ASSERT(eglGetCurrentContext() != EGL_NO_CONTEXT, "Failed to initialize ANGLE context!");

@@ -4,12 +4,9 @@
 #include "Application.h"
 
 #include "FizzGen/Log.h"
-//tep
-#ifdef FG_USE_ANGLE                                                                                                                       
-#include <GLES3/gl3.h>                                                                                                                    
-#else
-#include <glad/glad.h>
-#endif
+
+#include "FizzGen/Renderer/Renderer.h"
+
 
 namespace FizzGen
 {
@@ -87,7 +84,7 @@ namespace FizzGen
 			squareIB.reset(FizzGen::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 			m_SquareVA->SetIndexBuffer(squareIB);
 
-			#ifdef FG_USE_ANGLE
+		#ifdef FG_USE_ANGLE
 			std::string vertexShaderSource =
 				"#version 300 es\n"
 				"layout(location = 0) in vec3 a_Position;\n"
@@ -112,7 +109,7 @@ namespace FizzGen
 					"}";
 
 
-			#else
+		#else
 				std::string vertexShaderSource =
 
 					"#version 330 core\n"
@@ -142,11 +139,12 @@ namespace FizzGen
      
 				
 			
-			#endif
+		#endif
 
 			m_Shader.reset(new Shader(vertexShaderSource, fragmentShaderSource));
 		
-#ifdef FG_USE_ANGLE
+		#ifdef FG_USE_ANGLE
+		
 			std::string vertexShaderSource2 =
 				"#version 300 es\n"
 				
@@ -175,7 +173,8 @@ namespace FizzGen
 				"}";
 
 
-#else
+		#else
+		
 			std::string vertexShaderSource2 =
 
 				"#version 330 core\n"
@@ -204,10 +203,8 @@ namespace FizzGen
 				"{\n"
 					"color = vec4(0.2,0.3,0.8,1.0);\n"
 				"}";
-
-
-
-#endif
+		#endif
+		
 			m_Shader2.reset(new Shader(vertexShaderSource2, fragmentShaderSource2));
 
 		//
@@ -234,26 +231,28 @@ namespace FizzGen
 
 	void Application::Run()
 	{
-		//std::cout << "FizzGen!" << std::endl;
 
-	
 		while (m_Running)
 		{
 			//background
-			glClearColor(0.1f, 0.1f, 0.1f, 1);
-			//glClearColor(1, 1, 1, 1);
-			glClear(GL_COLOR_BUFFER_BIT);
+			glm::vec4 backgroundColor = { 0.1f, 0.1f, 0.1f, 1 };
+			//glClear(GL_COLOR_BUFFER_BIT);
 
-			//temp render code
+			RenderCommand::SetClearColor(backgroundColor);
+			RenderCommand::Clear();
+
+			Renderer::BeginScene();
+			{
 				m_Shader2->Bind();
-				m_SquareVA->Bind();
-				glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
+				Renderer::Submit(m_SquareVA);
 
 				m_Shader->Bind();
-				m_VertexArray->Bind();
+				Renderer::Submit(m_VertexArray);
+			}
+			Renderer::EndScene();
 
-				glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-			//
+			//Renderer::Flush();
+
 
 			for (Layer* layer : m_LayerStack)
 			{
@@ -279,8 +278,6 @@ namespace FizzGen
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
 		FG_CORE_TRACE("{0}", e);
-		/*if (e.GetEventType() == EventType::WindowClose)
-			m_Running = false;*/
 
 		for (auto it = m_LayerStack.end(); it != m_LayerStack.begin(); )
 		{
