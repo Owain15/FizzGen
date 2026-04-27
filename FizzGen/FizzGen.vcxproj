@@ -355,10 +355,10 @@
     <ClCompile Include="src\FizzGen\Renderer\Renderer.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Shader.cpp" />
+    <ClCompile Include="src\FizzGen\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\fgpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="src\FizzGen\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

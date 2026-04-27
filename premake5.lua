@@ -205,6 +205,7 @@ project "Sandbox"
 	}
 
 	filter "platforms:ARM64"
+		defines { "FG_USE_ANGLE", "IMGUI_IMPL_OPENGL_ES3" }
 		libdirs {
 			"FizzGen/vendor/ANGLE/ARM64/lib",
 			"FizzGen/vendor/ANGLE/ARM64/bin"

@@ -163,7 +163,7 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -216,7 +216,7 @@ IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll"\ (xco
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -273,7 +273,7 @@ IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll"\ (xco
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\FizzGen\vendor\spdlog\include;..\FizzGen\src;..\FizzGen\vendor;..\FizzGen\vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>

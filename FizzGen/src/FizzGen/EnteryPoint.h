@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 	FizzGen::Log::Init();
 
 	FG_INFO("Welcome to FizzGen!");
-	FG_CORE_CRITICAL("Initialized Log!");
+	FG_CORE_INFO("Initialized Log!");
 	
 
 	auto app = FizzGen::CreateApplication();

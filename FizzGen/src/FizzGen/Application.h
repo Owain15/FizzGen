@@ -7,12 +7,6 @@
 #include "WindowInterface.h"
 #include "ImGui/ImGuiLayer.h"
 
-//temp
-#include "FizzGen/Renderer/Shader.h"
-#include "FizzGen/Renderer/Buffer.h"
-#include "FizzGen/Renderer/VertexArray.h"
-#include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
-
 
 namespace FizzGen
 {
@@ -43,14 +37,6 @@ namespace FizzGen
 			ImGuiLayer* m_ImGuiLayer;
 			bool m_Running = true;
 			LayerStack m_LayerStack;
-
-			std::shared_ptr<FizzGen::VertexArray> m_VertexArray;
-			std::shared_ptr<Shader> m_Shader;
-
-			std::shared_ptr<FizzGen::VertexArray> m_SquareVA;
-			std::shared_ptr<Shader> m_Shader2;
-
-			OrthographicCamera m_Camera;
 
 		private:
 

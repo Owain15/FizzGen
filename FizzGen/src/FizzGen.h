@@ -11,6 +11,16 @@
 #include "FizzGen/InputCodes/MouseButtonCodes.h"
 
 #include "FizzGen/ImGui/ImGuiLayer.h"
+
+#include "FizzGen/Renderer/Renderer.h"
+#include "FizzGen/Renderer/RenderCommand.h"
+
+#include "FizzGen/Renderer/Buffer.h"
+#include "FizzGen/Renderer/Shader.h"
+#include "FizzGen/Renderer/VertexArray.h"
+
+#include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
+
 #include "FizzGen/EnteryPoint.h"
 
 

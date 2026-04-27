@@ -37,6 +37,12 @@
     <Filter Include="src\FizzGen\Renderer">
       <UniqueIdentifier>{3FEF1AE8-2B7E-A4B1-D49C-B8ACC00AB557}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\FizzGen\Renderer\Camera">
+      <UniqueIdentifier>{D7061FE6-4314-4DCC-CCFA-48B738071983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FizzGen\Renderer\Camera\Orthographic">
+      <UniqueIdentifier>{B0703697-9CED-29DA-C56A-2AEEB146C66D}</UniqueIdentifier>
+    </Filter>
     <Filter Include="vendor">
       <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
     </Filter>
@@ -93,10 +99,25 @@
     <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEBuffer.h">
       <Filter>src\FizzGen\Platform\ANGLE</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEGraphicsContext.h">
+      <Filter>src\FizzGen\Platform\ANGLE</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLERendererAPI.h">
+      <Filter>src\FizzGen\Platform\ANGLE</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEVertexArray.h">
+      <Filter>src\FizzGen\Platform\ANGLE</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\FizzGen\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.h">
+      <Filter>src\FizzGen\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>src\FizzGen\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLVertexArray.h">
       <Filter>src\FizzGen\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h">
@@ -108,13 +129,25 @@
     <ClInclude Include="src\FizzGen\Renderer\Buffer.h">
       <Filter>src\FizzGen\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.h">
+      <Filter>src\FizzGen\Renderer\Camera\Orthographic</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Renderer\GraphicsContext.h">
+      <Filter>src\FizzGen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Renderer\RenderCommand.h">
       <Filter>src\FizzGen\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Renderer\Renderer.h">
       <Filter>src\FizzGen\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Renderer\RendererAPI.h">
+      <Filter>src\FizzGen\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Renderer\Shader.h">
+      <Filter>src\FizzGen\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Renderer\VertexArray.h">
       <Filter>src\FizzGen\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\WindowInterface.h">
@@ -129,15 +162,6 @@
     <ClInclude Include="vendor\glm\glm.inl">
       <Filter>vendor\glm</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Renderer\VertexArray.h" />
-    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEVertexArray.h" />
-    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLEGraphicsContext.h" />
-    <ClInclude Include="src\FizzGen\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\FizzGen\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLERendererAPI.h" />
-    <ClInclude Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -158,10 +182,25 @@
     <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEBuffer.cpp">
       <Filter>src\FizzGen\Platform\ANGLE</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEGraphicsContext.cpp">
+      <Filter>src\FizzGen\Platform\ANGLE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLERendererAPI.cpp">
+      <Filter>src\FizzGen\Platform\ANGLE</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEVertexArray.cpp">
+      <Filter>src\FizzGen\Platform\ANGLE</Filter>
+    </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\FizzGen\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLGraphicsContext.cpp">
+      <Filter>src\FizzGen\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>src\FizzGen\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\FizzGen\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp">
@@ -173,23 +212,26 @@
     <ClCompile Include="src\FizzGen\Renderer\Buffer.cpp">
       <Filter>src\FizzGen\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.cpp">
+      <Filter>src\FizzGen\Renderer\Camera\Orthographic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\RenderCommand.cpp">
+      <Filter>src\FizzGen\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\FizzGen\Renderer\Renderer.cpp">
+      <Filter>src\FizzGen\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\RendererAPI.cpp">
       <Filter>src\FizzGen\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Renderer\Shader.cpp">
       <Filter>src\FizzGen\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\VertexArray.cpp">
+      <Filter>src\FizzGen\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\fgpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\FizzGen\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEVertexArray.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLEGraphicsContext.cpp" />
-    <ClCompile Include="src\FizzGen\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\FizzGen\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLERendererAPI.cpp" />
-    <ClCompile Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>
