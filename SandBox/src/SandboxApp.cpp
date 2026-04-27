@@ -3,11 +3,14 @@
 
 #include "imgui/imgui.h"
 
+#include <glm/gtc/matrix_transform.hpp>
+
 class ExampleLayer : public FizzGen::Layer
 {
 	public:
 	
-		ExampleLayer() : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_CameraRotation(0.0f)
+		ExampleLayer() : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f),
+			m_CameraPosition(0.0f), m_CameraRotation(0.0f), m_SquarePosition(0.0f)
 		{
 			m_VertexArray.reset(FizzGen::VertexArray::Create());
 
@@ -69,26 +72,35 @@ class ExampleLayer : public FizzGen::Layer
 #ifdef FG_USE_ANGLE
 			std::string vertexShaderSource =
 				"#version 300 es\n"
+				
 				"layout(location = 0) in vec3 a_Position;\n"
 				"layout(location = 1) in vec4 a_Color;\n"
+				
 				"uniform mat4 u_ViewProjection;\n"
+				"uniform mat4 u_Transform;\n"
+				
 				"out vec4 v_Color;\n"
+				
 				"void main()\n"
 				"{\n"
-				"gl_Position = u_ViewProjection * vec4(a_Position, 1.0);\n"
-				"v_Color = a_Color;\n"
+					"gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);\n"
+					"v_Color = a_Color;\n"
 				"}";
 
 
 			std::string fragmentShaderSource =
 
 				"#version 300 es\n"
+				
 				"precision mediump float;\n"
+				
 				"in vec4 v_Color;\n"
+				
 				"out vec4 FragColor;\n"
+				
 				"void main()\n"
 				"{\n"
-				"FragColor = v_Color;\n"
+					"FragColor = v_Color;\n"
 				"}";
 
 
@@ -101,13 +113,14 @@ class ExampleLayer : public FizzGen::Layer
 				"layout(location = 1) in vec4 a_Color;\n"
 
 				"uniform mat4 u_ViewProjection;\n"
+				"uniform mat4 u_Transform;\n"
 
 				"out vec4 v_Color;\n"
 
 				"void main()\n"
 				"{\n"
-				"gl_Position = u_ViewProjection * vec4(a_Position, 1.0);\n"
-				"v_Color = a_Color;\n"
+					"gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);\n"
+					"v_Color = a_Color;\n"
 				"}";
 
 
@@ -116,11 +129,12 @@ class ExampleLayer : public FizzGen::Layer
 				"#version 330 core\n"
 
 				"in vec4 v_Color;\n"
+				
 				"out vec4 FragColor;\n"
 
 				"void main()\n"
 				"{\n"
-				"FragColor = v_Color;\n"
+					"FragColor = v_Color;\n"
 				"}";
 
 
@@ -135,14 +149,16 @@ class ExampleLayer : public FizzGen::Layer
 				"#version 300 es\n"
 
 				"layout(location = 0) in vec3 a_Position;\n"
+				
 				"out vec3 v_Position;\n"
 
 				"uniform mat4 u_ViewProjection;\n"
+				"uniform mat4 u_Transform;\n"
 
 				"void main()\n"
 				"{\n"
-				"v_Position = a_Position;\n"
-				"gl_Position = u_ViewProjection * vec4(a_Position, 1.0);\n"
+					"v_Position = a_Position;\n"
+					"gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);\n"
 				"}";
 
 
@@ -150,11 +166,14 @@ class ExampleLayer : public FizzGen::Layer
 
 				"#version 300 es\n"
 				"precision mediump float;\n"
+				
 				"in vec3 v_Position;\n"
+				
 				"out vec4 FragColor;\n"
+				
 				"void main()\n"
 				"{\n"
-				"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
+					"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
 				"}";
 
 
@@ -167,13 +186,14 @@ class ExampleLayer : public FizzGen::Layer
 				"layout(location = 0) in vec3 a_Position;\n"
 
 				"uniform mat4 u_ViewProjection;\n"
+				"uniform mat4 u_Transform;\n"
 
 				"out vec3 v_Position;\n"
 
 				"void main()\n"
 				"{\n"
-				"v_Position = a_Position;\n"
-				"gl_Position = u_ViewProjection * vec4(a_Position, 1.0);\n"
+					"v_Position = a_Position;\n"
+					"gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);\n"
 				"}";
 
 
@@ -186,7 +206,7 @@ class ExampleLayer : public FizzGen::Layer
 
 				"void main()\n"
 				"{\n"
-				"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
+					"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
 				"}";
 #endif
 
@@ -197,21 +217,22 @@ class ExampleLayer : public FizzGen::Layer
 	
 		void OnUpdate(FizzGen::Timestep timestep) override
 		{
-			//log delta time
-			FG_TRACE("Delta time: {0} ms ({1} s)", timestep.GetMilliseconds(), timestep.GetSeconds());
-			
-			
+	
 			//camera movement
 			{
 				if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT))
 				{
 					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_CONTROL))
 					{
-						m_CameraRotation += m_CameraRotationSpeed * timestep;
+						m_CameraRotation += m_RotationSpeed * timestep;
+					}
+					else if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
+					{
+						m_SquarePosition.x -= m_MovmentSpeed * timestep;
 					}
 					else
 					{
-						m_CameraPosition.x -= m_CameraSpeed * timestep;
+						m_CameraPosition.x -= m_MovmentSpeed * timestep;
 					}
 				}
 
@@ -219,22 +240,41 @@ class ExampleLayer : public FizzGen::Layer
 				{
 					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_CONTROL))
 					{
-						m_CameraRotation -= m_CameraRotationSpeed * timestep;
+						m_CameraRotation -= m_RotationSpeed * timestep;
+					}
+					else if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
+					{
+						m_SquarePosition.x += m_MovmentSpeed * timestep;
 					}
 					else
 					{
-						m_CameraPosition.x += m_CameraSpeed * timestep;
+						m_CameraPosition.x += m_MovmentSpeed * timestep;
 					}
 				}
 
 				if (FizzGen::Input::IsKeyPressed(FG_KEY_UP))
 				{
-					m_CameraPosition.y += m_CameraSpeed * timestep;
+					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
+					{
+						m_SquarePosition.y += m_MovmentSpeed * timestep;
+					}
+					else
+					{
+						m_CameraPosition.y += m_MovmentSpeed * timestep;
+					}
+					
 				}
 
 				if (FizzGen::Input::IsKeyPressed(FG_KEY_DOWN))
 				{
-					m_CameraPosition.y -= m_CameraSpeed * timestep;
+					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
+					{
+						m_SquarePosition.y -= m_MovmentSpeed * timestep;
+					}
+					else
+					{
+						m_CameraPosition.y -= m_MovmentSpeed * timestep;
+					}
 				}
 
 			
@@ -252,8 +292,9 @@ class ExampleLayer : public FizzGen::Layer
 
 			FizzGen::Renderer::BeginScene(m_Camera);
 			{
+				glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePosition);
 
-				FizzGen::Renderer::Submit(m_Shader2, m_SquareVA);
+				FizzGen::Renderer::Submit(m_Shader2, m_SquareVA,transform);
 
 				FizzGen::Renderer::Submit(m_Shader, m_VertexArray);
 
@@ -285,8 +326,11 @@ class ExampleLayer : public FizzGen::Layer
 		FizzGen::OrthographicCamera m_Camera;
 		glm::vec3 m_CameraPosition;
 		float m_CameraRotation;
-		float m_CameraSpeed = 0.05f;
-		float m_CameraRotationSpeed = 1.0f;
+
+		float m_MovmentSpeed = 1.0f;
+		float m_RotationSpeed = 30.0f;
+
+		glm::vec3 m_SquarePosition;
 };
 
 class Sandbox : public FizzGen::Application
