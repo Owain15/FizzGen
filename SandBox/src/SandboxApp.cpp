@@ -7,7 +7,7 @@ class ExampleLayer : public FizzGen::Layer
 {
 	public:
 	
-		ExampleLayer() : Layer("Example"),m_Camera(-1.6f, 1.6f, -0.9f, 0.9f) 
+		ExampleLayer() : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f)
 		{
 			m_VertexArray.reset(FizzGen::VertexArray::Create());
 
@@ -203,7 +203,7 @@ class ExampleLayer : public FizzGen::Layer
 			FizzGen::RenderCommand::Clear();
 
 			//camera propreties test
-			//m_Camera.SetPosition({ 0.0f, 0.0f, 0.0f });
+			m_Camera.SetPosition(m_CameraPosition);
 			//m_Camera.setRotation(0.0f);
 
 
@@ -227,7 +227,33 @@ class ExampleLayer : public FizzGen::Layer
 
 		void OnEvent(FizzGen::Event& event) override
 		{
+			FizzGen::EventDispatcher dispatcher(event);
+			dispatcher.Dispatch<FizzGen::KeyPressedEvent>(FG_BIND_EVENT_FN(ExampleLayer::OnKeyPressedEvent));
+		}
 
+		bool OnKeyPressedEvent(FizzGen::KeyPressedEvent& event)
+		{
+			if (event.GetKeyCode() == FG_KEY_LEFT)
+			{
+				m_CameraPosition.x += m_CameraSpeed;
+			}
+
+			if (event.GetKeyCode() == FG_KEY_RIGHT)
+			{
+				m_CameraPosition.x -= m_CameraSpeed;
+			}
+
+			if (event.GetKeyCode() == FG_KEY_UP)
+			{
+				m_CameraPosition.y -= m_CameraSpeed;
+			}
+
+			if (event.GetKeyCode() == FG_KEY_DOWN)
+			{
+				m_CameraPosition.y += m_CameraSpeed;
+			}
+
+			return false;
 		}
 
 	private:
@@ -239,7 +265,8 @@ class ExampleLayer : public FizzGen::Layer
 		std::shared_ptr<FizzGen::Shader> m_Shader2;
 
 		FizzGen::OrthographicCamera m_Camera;
-
+		glm::vec3 m_CameraPosition;
+		float m_CameraSpeed = 0.05f;
 };
 
 class Sandbox : public FizzGen::Application
