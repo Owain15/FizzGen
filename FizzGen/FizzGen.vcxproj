@@ -295,6 +295,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\FizzGen\Core\Timestep.h" />
     <ClInclude Include="src\FizzGen.h" />
     <ClInclude Include="src\FizzGen\Application.h" />
     <ClInclude Include="src\FizzGen\Core.h" />

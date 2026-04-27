@@ -6,6 +6,8 @@
 #include "FizzGen/Layer.h"
 #include "FizzGen/Log.h"
 
+#include "FizzGen/Core/Timestep.h"
+
 #include "FizzGen/InputInterface.h"
 #include "FizzGen/InputCodes/Keycodes.h"
 #include "FizzGen/InputCodes/MouseButtonCodes.h"

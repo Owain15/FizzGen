@@ -6,7 +6,9 @@
 #include "FizzGen/Log.h"
 
 #include "FizzGen/Renderer/Renderer.h"
-//#include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
+
+//temp
+#include <GLFW/glfw3.h>
 
 
 namespace FizzGen
@@ -52,32 +54,14 @@ namespace FizzGen
 
 		while (m_Running)
 		{
-			////background
-			//glm::vec4 backgroundColor = { 0.1f, 0.1f, 0.1f, 1 };
-			//RenderCommand::SetClearColor(backgroundColor);
-			//RenderCommand::Clear();
-
-			////camera propreties test
-			////m_Camera.SetPosition({ 0.0f, 0.0f, 0.0f });
-			////m_Camera.setRotation(0.0f);
-			//	
-
-			//Renderer::BeginScene(m_Camera);
-			//{
-			//	
-			//	Renderer::Submit(m_Shader2, m_SquareVA);
-
-			//	Renderer::Submit(m_Shader, m_VertexArray);
-
-			//}
-			//Renderer::EndScene();
-
-			////Renderer::Flush();
-
+		
+			float time = (float)glfwGetTime(); // Platform::GetTime()
+			Timestep timestep = time - m_LastFrameTime;
+			m_LastFrameTime = time;
 
 			for (Layer* layer : m_LayerStack)
 			{
-				layer->OnUpdate();
+				layer->OnUpdate(timestep);
 			}
 
 			m_ImGuiLayer->Begin();

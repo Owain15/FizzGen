@@ -3,6 +3,8 @@
 #include "FizzGen/Core.h"
 #include "FizzGen/Events/Event.h"
 
+#include "FizzGen/Core/Timestep.h"
+
 namespace FizzGen
 {
 
@@ -15,7 +17,7 @@ namespace FizzGen
 
 			virtual void OnAttach() {}
 			virtual void OnDetach() {}
-			virtual void OnUpdate() {}
+			virtual void OnUpdate(Timestep timestep) {}
 			virtual void OnImGuiRender() {}
 			virtual void OnEvent(Event& event) {}
 	

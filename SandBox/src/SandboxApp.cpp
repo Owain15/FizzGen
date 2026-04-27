@@ -195,19 +195,23 @@ class ExampleLayer : public FizzGen::Layer
 			//
 		}
 	
-		void OnUpdate() override
+		void OnUpdate(FizzGen::Timestep timestep) override
 		{
+			//log delta time
+			FG_TRACE("Delta time: {0} ms ({1} s)", timestep.GetMilliseconds(), timestep.GetSeconds());
+			
+			
 			//camera movement
 			{
 				if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT))
 				{
 					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_CONTROL))
 					{
-						m_CameraRotation += m_CameraRotationSpeed;
+						m_CameraRotation += m_CameraRotationSpeed * timestep;
 					}
 					else
 					{
-						m_CameraPosition.x -= m_CameraSpeed;
+						m_CameraPosition.x -= m_CameraSpeed * timestep;
 					}
 				}
 
@@ -215,22 +219,22 @@ class ExampleLayer : public FizzGen::Layer
 				{
 					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_CONTROL))
 					{
-						m_CameraRotation += m_CameraRotationSpeed;
+						m_CameraRotation -= m_CameraRotationSpeed * timestep;
 					}
 					else
 					{
-						m_CameraPosition.x += m_CameraSpeed;
+						m_CameraPosition.x += m_CameraSpeed * timestep;
 					}
 				}
 
 				if (FizzGen::Input::IsKeyPressed(FG_KEY_UP))
 				{
-					m_CameraPosition.y += m_CameraSpeed;
+					m_CameraPosition.y += m_CameraSpeed * timestep;
 				}
 
 				if (FizzGen::Input::IsKeyPressed(FG_KEY_DOWN))
 				{
-					m_CameraPosition.y -= m_CameraSpeed;
+					m_CameraPosition.y -= m_CameraSpeed * timestep;
 				}
 
 			
