@@ -6,17 +6,19 @@
 #include "FizzGen/Log.h"
 
 #include "FizzGen/Renderer/Renderer.h"
+//#include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
 
 
 namespace FizzGen
 {
-	
-	#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
+
+#define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
 
 
 	Application::Application()
+		: m_Camera(-1.6f, 1.6f, -0.9f, 0.9f)
 	{
 		FG_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
@@ -89,10 +91,11 @@ namespace FizzGen
 				"#version 300 es\n"
 				"layout(location = 0) in vec3 a_Position;\n"
 				"layout(location = 1) in vec4 a_Color;\n"
+				"uniform mat4 u_ViewProjection;\n"
 				"out vec4 v_Color;\n"
 				"void main()\n"
 				"{\n"
-					"gl_Position = vec4(a_Position, 1.0);\n"
+					"gl_Position = u_ViewProjection * vec4(a_Position, 1.0);\n"
 					"v_Color = a_Color;\n"
 				"}";
 
@@ -116,11 +119,14 @@ namespace FizzGen
 
 					"layout(location = 0) in vec3 a_Position;\n"
 					"layout(location = 1) in vec4 a_Color;\n"
+					
+					"uniform mat4 u_ViewProjection;\n"
+					
 					"out vec4 v_Color;\n"
 
 					"void main()\n"
 					"{\n"
-						"gl_Position = vec4(a_Position, 1.0);\n"
+						"gl_Position = u_ViewProjection * vec4(a_Position, 1.0);\n"
 						"v_Color = a_Color;\n"
 					"}";
 
@@ -150,23 +156,22 @@ namespace FizzGen
 				
 				"layout(location = 0) in vec3 a_Position;\n"
 				"out vec3 v_Position;\n"
+
+				"uniform mat4 u_ViewProjection;\n"
 				
 				"void main()\n"
 				"{\n"
 					"v_Position = a_Position;\n"
-					"gl_Position = vec4(a_Position, 1.0);\n"
+					"gl_Position = u_ViewProjection * vec4(a_Position, 1.0);\n"
 				"}";
 
 
 			std::string fragmentShaderSource2 =
 
 				"#version 300 es\n"
-
 				"precision mediump float;\n"
-				
 				"in vec3 v_Position;\n"
 				"out vec4 FragColor;\n"
-
 				"void main()\n"
 				"{\n"
 					"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
@@ -181,12 +186,14 @@ namespace FizzGen
 
 				"layout(location = 0) in vec3 a_Position;\n"
 
+				"uniform mat4 u_ViewProjection;\n"
+
 				"out vec3 v_Position;\n"
 
 				"void main()\n"
 				"{\n"
 					"v_Position = a_Position;\n"
-					"gl_Position = vec4(a_Position, 1.0);\n"
+					"gl_Position = u_ViewProjection * vec4(a_Position, 1.0);\n"
 				"}";
 
 
@@ -194,14 +201,12 @@ namespace FizzGen
 
 				"#version 330 core\n"
 
-				"layout(location = 0) in vec3 a_Position;\n"
-
 				"in vec3 v_Position;\n"
-				"in vec4 v_Color;\n"
+				"out vec4 FragColor;\n"
 
 				"void main()\n"
 				"{\n"
-					"color = vec4(0.2,0.3,0.8,1.0);\n"
+					"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
 				"}";
 		#endif
 		
@@ -236,18 +241,21 @@ namespace FizzGen
 		{
 			//background
 			glm::vec4 backgroundColor = { 0.1f, 0.1f, 0.1f, 1 };
-			//glClear(GL_COLOR_BUFFER_BIT);
-
 			RenderCommand::SetClearColor(backgroundColor);
 			RenderCommand::Clear();
 
-			Renderer::BeginScene();
-			{
-				m_Shader2->Bind();
-				Renderer::Submit(m_SquareVA);
+			//camera propreties test
+			//m_Camera.SetPosition({ 0.0f, 0.0f, 0.0f });
+			//m_Camera.setRotation(0.0f);
+				
 
-				m_Shader->Bind();
-				Renderer::Submit(m_VertexArray);
+			Renderer::BeginScene(m_Camera);
+			{
+				
+				Renderer::Submit(m_Shader2, m_SquareVA);
+
+				Renderer::Submit(m_Shader, m_VertexArray);
+
 			}
 			Renderer::EndScene();
 

@@ -137,6 +137,7 @@
     <ClInclude Include="src\FizzGen\Renderer\RenderCommand.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\FizzGen\Platform\ANGLE\ANGLERendererAPI.h" />
+    <ClInclude Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -189,5 +190,6 @@
     <ClCompile Include="src\FizzGen\Renderer\RenderCommand.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\FizzGen\Platform\ANGLE\ANGLERendererAPI.cpp" />
+    <ClCompile Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

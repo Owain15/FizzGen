@@ -11,6 +11,8 @@
 #include "FizzGen/Renderer/Shader.h"
 #include "FizzGen/Renderer/Buffer.h"
 #include "FizzGen/Renderer/VertexArray.h"
+#include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
+
 
 namespace FizzGen
 {
@@ -47,6 +49,8 @@ namespace FizzGen
 
 			std::shared_ptr<FizzGen::VertexArray> m_SquareVA;
 			std::shared_ptr<Shader> m_Shader2;
+
+			OrthographicCamera m_Camera;
 
 		private:
 

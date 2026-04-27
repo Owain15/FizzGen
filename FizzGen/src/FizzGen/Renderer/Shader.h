@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <glm/glm.hpp>
 
 namespace FizzGen
 {
@@ -13,6 +14,8 @@ namespace FizzGen
 
 			void Bind() const;
 			void Unbind() const;
+
+			void UploadUniformMat4(const std::string& name, const glm::mat4& matrix);
 
 		private:
 		
