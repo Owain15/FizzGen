@@ -1,7 +1,7 @@
 
 #include "fgpch.h"
 
-#include "Shader.h"
+#include "OpenGLShader.h"
 
 
 #ifdef FG_USE_ANGLE
@@ -13,10 +13,10 @@
 #include <glm/gtc/type_ptr.hpp>
 
 namespace FizzGen
-{	
-	Shader::Shader(const std::string& vertexSrc, const std::string& fragmentSrc)
+{
+	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
 	{
-	
+
 		// Create an empty vertex shader handle
 		GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
@@ -30,7 +30,7 @@ namespace FizzGen
 
 		GLint isCompiled = 0;
 		glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &isCompiled);
-		
+
 		if (isCompiled == GL_FALSE)
 		{
 			GLint maxLength = 0;
@@ -42,11 +42,11 @@ namespace FizzGen
 
 			// We don't need the shader anymore.
 			glDeleteShader(vertexShader);
-			
+
 			//log error
 			FG_CORE_ERROR("Vertex shader compilation failed: {0}", infoLog.data());
 			FG_CORE_ASSERT(false, "Vertex shader compilation failed");
-		
+
 			return;
 		}
 
@@ -64,7 +64,7 @@ namespace FizzGen
 		glCompileShader(fragmentShader);
 
 		glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &isCompiled);
-		
+
 		if (isCompiled == GL_FALSE)
 		{
 			GLint maxLength = 0;
@@ -104,7 +104,7 @@ namespace FizzGen
 		// Note the different functions here: glGetProgram* instead of glGetShader*.
 		GLint isLinked = 0;
 		glGetProgramiv(m_RendererID, GL_LINK_STATUS, (int*)&isLinked);
-		
+
 		if (isLinked == GL_FALSE)
 		{
 			GLint maxLength = 0;
@@ -130,28 +130,60 @@ namespace FizzGen
 		glDetachShader(m_RendererID, vertexShader);
 		glDetachShader(m_RendererID, fragmentShader);
 
-
-		//glDeleteShader(vertexShader);
-		//glDeleteShader(fragmentShader);
-
 	}
 
-	Shader::~Shader()
+	OpenGLShader::~OpenGLShader()
 	{
 		glDeleteProgram(m_RendererID);
 	}
 
-	void Shader::Bind() const
+	void OpenGLShader::Bind() const
 	{
 		glUseProgram(m_RendererID);
 	}
 
-	void Shader::Unbind() const
+	void OpenGLShader::Unbind() const
 	{
 		glUseProgram(0);
 	}
 
-	void Shader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
+	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform1i(location, value);
+	}
+
+	void OpenGLShader::UploadUniformFloat(const std::string& name, const float& value)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform1f(location, value);
+	}
+
+	void OpenGLShader::UploadUniformFloat2(const std::string& name, const glm::vec2& values)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform2f(location, values.x, values.y);
+	}
+
+	void OpenGLShader::UploadUniformFloat3(const std::string& name, const glm::vec3& values)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform3f(location, values.x, values.y, values.z);
+	}
+
+	void OpenGLShader::UploadUniformFloat4(const std::string& name, const glm::vec4& values)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniform4f(location, values.x, values.y, values.z, values.w);
+	}
+
+	void OpenGLShader::UploadUniformMat3(const std::string& name, const glm::mat3& matrix)
+	{
+		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
+		glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(matrix));
+	}
+
+	void OpenGLShader::UploadUniformMat4(const std::string& name, const glm::mat4& matrix)
 	{
 		GLint location = glGetUniformLocation(m_RendererID, name.c_str());
 		glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(matrix));

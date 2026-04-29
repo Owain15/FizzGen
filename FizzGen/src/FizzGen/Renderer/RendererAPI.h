@@ -1,7 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
-#include "VertexArray.h"
+#include "FizzGen/Renderer/VertexArray/VertexArray.h"
 
 namespace FizzGen
 {

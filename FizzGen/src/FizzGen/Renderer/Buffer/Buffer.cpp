@@ -3,10 +3,10 @@
 
 #include "Buffer.h"
 
-#include "Renderer.h"
+#include "FizzGen/Renderer/Renderer.h"
 
-#include "FizzGen/Platform/OpenGL/OpenGLBuffer.h"
-#include "FizzGen/Platform/ANGLE/ANGLEBuffer.h"
+#include "FizzGen/Platform/OpenGL/Buffer/OpenGLBuffer.h"
+#include "FizzGen/Platform/ANGLE/Buffer/ANGLEBuffer.h"
 
 
 

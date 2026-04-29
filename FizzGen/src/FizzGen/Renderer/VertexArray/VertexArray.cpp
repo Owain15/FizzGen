@@ -3,9 +3,9 @@
 
 #include "VertexArray.h"
 
-#include "Renderer.h"
-#include "FizzGen/Platform/OpenGL/OpenGLVertexArray.h"
-#include "FizzGen/Platform/ANGLE/ANGLEVertexArray.h"
+#include "FizzGen/Renderer/Renderer.h"
+#include "FizzGen/Platform/OpenGL/VertexArray/OpenGLVertexArray.h"
+#include "FizzGen/Platform/ANGLE/VertexArray/ANGLEVertexArray.h"
 
 namespace FizzGen
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FizzGen/Renderer/VertexArray.h"
+#include "FizzGen/Renderer/VertexArray/VertexArray.h"
 
 namespace FizzGen
 {

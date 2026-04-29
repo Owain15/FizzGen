@@ -1,11 +1,11 @@
 #pragma once
 
-#include "RenderCommand.h"
+#include "FizzGen/Renderer/RenderCommand/RenderCommand.h"
 
 //#include <glm/glm.hpp>
 
 #include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
-#include "FizzGen/Renderer/Shader.h"
+#include "FizzGen/Renderer/Shader/Shader.h"
 
 namespace FizzGen
 {

@@ -2,18 +2,18 @@
 #pragma once
 
 #include <cstdint>
-#include "FizzGen/Renderer/Buffer.h"
+#include "FizzGen/Renderer/Buffer/Buffer.h"
 
 namespace FizzGen
 {
 
-	class ANGLEVertexBuffer : public VertexBuffer
+	class OpenGLVertexBuffer : public VertexBuffer
 	{
 		public:
-
-			ANGLEVertexBuffer(float* vertices, uint32_t size);
-
-			virtual ~ANGLEVertexBuffer();
+	
+			OpenGLVertexBuffer(float* vertices, uint32_t size);
+		
+			virtual ~OpenGLVertexBuffer();
 
 			virtual void Bind() const override;
 			virtual void Unbind() const override;
@@ -22,19 +22,19 @@ namespace FizzGen
 			virtual void SetLayout(const BufferLayout& layout) override { m_Layout = layout; }
 
 		private:
-
+			
 			uint32_t m_RendererID;
 			BufferLayout m_Layout;
 	};
 
-	class ANGLEIndexBuffer : public IndexBuffer
+	class OpenGLIndexBuffer : public IndexBuffer
 	{
-
+	
 		public:
-
-			ANGLEIndexBuffer(uint32_t* indices, uint32_t count);
-
-			virtual ~ANGLEIndexBuffer();
+		
+			OpenGLIndexBuffer(uint32_t* indices, uint32_t count);
+		
+			virtual ~OpenGLIndexBuffer();
 
 			virtual void Bind() const override;
 			virtual void Unbind() const override;
@@ -42,10 +42,10 @@ namespace FizzGen
 			virtual uint32_t GetCount() const override { return m_Count; };
 
 		private:
-
+		
 			uint32_t m_RendererID;
 			uint32_t m_Count;
-
+	
 	};
 
 }

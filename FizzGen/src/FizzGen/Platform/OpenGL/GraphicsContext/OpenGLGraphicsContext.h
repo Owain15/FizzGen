@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FizzGen/Renderer/GraphicsContext.h"
+#include "FizzGen/Renderer/GraphicsContext/GraphicsContext.h"
 
 // place holder, glfw is alrdey included eleswhare
 struct GLFWwindow;
@@ -8,17 +8,17 @@ struct GLFWwindow;
 namespace FizzGen
 {
 
-	class ANGLEGraphicsContext : public GraphicsContext
+	class OpenGLGraphicsContext : public GraphicsContext
 	{
 		public:
-
-			ANGLEGraphicsContext(GLFWwindow* windowHandle);
-
+			
+			OpenGLGraphicsContext(GLFWwindow* windowHandle);
+			
 			virtual void Init() override;
 			virtual void SwapBuffers() override;
 
 		private:
-
+			
 			GLFWwindow* m_windowHandle;
 
 	};

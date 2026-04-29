@@ -1,6 +1,6 @@
 #pragma once
 
-#include "RendererAPI.h"
+#include "FizzGen/Renderer/RendererAPI.h"
 
 namespace FizzGen
 {

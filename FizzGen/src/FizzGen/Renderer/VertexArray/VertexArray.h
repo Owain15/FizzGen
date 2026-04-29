@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include "Buffer.h"
+#include "FizzGen/Renderer/Buffer/Buffer.h"
 
 namespace FizzGen
 {

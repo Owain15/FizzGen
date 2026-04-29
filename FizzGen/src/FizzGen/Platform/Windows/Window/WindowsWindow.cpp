@@ -5,8 +5,8 @@
 #include "FizzGen/Events/MouseEvent.h"
 #include "FizzGen/Events/KeyEvent.h"
 
-#include "FizzGen/Platform/OpenGL/OpenGLGraphicsContext.h"
-#include "FizzGen/Platform/Angle/AngleGraphicsContext.h"
+#include "FizzGen/Platform/OpenGL/GraphicsContext/OpenGLGraphicsContext.h"
+#include "FizzGen/Platform/Angle/GraphicsContext/AngleGraphicsContext.h"
 
 //#include <Glad/glad.h>
 

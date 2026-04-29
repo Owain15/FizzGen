@@ -15,11 +15,11 @@
 #include "FizzGen/ImGui/ImGuiLayer.h"
 
 #include "FizzGen/Renderer/Renderer.h"
-#include "FizzGen/Renderer/RenderCommand.h"
+#include "FizzGen/Renderer/RenderCommand/RenderCommand.h"
 
-#include "FizzGen/Renderer/Buffer.h"
-#include "FizzGen/Renderer/Shader.h"
-#include "FizzGen/Renderer/VertexArray.h"
+#include "FizzGen/Renderer/Buffer/Buffer.h"
+#include "FizzGen/Renderer/Shader/Shader.h"
+#include "FizzGen/Renderer/VertexArray/VertexArray.h"
 
 #include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
 

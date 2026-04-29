@@ -3,8 +3,8 @@
 
 #include "RenderCommand.h"
 
-#include "FizzGen/Platform/OpenGL/OpenGLRendererAPI.h"
-#include "FizzGen/Platform/ANGLE/ANGLERendererAPI.h"
+#include "FizzGen/Platform/OpenGL/RendererAPI/OpenGLRendererAPI.h"
+#include "FizzGen/Platform/ANGLE/RendererAPI/ANGLERendererAPI.h"
 
 namespace FizzGen
 {

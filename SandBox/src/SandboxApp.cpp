@@ -1,16 +1,20 @@
 
 #include "FizzGen.h"
 
+//temp
 #include "imgui/imgui.h"
 
+#include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
+#include "FizzGen/Platform/OpenGL/Shader/OpenGLShader.h"
 
 class ExampleLayer : public FizzGen::Layer
 {
 	public:
 	
 		ExampleLayer() : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f),
-			m_CameraPosition(0.0f), m_CameraRotation(0.0f), m_SquarePosition(0.0f)
+			m_CameraPosition(0.0f), m_CameraRotation(0.0f), m_SquarePosition(0.0f), m_SquareColor(0.0f, 0.0f, 0.0f)
 		{
 			m_VertexArray.reset(FizzGen::VertexArray::Create());
 
@@ -47,10 +51,10 @@ class ExampleLayer : public FizzGen::Layer
 
 			float squareVertices[3 * 4] =
 			{
-				-0.75f, -0.75f, 0.0f,
-				 0.75f, -0.75f, 0.0f,
-				 0.75f,  0.75f, 0.0f,
-				-0.75f,  0.75f, 0.0f
+				-0.5f, -0.5f, 0.0f,
+				 0.5f, -0.5f, 0.0f,
+				 0.5f,  0.5f, 0.0f,
+				-0.5f,  0.5f, 0.0f
 			};
 
 			std::shared_ptr<FizzGen::VertexBuffer> squareVB;
@@ -141,11 +145,12 @@ class ExampleLayer : public FizzGen::Layer
 
 #endif
 
-			m_Shader.reset(new FizzGen::Shader(vertexShaderSource, fragmentShaderSource));
+			m_Shader.reset(FizzGen::Shader::Create(vertexShaderSource, fragmentShaderSource));
 
 #ifdef FG_USE_ANGLE
 
-			std::string vertexShaderSource2 =
+			std::string flatColorVertexShaderSource =
+
 				"#version 300 es\n"
 
 				"layout(location = 0) in vec3 a_Position;\n"
@@ -162,7 +167,7 @@ class ExampleLayer : public FizzGen::Layer
 				"}";
 
 
-			std::string fragmentShaderSource2 =
+			std::string flatColorFragmentShaderSource =
 
 				"#version 300 es\n"
 				"precision mediump float;\n"
@@ -171,15 +176,17 @@ class ExampleLayer : public FizzGen::Layer
 				
 				"out vec4 FragColor;\n"
 				
+				"uniform vec3 u_Color;\n"
+
 				"void main()\n"
 				"{\n"
-					"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
+					"FragColor = vec4(u_Color, 1.0);\n"
 				"}";
 
 
 #else
 
-			std::string vertexShaderSource2 =
+			std::string flatColorVertexShaderSource =
 
 				"#version 330 core\n"
 
@@ -197,20 +204,22 @@ class ExampleLayer : public FizzGen::Layer
 				"}";
 
 
-			std::string fragmentShaderSource2 =
+			std::string flatColorFragmentShaderSource =
 
 				"#version 330 core\n"
 
 				"in vec3 v_Position;\n"
 				"out vec4 FragColor;\n"
 
+				"uniform vec3 u_Color;\n"
+
 				"void main()\n"
 				"{\n"
-					"FragColor = vec4(0.2, 0.3, 0.8, 1.0);\n"
+					"FragColor = vec4(u_Color, 1.0);\n"
 				"}";
 #endif
 
-			m_Shader2.reset(new FizzGen::Shader(vertexShaderSource2, fragmentShaderSource2));
+			m_FlatColorShader.reset(FizzGen::Shader::Create(flatColorVertexShaderSource, flatColorFragmentShaderSource));
 
 			//
 		}
@@ -292,11 +301,33 @@ class ExampleLayer : public FizzGen::Layer
 
 			FizzGen::Renderer::BeginScene(m_Camera);
 			{
-				glm::mat4 transform = glm::translate(glm::mat4(1.0f), m_SquarePosition);
+				glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
-				FizzGen::Renderer::Submit(m_Shader2, m_SquareVA,transform);
+				//glm::vec3 redColor(0.8f, 0.2f, 0.3f);
+				//glm::vec3 blueColor(0.2f, 0.3f, 0.8f);
 
-				FizzGen::Renderer::Submit(m_Shader, m_VertexArray);
+				std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_FlatColorShader)->Bind();
+				std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
+				for (int y = 0; y < 20; y++)
+					for (int x = 0; x < 20; x++)
+					{
+						glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
+						glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
+						
+						if(x % 2 == 0)
+						{
+							std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+						}
+						else
+						{
+							std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+						}
+
+						FizzGen::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
+					}
+
+				//FizzGen::Renderer::Submit(m_Shader, m_VertexArray);
 
 			}
 			FizzGen::Renderer::EndScene();
@@ -306,7 +337,11 @@ class ExampleLayer : public FizzGen::Layer
 	
 		virtual void OnImGuiRender() override
 		{
-	
+			ImGui::Begin("Settings");
+			{
+				ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+			}
+			ImGui::End();
 		}
 
 		void OnEvent(FizzGen::Event& event) override
@@ -321,7 +356,7 @@ class ExampleLayer : public FizzGen::Layer
 		std::shared_ptr<FizzGen::Shader> m_Shader;
 
 		std::shared_ptr<FizzGen::VertexArray> m_SquareVA;
-		std::shared_ptr<FizzGen::Shader> m_Shader2;
+		std::shared_ptr<FizzGen::Shader> m_FlatColorShader;
 
 		FizzGen::OrthographicCamera m_Camera;
 		glm::vec3 m_CameraPosition;
@@ -331,6 +366,7 @@ class ExampleLayer : public FizzGen::Layer
 		float m_RotationSpeed = 30.0f;
 
 		glm::vec3 m_SquarePosition;
+		glm::vec3 m_SquareColor;
 };
 
 class Sandbox : public FizzGen::Application
