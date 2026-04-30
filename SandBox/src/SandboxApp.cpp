@@ -27,7 +27,7 @@ class ExampleLayer : public FizzGen::Layer
 				 0.0f,  0.5f, 0.0f,		1.0f, 0.5f, 0.0f, 1.0f
 			};
 
-			std::shared_ptr<FizzGen::VertexBuffer> vertexBuffer;
+			FizzGen::Ref<FizzGen::VertexBuffer> vertexBuffer;
 			vertexBuffer.reset(FizzGen::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 			FizzGen::BufferLayout layout =
@@ -41,7 +41,7 @@ class ExampleLayer : public FizzGen::Layer
 
 			uint32_t indices[3] = { 0, 1, 2 };
 
-			std::shared_ptr<FizzGen::IndexBuffer> indexBuffer;
+			FizzGen::Ref<FizzGen::IndexBuffer> indexBuffer;
 			indexBuffer.reset(FizzGen::IndexBuffer::Create(indices, (sizeof(indices) / sizeof(uint32_t))));
 			m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -57,7 +57,7 @@ class ExampleLayer : public FizzGen::Layer
 				-0.5f,  0.5f, 0.0f
 			};
 
-			std::shared_ptr<FizzGen::VertexBuffer> squareVB;
+			FizzGen::Ref<FizzGen::VertexBuffer> squareVB;
 			squareVB.reset(FizzGen::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
 
 			FizzGen::BufferLayout squareLayout =
@@ -69,7 +69,7 @@ class ExampleLayer : public FizzGen::Layer
 			m_SquareVA->AddVertexBuffer(squareVB);
 
 			uint32_t squareIndices[6] = { 0, 1, 2, 2, 3, 0 };
-			std::shared_ptr<FizzGen::IndexBuffer> squareIB;
+			FizzGen::Ref<FizzGen::IndexBuffer> squareIB;
 			squareIB.reset(FizzGen::IndexBuffer::Create(squareIndices, sizeof(squareIndices) / sizeof(uint32_t)));
 			m_SquareVA->SetIndexBuffer(squareIB);
 
@@ -352,11 +352,11 @@ class ExampleLayer : public FizzGen::Layer
 
 	private:
 
-		std::shared_ptr<FizzGen::VertexArray> m_VertexArray;
-		std::shared_ptr<FizzGen::Shader> m_Shader;
+		FizzGen::Ref<FizzGen::VertexArray> m_VertexArray;
+		FizzGen::Ref<FizzGen::Shader> m_Shader;
 
-		std::shared_ptr<FizzGen::VertexArray> m_SquareVA;
-		std::shared_ptr<FizzGen::Shader> m_FlatColorShader;
+		FizzGen::Ref<FizzGen::VertexArray> m_SquareVA;
+		FizzGen::Ref<FizzGen::Shader> m_FlatColorShader;
 
 		FizzGen::OrthographicCamera m_Camera;
 		glm::vec3 m_CameraPosition;
