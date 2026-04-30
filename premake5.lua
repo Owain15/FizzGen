@@ -65,6 +65,7 @@ workspace "FizzGen"
 	IncludeDir["ImGui"] = "FizzGen/vendor/ImGui"
 	IncludeDir["ANGLE"] = "FizzGen/vendor/ANGLE/ARM64/include"
 	IncludeDir["glm"] = "FizzGen/vendor/glm"
+	IncludeDir["stb_image"] = "FizzGen/vendor/stb_image"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -105,6 +106,8 @@ workspace "FizzGen"
 		files {
 			"%{prj.name}/src/**.h",
 			"%{prj.name}/src/**.cpp",
+			"%{prj.name}/vendor/stb_image/**.h",
+			"%{prj.name}/vendor/stb_image/**.cpp",
 			"%{prj.name}/vendor/glm/glm.hpp",
 			"%{prj.name}/vendor/glm/glm.inl"
 		}
@@ -115,7 +118,8 @@ workspace "FizzGen"
 			"%{IncludeDir.GLFW}",
 			"%{IncludeDir.Glad}",
 			"%{IncludeDir.ImGui}",
-			"%{IncludeDir.glm}"
+			"%{IncludeDir.glm}",
+			"%{IncludeDir.stb_image}"
 		}
 
 		links {
@@ -128,8 +132,12 @@ workspace "FizzGen"
 		filter "platforms:x64"
 			links {
 				"Glad",
-				"opengl32.lib" 
+				"opengl32.lib"
 			}
+			removefiles { "%{prj.name}/src/FizzGen/Platform/ANGLE/**" }
+
+		filter "platforms:ARM64"
+			removefiles { "%{prj.name}/src/FizzGen/Platform/OpenGL/**" }
 
 	
 

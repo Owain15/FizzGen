@@ -137,7 +137,7 @@
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -161,7 +161,7 @@
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -186,7 +186,7 @@
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -214,7 +214,7 @@
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -243,7 +243,7 @@
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_PLATFORM_WINDOWS;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -271,7 +271,7 @@
       <PrecompiledHeaderFile>fgpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>FG_USE_ANGLE;IMGUI_IMPL_OPENGL_ES3;FG_PLATFORM_WINDOWS;FG_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;vendor\spdlog\include;vendor\GLFW\include;vendor\Glad\include;vendor\ImGui;vendor\glm;vendor\stb_image;vendor\ANGLE\ARM64\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -295,10 +295,10 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\FizzGen\Core\Timestep.h" />
     <ClInclude Include="src\FizzGen.h" />
     <ClInclude Include="src\FizzGen\Application.h" />
     <ClInclude Include="src\FizzGen\Core.h" />
+    <ClInclude Include="src\FizzGen\Core\Timestep.h" />
     <ClInclude Include="src\FizzGen\EnteryPoint.h" />
     <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h" />
     <ClInclude Include="src\FizzGen\Events\Event.h" />
@@ -314,12 +314,14 @@
     <ClInclude Include="src\FizzGen\Platform\ANGLE\Buffer\ANGLEBuffer.h" />
     <ClInclude Include="src\FizzGen\Platform\ANGLE\GraphicsContext\ANGLEGraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Platform\ANGLE\RendererAPI\ANGLERendererAPI.h" />
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\Texture\ANGLETexture.h" />
     <ClInclude Include="src\FizzGen\Platform\ANGLE\VertexArray\ANGLEVertexArray.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\Buffer\OpenGLBuffer.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\GraphicsContext\OpenGLGraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\RendererAPI\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\FizzGen\Platform\OpenGL\VertexArray\OpenGLVertexArray.h" />
     <ClInclude Include="src\FizzGen\Platform\OpenGL\Shader\OpenGLShader.h" />
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\Texture\OpenGLTexture.h" />
+    <ClInclude Include="src\FizzGen\Platform\OpenGL\VertexArray\OpenGLVertexArray.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.h" />
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h" />
     <ClInclude Include="src\FizzGen\Renderer\Buffer\Buffer.h" />
@@ -329,11 +331,13 @@
     <ClInclude Include="src\FizzGen\Renderer\Renderer.h" />
     <ClInclude Include="src\FizzGen\Renderer\RendererAPI.h" />
     <ClInclude Include="src\FizzGen\Renderer\Shader\Shader.h" />
+    <ClInclude Include="src\FizzGen\Renderer\Texture\Texture.h" />
     <ClInclude Include="src\FizzGen\Renderer\VertexArray\VertexArray.h" />
     <ClInclude Include="src\FizzGen\WindowInterface.h" />
     <ClInclude Include="src\fgpch.h" />
     <ClInclude Include="vendor\glm\glm.hpp" />
     <ClInclude Include="vendor\glm\glm.inl" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp" />
@@ -344,12 +348,14 @@
     <ClCompile Include="src\FizzGen\Platform\ANGLE\Buffer\ANGLEBuffer.cpp" />
     <ClCompile Include="src\FizzGen\Platform\ANGLE\GraphicsContext\ANGLEGraphicsContext.cpp" />
     <ClCompile Include="src\FizzGen\Platform\ANGLE\RendererAPI\ANGLERendererAPI.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\Texture\ANGLETexture.cpp" />
     <ClCompile Include="src\FizzGen\Platform\ANGLE\VertexArray\ANGLEVertexArray.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\Buffer\OpenGLBuffer.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\GraphicsContext\OpenGLGraphicsContext.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\RendererAPI\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\VertexArray\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\Shader\OpenGLShader.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\Texture\OpenGLTexture.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\VertexArray\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Buffer\Buffer.cpp" />
@@ -358,10 +364,12 @@
     <ClCompile Include="src\FizzGen\Renderer\Renderer.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Shader\Shader.cpp" />
+    <ClCompile Include="src\FizzGen\Renderer\Texture\Texture.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\VertexArray\VertexArray.cpp" />
     <ClCompile Include="src\fgpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">

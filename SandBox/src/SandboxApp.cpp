@@ -49,12 +49,12 @@ class ExampleLayer : public FizzGen::Layer
 
 			m_SquareVA.reset(FizzGen::VertexArray::Create());
 
-			float squareVertices[3 * 4] =
+			float squareVertices[5 * 4] =
 			{
-				-0.5f, -0.5f, 0.0f,
-				 0.5f, -0.5f, 0.0f,
-				 0.5f,  0.5f, 0.0f,
-				-0.5f,  0.5f, 0.0f
+				-0.5f, -0.5f, 0.0f,		0.0f, 0.0f,
+				 0.5f, -0.5f, 0.0f,		1.0f, 0.0f,	
+				 0.5f,  0.5f, 0.0f,		1.0f, 1.0f,
+				-0.5f,  0.5f, 0.0f,		0.0f, 1.0f
 			};
 
 			FizzGen::Ref<FizzGen::VertexBuffer> squareVB;
@@ -62,7 +62,8 @@ class ExampleLayer : public FizzGen::Layer
 
 			FizzGen::BufferLayout squareLayout =
 			{
-				{ FizzGen::ShaderDataType::Float3, "a_Position" }
+				{ FizzGen::ShaderDataType::Float3, "a_Position" },
+				{ FizzGen::ShaderDataType::Float2, "a_TexCoords" }
 			};
 
 			squareVB->SetLayout(squareLayout);
@@ -147,6 +148,8 @@ class ExampleLayer : public FizzGen::Layer
 
 			m_Shader.reset(FizzGen::Shader::Create(vertexShaderSource, fragmentShaderSource));
 
+//Flat color shader
+
 #ifdef FG_USE_ANGLE
 
 			std::string flatColorVertexShaderSource =
@@ -220,6 +223,93 @@ class ExampleLayer : public FizzGen::Layer
 #endif
 
 			m_FlatColorShader.reset(FizzGen::Shader::Create(flatColorVertexShaderSource, flatColorFragmentShaderSource));
+
+
+//Textured shader
+
+#ifdef FG_USE_ANGLE
+
+			std::string texturedVertexShaderSource =
+
+				"#version 300 es\n"
+
+				"layout(location = 0) in vec3 a_Position;\n"
+				"layout(location = 1) in vec2 a_TexCoords;\n"
+
+				"uniform mat4 u_ViewProjection;\n"
+				"uniform mat4 u_Transform;\n"
+
+				"out vec2 v_TexCoords;\n"
+
+				"void main()\n"
+				"{\n"
+					"v_TexCoords = a_TexCoords;\n"
+					"gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);\n"
+				"}";
+
+
+			std::string texturedFragmentShaderSource =
+
+				"#version 300 es\n"
+				"precision mediump float;\n"
+
+				"in vec2 v_TexCoords;\n"
+
+				"out vec4 FragColor;\n"
+
+				"uniform sampler2D u_Texture;\n"
+
+				"void main()\n"
+				"{\n"
+					"FragColor = texture(u_Texture, v_TexCoords);\n"
+				"}";
+
+
+#else
+
+			std::string texturedVertexShaderSource =
+
+				"#version 330 core\n"
+
+				"layout(location = 0) in vec3 a_Position;\n"
+				"layout(location = 1) in vec2 a_TexCoords;\n"
+
+				"uniform mat4 u_ViewProjection;\n"
+				"uniform mat4 u_Transform;\n"
+
+				"out vec2 v_TexCoords;\n"
+
+				"void main()\n"
+				"{\n"
+					"v_TexCoords = a_TexCoords;\n"
+					"gl_Position = u_ViewProjection * u_Transform * vec4(a_Position, 1.0);\n"
+				"}";
+
+
+			std::string texturedFragmentShaderSource =
+
+				"#version 330 core\n"
+
+				"layout(location = 0) out vec4 FragColor;\n"
+
+				"in vec2 v_TexCoords;\n"
+				"out vec4 FragColor;\n"
+
+				"uniform sampler2D u_Texture;\n"
+
+				"void main()\n"
+				"{\n"
+					"FragColor = texture(u_Texture, v_TexCoords);\n"
+				"}";
+#endif
+
+			m_TexturedShader.reset(FizzGen::Shader::Create(texturedVertexShaderSource, texturedFragmentShaderSource));
+
+			m_Texture = FizzGen::Texture2D::Create("Textures/20x20sqaures.png");
+			//"C:\Dev\FizzGen\SandBox\Textures\20x20sqaures.png"
+
+			std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_TexturedShader)->Bind();
+			std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_TexturedShader)->UploadUniformInt("u_Texture", 0);
 
 			//
 		}
@@ -315,19 +405,11 @@ class ExampleLayer : public FizzGen::Layer
 						glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
 						glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
 						
-						if(x % 2 == 0)
-						{
-							std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
-						}
-						else
-						{
-							std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
-						}
-
 						FizzGen::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
 					}
 
-				//FizzGen::Renderer::Submit(m_Shader, m_VertexArray);
+				m_Texture->Bind();
+				FizzGen::Renderer::Submit(m_TexturedShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.15)));
 
 			}
 			FizzGen::Renderer::EndScene();
@@ -355,8 +437,10 @@ class ExampleLayer : public FizzGen::Layer
 		FizzGen::Ref<FizzGen::VertexArray> m_VertexArray;
 		FizzGen::Ref<FizzGen::Shader> m_Shader;
 
+		FizzGen::Ref<FizzGen::Texture2D> m_Texture;
+
 		FizzGen::Ref<FizzGen::VertexArray> m_SquareVA;
-		FizzGen::Ref<FizzGen::Shader> m_FlatColorShader;
+		FizzGen::Ref<FizzGen::Shader> m_FlatColorShader, m_TexturedShader;
 
 		FizzGen::OrthographicCamera m_Camera;
 		glm::vec3 m_CameraPosition;

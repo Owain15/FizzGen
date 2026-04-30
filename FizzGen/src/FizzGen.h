@@ -19,6 +19,7 @@
 
 #include "FizzGen/Renderer/Buffer/Buffer.h"
 #include "FizzGen/Renderer/Shader/Shader.h"
+#include "FizzGen/Renderer/Texture/Texture.h"
 #include "FizzGen/Renderer/VertexArray/VertexArray.h"
 
 #include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
