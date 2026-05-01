@@ -345,17 +345,61 @@
     <ClCompile Include="src\FizzGen\Layer.cpp" />
     <ClCompile Include="src\FizzGen\LayerStack.cpp" />
     <ClCompile Include="src\FizzGen\Log.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\Buffer\ANGLEBuffer.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\GraphicsContext\ANGLEGraphicsContext.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\RendererAPI\ANGLERendererAPI.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\Texture\ANGLETexture.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\VertexArray\ANGLEVertexArray.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\Buffer\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\GraphicsContext\OpenGLGraphicsContext.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\RendererAPI\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\Shader\OpenGLShader.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\Texture\OpenGLTexture.cpp" />
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\VertexArray\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\Buffer\ANGLEBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\GraphicsContext\ANGLEGraphicsContext.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\RendererAPI\ANGLERendererAPI.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\Texture\ANGLETexture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\VertexArray\ANGLEVertexArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\Buffer\OpenGLBuffer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\GraphicsContext\OpenGLGraphicsContext.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\RendererAPI\OpenGLRendererAPI.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\Shader\OpenGLShader.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\Texture\OpenGLTexture.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\VertexArray\OpenGLVertexArray.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\Windows\Inputs\WindowsInput.cpp" />
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Buffer\Buffer.cpp" />
@@ -375,7 +419,7 @@
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
     </ProjectReference>
-    <ProjectReference Include="vendor\ImGui.vcxproj">
+    <ProjectReference Include="..\..\FizzGenFizzGen\vendor\ImGui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">

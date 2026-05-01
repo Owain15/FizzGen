@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set PREMAKE_DIR=vendor\bin\premake
+set PREMAKE_DIR=vendor\premake\bin
 set PREMAKE_EXE=%PREMAKE_DIR%\premake5.exe
 set PREMAKE_VERSION=5.0.0-beta8
 set PREMAKE_URL=https://github.com/premake/premake-core/releases/download/v%PREMAKE_VERSION%/premake-%PREMAKE_VERSION%-windows.zip

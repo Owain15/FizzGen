@@ -34,6 +34,9 @@
     <Filter Include="src\FizzGen\Platform\ANGLE\RendererAPI">
       <UniqueIdentifier>{2327C986-0F79-A076-F897-DD86E488B95F}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\FizzGen\Platform\ANGLE\Texture">
+      <UniqueIdentifier>{032A25AF-EF65-2819-5878-401044D3D033}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\FizzGen\Platform\ANGLE\VertexArray">
       <UniqueIdentifier>{AF62BF3D-9BB4-962D-84D3-D33D70C4AF16}</UniqueIdentifier>
     </Filter>
@@ -162,6 +165,9 @@
     <ClInclude Include="src\FizzGen\Platform\ANGLE\RendererAPI\ANGLERendererAPI.h">
       <Filter>src\FizzGen\Platform\ANGLE\RendererAPI</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Platform\ANGLE\Texture\ANGLETexture.h">
+      <Filter>src\FizzGen\Platform\ANGLE\Texture</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\ANGLE\VertexArray\ANGLEVertexArray.h">
       <Filter>src\FizzGen\Platform\ANGLE\VertexArray</Filter>
     </ClInclude>
@@ -231,7 +237,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Platform\ANGLE\Texture\ANGLETexture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Application.cpp">
@@ -257,6 +262,9 @@
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\ANGLE\RendererAPI\ANGLERendererAPI.cpp">
       <Filter>src\FizzGen\Platform\ANGLE\RendererAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\ANGLE\Texture\ANGLETexture.cpp">
+      <Filter>src\FizzGen\Platform\ANGLE\Texture</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\ANGLE\VertexArray\ANGLEVertexArray.cpp">
       <Filter>src\FizzGen\Platform\ANGLE\VertexArray</Filter>
@@ -315,6 +323,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\FizzGen\Platform\ANGLE\Texture\ANGLETexture.cpp" />
   </ItemGroup>
 </Project>

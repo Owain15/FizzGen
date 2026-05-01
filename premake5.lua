@@ -71,7 +71,7 @@ workspace "FizzGen"
 
 	include "FizzGen/vendor/GLFW"
 	include "FizzGen/vendor/Glad"
-	include "FizzGen/vendor/ImGui.lua"
+	include "FizzGen/vendor/ImGui/ImGui.lua"
 	
 	
 
