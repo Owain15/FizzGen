@@ -385,11 +385,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="src\FizzGen\Platform\OpenGL\Shader\OpenGLShader.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Dist|ARM64'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="src\FizzGen\Platform\OpenGL\Shader\OpenGLShader.cpp" />
     <ClCompile Include="src\FizzGen\Platform\OpenGL\Texture\OpenGLTexture.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">true</ExcludedFromBuild>

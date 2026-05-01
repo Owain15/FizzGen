@@ -13,15 +13,30 @@ namespace FizzGen
 		: m_Path(path)
 	{
 		int width, height, channels;
+
 		stbi_set_flip_vertically_on_load(1);
+
 		stbi_uc* data = stbi_load(path.c_str(), &width, &height, &channels, 0);
 		FG_CORE_ASSERT(data, "Failed to load texture image: {0}", path);
 		
 		m_Width = width;
 		m_Height = height;
 	
-		GLenum internalFormat = (channels == 4) ? GL_RGBA8 : GL_RGB8;
-		GLenum dataFormat     = (channels == 4) ? GL_RGBA  : GL_RGB;
+		GLenum internalFormat = 0 , dataFormat = 0;
+		if (channels == 4)
+		{
+			internalFormat = GL_RGBA8;
+			dataFormat = GL_RGBA;
+		}
+		else if(channels == 3)
+		{
+			internalFormat = GL_RGB8;
+			dataFormat = GL_RGB;
+		}
+		else
+		{	
+			FG_CORE_ASSERT(internalFormat & dataFormat, "Texture: Format not supported");
+		}
 
 		glCreateTextures(GL_TEXTURE_2D, 1, &m_RendererID);
 		glTextureStorage2D(m_RendererID, 1, internalFormat, m_Width, m_Height);

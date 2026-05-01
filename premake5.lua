@@ -137,7 +137,13 @@ workspace "FizzGen"
 			removefiles { "%{prj.name}/src/FizzGen/Platform/ANGLE/**" }
 
 		filter "platforms:ARM64"
-			removefiles { "%{prj.name}/src/FizzGen/Platform/OpenGL/**" }
+			removefiles {
+				"%{prj.name}/src/FizzGen/Platform/OpenGL/Buffer/**",
+				"%{prj.name}/src/FizzGen/Platform/OpenGL/GraphicsContext/**",
+				"%{prj.name}/src/FizzGen/Platform/OpenGL/RendererAPI/**",
+				"%{prj.name}/src/FizzGen/Platform/OpenGL/Texture/**",
+				"%{prj.name}/src/FizzGen/Platform/OpenGL/VertexArray/**"
+			}
 
 	
 
