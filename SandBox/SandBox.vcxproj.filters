@@ -23,8 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Textures\20x20sqaures.png">
-      <Filter>Resource Files\Textures</Filter>
-    </Image>
+    <None Include="res\Shaders\texture.angle.glsl" />
+    <None Include="res\Shaders\texture.opengl.glsl" />
   </ItemGroup>
 </Project>

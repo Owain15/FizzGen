@@ -303,10 +303,12 @@ class ExampleLayer : public FizzGen::Layer
 				"}";
 #endif
 
-			m_TexturedShader.reset(FizzGen::Shader::Create(texturedVertexShaderSource, texturedFragmentShaderSource));
+			//m_TexturedShader.reset(FizzGen::Shader::Create(texturedVertexShaderSource, texturedFragmentShaderSource));
+			m_TexturedShader.reset(FizzGen::Shader::Create("res/Shaders/texture.angle.glsl"));
 
-			m_Texture = FizzGen::Texture2D::Create("Textures/20x20sqaures.png");
-			//"C:\Dev\FizzGen\SandBox\Textures\20x20sqaures.png"
+			m_Texture = FizzGen::Texture2D::Create("res/Textures/20x20sqaures.png");
+			//"C:\Dev\FizzGen\SandBox\res\Textures\20x20sqaures.png"
+			//"C:\Dev\FizzGen\SandBox\res\Shaders\texture.glsl"
 
 			std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_TexturedShader)->Bind();
 			std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_TexturedShader)->UploadUniformInt("u_Texture", 0);

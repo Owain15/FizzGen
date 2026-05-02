@@ -13,6 +13,7 @@ namespace FizzGen
 			virtual ~Shader() = default;
 
 			static Shader* Create(const std::string& vertexSrc, const std::string& fragmentSrc);
+			static Shader* Create(const std::string& filepath);
 
 			virtual void Bind() const = 0;
 			virtual void Unbind() const = 0;

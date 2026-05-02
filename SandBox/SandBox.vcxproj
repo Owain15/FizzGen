@@ -311,6 +311,10 @@ IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll"\ (xco
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Shaders\texture.angle.glsl" />
+    <None Include="res\Shaders\texture.opengl.glsl" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
