@@ -14,10 +14,11 @@
 #include <glm/gtc/type_ptr.hpp>
 
 
-//public
+//public Shader
 namespace FizzGen
 {
-	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
+		: m_Name(name)
 	{
 		auto shaderSources = std::unordered_map<GLenum, std::string>
 		{
@@ -26,119 +27,6 @@ namespace FizzGen
 		};
 
 		Compile(shaderSources);
-
-		//// Create an empty vertex shader handle
-		//GLuint vertexShader = glCreateShader(GL_VERTEX_SHADER);
-
-		//// Send the vertex shader source code to GL
-		//// Note that std::string's .c_str is NULL character terminated.
-		//const GLchar* source = vertexSrc.c_str();
-		//glShaderSource(vertexShader, 1, &source, 0);
-
-		//// Compile the vertex shader
-		//glCompileShader(vertexShader);
-
-		//GLint isCompiled = 0;
-		//glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &isCompiled);
-
-		//if (isCompiled == GL_FALSE)
-		//{
-		//	GLint maxLength = 0;
-		//	glGetShaderiv(vertexShader, GL_INFO_LOG_LENGTH, &maxLength);
-
-		//	// The maxLength includes the NULL character
-		//	std::vector<GLchar> infoLog(maxLength);
-		//	glGetShaderInfoLog(vertexShader, maxLength, &maxLength, &infoLog[0]);
-
-		//	// We don't need the shader anymore.
-		//	glDeleteShader(vertexShader);
-
-		//	//log error
-		//	FG_CORE_ERROR("Vertex shader compilation failed: {0}", infoLog.data());
-		//	FG_CORE_ASSERT(false, "Vertex shader compilation failed");
-
-		//	return;
-		//}
-
-
-
-		//// Create an empty fragment shader handle
-		//GLuint fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
-
-		//// Send the fragment shader source code to GL
-		//// Note that std::string's .c_str is NULL character terminated.
-		//source = fragmentSrc.c_str();
-		//glShaderSource(fragmentShader, 1, &source, 0);
-
-		//// Compile the fragment shader
-		//glCompileShader(fragmentShader);
-
-		//glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &isCompiled);
-
-		//if (isCompiled == GL_FALSE)
-		//{
-		//	GLint maxLength = 0;
-		//	glGetShaderiv(fragmentShader, GL_INFO_LOG_LENGTH, &maxLength);
-
-		//	// The maxLength includes the NULL character
-		//	std::vector<GLchar> infoLog(maxLength);
-		//	glGetShaderInfoLog(fragmentShader, maxLength, &maxLength, &infoLog[0]);
-
-		//	// We don't need the shader anymore.
-		//	glDeleteShader(fragmentShader);
-		//	// Either of them. Don't leak shaders.
-		//	glDeleteShader(vertexShader);
-
-		//	//log error
-		//	FG_CORE_ERROR("Fragment shader compilation failed: {0}", infoLog.data());
-		//	FG_CORE_ASSERT(false, "Fragment shader compilation failed");
-
-		//	return;
-		//}
-
-
-
-
-		//// Vertex and fragment shaders are successfully compiled.
-		//// Now time to link them together into a program.
-		//// Get a program object.
-		//m_RendererID = glCreateProgram();
-
-		//// Attach our shaders to our program
-		//glAttachShader(m_RendererID, vertexShader);
-		//glAttachShader(m_RendererID, fragmentShader);
-
-		//// Link our program
-		//glLinkProgram(m_RendererID);
-
-		//// Note the different functions here: glGetProgram* instead of glGetShader*.
-		//GLint isLinked = 0;
-		//glGetProgramiv(m_RendererID, GL_LINK_STATUS, (int*)&isLinked);
-
-		//if (isLinked == GL_FALSE)
-		//{
-		//	GLint maxLength = 0;
-		//	glGetProgramiv(m_RendererID, GL_INFO_LOG_LENGTH, &maxLength);
-
-		//	// The maxLength includes the NULL character
-		//	std::vector<GLchar> infoLog(maxLength);
-		//	glGetProgramInfoLog(m_RendererID, maxLength, &maxLength, &infoLog[0]);
-
-		//	// We don't need the program anymore.
-		//	glDeleteProgram(m_RendererID);
-		//	// Don't leak shaders either.
-		//	glDeleteShader(vertexShader);
-		//	glDeleteShader(fragmentShader);
-
-		//	FG_CORE_ERROR("Shader program linking failed: {0}", infoLog.data());
-		//	FG_CORE_ASSERT(false, "Shader program linking failed");
-
-		//	return;
-		//}
-
-		//// Always detach shaders after a successful link.
-		//glDetachShader(m_RendererID, vertexShader);
-		//glDetachShader(m_RendererID, fragmentShader);
 
 	}
 
@@ -152,6 +40,15 @@ namespace FizzGen
 		std::string fragmentSrc;
 
 		Compile(shaderSources);
+
+		//set m_Name from filepath
+		auto lastSlash = filepath.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = filepath.rfind('.');
+		auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+		
+		m_Name = filepath.substr(lastSlash, count);
+
 	}
 
 	OpenGLShader::~OpenGLShader()
@@ -215,13 +112,18 @@ namespace FizzGen
 }
 
 
-//private
+//private Shader
 namespace FizzGen
 {
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
+		FG_CORE_ASSERT(shaderSources.size() <= 2, "Only 2 shaders are supported");
+
 		GLuint program = glCreateProgram();
-		std::vector<GLuint> shaderIDs(shaderSources.size());
+		const int shaderCount = shaderSources.size();
+		std::array<GLuint, 2> shaderIDs;
+
+		int shaderIdIndex = 0;
 
 		for (auto& shader : shaderSources)
 		{
@@ -251,7 +153,7 @@ namespace FizzGen
 			}
 			
 			glAttachShader(program, shaderID);
-			shaderIDs.push_back(shaderID);
+			shaderIDs[shaderIdIndex++] = shaderID;
 
 		}
 
@@ -361,3 +263,6 @@ namespace FizzGen
 
 
 }
+
+
+
