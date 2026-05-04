@@ -326,6 +326,7 @@
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h" />
     <ClInclude Include="src\FizzGen\Renderer\Buffer\Buffer.h" />
     <ClInclude Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.h" />
+    <ClInclude Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCameraControler.h" />
     <ClInclude Include="src\FizzGen\Renderer\GraphicsContext\GraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Renderer\RenderCommand\RenderCommand.h" />
     <ClInclude Include="src\FizzGen\Renderer\Renderer.h" />
@@ -400,6 +401,7 @@
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Buffer\Buffer.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.cpp" />
+    <ClCompile Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCameraControler.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\RenderCommand\RenderCommand.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\Renderer.cpp" />
     <ClCompile Include="src\FizzGen\Renderer\RendererAPI.cpp" />

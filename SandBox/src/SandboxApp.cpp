@@ -13,8 +13,8 @@ class ExampleLayer : public FizzGen::Layer
 {
 	public:
 	
-		ExampleLayer() : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f),
-			m_CameraPosition(0.0f), m_CameraRotation(0.0f), m_SquarePosition(0.0f), m_SquareColor(0.0f, 0.0f, 0.0f)
+		ExampleLayer() : Layer("Example"), m_CameraController(1.6f, true),
+			m_SquarePosition(0.0f), m_SquareColor(0.0f, 0.0f, 0.0f)
 		{
 			m_TriangleVA.reset(FizzGen::VertexArray::Create());
 
@@ -86,80 +86,20 @@ class ExampleLayer : public FizzGen::Layer
 	
 		void OnUpdate(FizzGen::Timestep timestep) override
 		{
+
+		//update
+
+			m_CameraController.OnUpdate(timestep);
 	
-			//camera movement
-			{
-				if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT))
-				{
-					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_CONTROL))
-					{
-						m_CameraRotation += m_RotationSpeed * timestep;
-					}
-					else if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
-					{
-						m_SquarePosition.x -= m_MovmentSpeed * timestep;
-					}
-					else
-					{
-						m_CameraPosition.x -= m_MovmentSpeed * timestep;
-					}
-				}
-
-				if (FizzGen::Input::IsKeyPressed(FG_KEY_RIGHT))
-				{
-					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_CONTROL))
-					{
-						m_CameraRotation -= m_RotationSpeed * timestep;
-					}
-					else if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
-					{
-						m_SquarePosition.x += m_MovmentSpeed * timestep;
-					}
-					else
-					{
-						m_CameraPosition.x += m_MovmentSpeed * timestep;
-					}
-				}
-
-				if (FizzGen::Input::IsKeyPressed(FG_KEY_UP))
-				{
-					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
-					{
-						m_SquarePosition.y += m_MovmentSpeed * timestep;
-					}
-					else
-					{
-						m_CameraPosition.y += m_MovmentSpeed * timestep;
-					}
-					
-				}
-
-				if (FizzGen::Input::IsKeyPressed(FG_KEY_DOWN))
-				{
-					if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
-					{
-						m_SquarePosition.y -= m_MovmentSpeed * timestep;
-					}
-					else
-					{
-						m_CameraPosition.y -= m_MovmentSpeed * timestep;
-					}
-				}
-
-			
-			}
-
+		//render
+		
 			//background
 			glm::vec4 backgroundColor = { 0.1f, 0.1f, 0.1f, 1 };
 			FizzGen::RenderCommand::SetClearColor(backgroundColor);
 			FizzGen::RenderCommand::Clear();
 
-			//camera propreties test
-			m_Camera.SetPosition(m_CameraPosition);
-			m_Camera.SetRotation(m_CameraRotation);
 
-
-			FizzGen::Renderer::BeginScene(m_Camera);
+			FizzGen::Renderer::BeginScene(m_CameraController.GetCamera());
 			{
 				glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
@@ -197,7 +137,7 @@ class ExampleLayer : public FizzGen::Layer
 
 		void OnEvent(FizzGen::Event& event) override
 		{
-		
+			m_CameraController.OnEvent(event);
 		}
 
 
@@ -211,12 +151,12 @@ class ExampleLayer : public FizzGen::Layer
 
 		FizzGen::Ref<FizzGen::VertexArray> m_SquareVA;
 
-		FizzGen::OrthographicCamera m_Camera;
-		glm::vec3 m_CameraPosition;
-		float m_CameraRotation;
+		FizzGen::OrthographicCameraControler m_CameraController;
+		//glm::vec3 m_CameraPosition;
+		//float m_CameraRotation;
 
-		float m_MovmentSpeed = 1.0f;
-		float m_RotationSpeed = 30.0f;
+		//float m_MovmentSpeed = 1.0f;
+		//float m_RotationSpeed = 30.0f;
 
 		glm::vec3 m_SquarePosition;
 		glm::vec3 m_SquareColor;

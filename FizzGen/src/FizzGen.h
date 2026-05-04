@@ -23,6 +23,7 @@
 #include "FizzGen/Renderer/VertexArray/VertexArray.h"
 
 #include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
+#include "FizzGen/Renderer/Camera/Orthographic/OrthographicCameraControler.h"
 
 #include "FizzGen/EnteryPoint.h"
 
