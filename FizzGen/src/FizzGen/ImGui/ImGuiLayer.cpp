@@ -8,7 +8,7 @@
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_glfw.h"
 
-#include "FizzGen/Application.h"
+#include "FizzGen//Core/Application.h"
 
 //temerary 
 #include <GLFW/glfw3.h>

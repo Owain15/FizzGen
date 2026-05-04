@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FizzGen/InputInterface.h"
+#include "FizzGen/Core/InputInterface.h"
 
 namespace FizzGen
 {

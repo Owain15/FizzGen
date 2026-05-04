@@ -2,7 +2,7 @@
 
 #include "fgpch.h"
 
-#include "FizzGen/Core.h"
+#include "FizzGen/Core/Core.h"
 
 // Events in FizzGen are currently blocking, meaning when an event occurs it 
 // immediately gets dispatched and must be dealt with right then and there.

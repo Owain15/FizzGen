@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FizzGen/Layer.h"
+#include "FizzGen/Core/Layer.h"
 
 #include "FizzGen/Events/ApplicationEvent.h"
 #include "FizzGen/Events/KeyEvent.h"

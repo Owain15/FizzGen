@@ -296,10 +296,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\FizzGen.h" />
-    <ClInclude Include="src\FizzGen\Application.h" />
-    <ClInclude Include="src\FizzGen\Core.h" />
+    <ClInclude Include="src\FizzGen\Core\Application.h" />
+    <ClInclude Include="src\FizzGen\Core\Core.h" />
+    <ClInclude Include="src\FizzGen\Core\EnteryPoint.h" />
+    <ClInclude Include="src\FizzGen\Core\InputInterface.h" />
+    <ClInclude Include="src\FizzGen\Core\Layer.h" />
+    <ClInclude Include="src\FizzGen\Core\LayerStack.h" />
+    <ClInclude Include="src\FizzGen\Core\Log.h" />
     <ClInclude Include="src\FizzGen\Core\Timestep.h" />
-    <ClInclude Include="src\FizzGen\EnteryPoint.h" />
+    <ClInclude Include="src\FizzGen\Core\WindowInterface.h" />
     <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h" />
     <ClInclude Include="src\FizzGen\Events\Event.h" />
     <ClInclude Include="src\FizzGen\Events\KeyEvent.h" />
@@ -307,10 +312,6 @@
     <ClInclude Include="src\FizzGen\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\FizzGen\InputCodes\Keycodes.h" />
     <ClInclude Include="src\FizzGen\InputCodes\MouseButtonCodes.h" />
-    <ClInclude Include="src\FizzGen\InputInterface.h" />
-    <ClInclude Include="src\FizzGen\Layer.h" />
-    <ClInclude Include="src\FizzGen\LayerStack.h" />
-    <ClInclude Include="src\FizzGen\Log.h" />
     <ClInclude Include="src\FizzGen\Platform\ANGLE\Buffer\ANGLEBuffer.h" />
     <ClInclude Include="src\FizzGen\Platform\ANGLE\GraphicsContext\ANGLEGraphicsContext.h" />
     <ClInclude Include="src\FizzGen\Platform\ANGLE\RendererAPI\ANGLERendererAPI.h" />
@@ -334,18 +335,17 @@
     <ClInclude Include="src\FizzGen\Renderer\Shader\Shader.h" />
     <ClInclude Include="src\FizzGen\Renderer\Texture\Texture.h" />
     <ClInclude Include="src\FizzGen\Renderer\VertexArray\VertexArray.h" />
-    <ClInclude Include="src\FizzGen\WindowInterface.h" />
     <ClInclude Include="src\fgpch.h" />
     <ClInclude Include="vendor\glm\glm.hpp" />
     <ClInclude Include="vendor\glm\glm.inl" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\FizzGen\Application.cpp" />
+    <ClCompile Include="src\FizzGen\Core\Application.cpp" />
+    <ClCompile Include="src\FizzGen\Core\Layer.cpp" />
+    <ClCompile Include="src\FizzGen\Core\LayerStack.cpp" />
+    <ClCompile Include="src\FizzGen\Core\Log.cpp" />
     <ClCompile Include="src\FizzGen\ImGui\ImGuiLayer.cpp" />
-    <ClCompile Include="src\FizzGen\Layer.cpp" />
-    <ClCompile Include="src\FizzGen\LayerStack.cpp" />
-    <ClCompile Include="src\FizzGen\Log.cpp" />
     <ClCompile Include="src\FizzGen\Platform\ANGLE\Buffer\ANGLEBuffer.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>

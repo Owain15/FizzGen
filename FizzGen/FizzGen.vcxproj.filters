@@ -111,17 +111,32 @@
     <ClInclude Include="src\FizzGen.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Application.h">
-      <Filter>src\FizzGen</Filter>
+    <ClInclude Include="src\FizzGen\Core\Application.h">
+      <Filter>src\FizzGen\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Core.h">
-      <Filter>src\FizzGen</Filter>
+    <ClInclude Include="src\FizzGen\Core\Core.h">
+      <Filter>src\FizzGen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Core\EnteryPoint.h">
+      <Filter>src\FizzGen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Core\InputInterface.h">
+      <Filter>src\FizzGen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Core\Layer.h">
+      <Filter>src\FizzGen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Core\LayerStack.h">
+      <Filter>src\FizzGen\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FizzGen\Core\Log.h">
+      <Filter>src\FizzGen\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Core\Timestep.h">
       <Filter>src\FizzGen\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\EnteryPoint.h">
-      <Filter>src\FizzGen</Filter>
+    <ClInclude Include="src\FizzGen\Core\WindowInterface.h">
+      <Filter>src\FizzGen\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h">
       <Filter>src\FizzGen\Events</Filter>
@@ -143,18 +158,6 @@
     </ClInclude>
     <ClInclude Include="src\FizzGen\InputCodes\MouseButtonCodes.h">
       <Filter>src\FizzGen\InputCodes</Filter>
-    </ClInclude>
-    <ClInclude Include="src\FizzGen\InputInterface.h">
-      <Filter>src\FizzGen</Filter>
-    </ClInclude>
-    <ClInclude Include="src\FizzGen\Layer.h">
-      <Filter>src\FizzGen</Filter>
-    </ClInclude>
-    <ClInclude Include="src\FizzGen\LayerStack.h">
-      <Filter>src\FizzGen</Filter>
-    </ClInclude>
-    <ClInclude Include="src\FizzGen\Log.h">
-      <Filter>src\FizzGen</Filter>
     </ClInclude>
     <ClInclude Include="src\FizzGen\Platform\ANGLE\Buffer\ANGLEBuffer.h">
       <Filter>src\FizzGen\Platform\ANGLE\Buffer</Filter>
@@ -201,6 +204,9 @@
     <ClInclude Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.h">
       <Filter>src\FizzGen\Renderer\Camera\Orthographic</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCameraControler.h">
+      <Filter>src\FizzGen\Renderer\Camera\Orthographic</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Renderer\GraphicsContext\GraphicsContext.h">
       <Filter>src\FizzGen\Renderer\GraphicsContext</Filter>
     </ClInclude>
@@ -222,9 +228,6 @@
     <ClInclude Include="src\FizzGen\Renderer\VertexArray\VertexArray.h">
       <Filter>src\FizzGen\Renderer\VertexArray</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\WindowInterface.h">
-      <Filter>src\FizzGen</Filter>
-    </ClInclude>
     <ClInclude Include="src\fgpch.h">
       <Filter>src</Filter>
     </ClInclude>
@@ -239,20 +242,20 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\FizzGen\Application.cpp">
-      <Filter>src\FizzGen</Filter>
+    <ClCompile Include="src\FizzGen\Core\Application.cpp">
+      <Filter>src\FizzGen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Core\Layer.cpp">
+      <Filter>src\FizzGen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Core\LayerStack.cpp">
+      <Filter>src\FizzGen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Core\Log.cpp">
+      <Filter>src\FizzGen\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\ImGui\ImGuiLayer.cpp">
       <Filter>src\FizzGen\ImGui</Filter>
-    </ClCompile>
-    <ClCompile Include="src\FizzGen\Layer.cpp">
-      <Filter>src\FizzGen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\FizzGen\LayerStack.cpp">
-      <Filter>src\FizzGen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\FizzGen\Log.cpp">
-      <Filter>src\FizzGen</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Platform\ANGLE\Buffer\ANGLEBuffer.cpp">
       <Filter>src\FizzGen\Platform\ANGLE\Buffer</Filter>
@@ -297,6 +300,9 @@
       <Filter>src\FizzGen\Renderer\Buffer</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCamera.cpp">
+      <Filter>src\FizzGen\Renderer\Camera\Orthographic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\Camera\Orthographic\OrthographicCameraControler.cpp">
       <Filter>src\FizzGen\Renderer\Camera\Orthographic</Filter>
     </ClCompile>
     <ClCompile Include="src\FizzGen\Renderer\RenderCommand\RenderCommand.cpp">

@@ -2,7 +2,7 @@
 #include "fgpch.h"
 #include "OrthographicCameraControler.h"
 
-#include "FizzGen/InputInterface.h"
+#include "FizzGen/Core/InputInterface.h"
 #include "FizzGen/InputCodes/Keycodes.h"
 
 //public

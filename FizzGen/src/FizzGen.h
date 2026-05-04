@@ -2,13 +2,13 @@
 
 //For use by FizzGen applications
 
-#include "FizzGen/Application.h"
-#include "FizzGen/Layer.h"
-#include "FizzGen/Log.h"
+#include "FizzGen/Core/Application.h"
+#include "FizzGen/Core/Layer.h"
+#include "FizzGen/Core/Log.h"
 
 #include "FizzGen/Core/Timestep.h"
 
-#include "FizzGen/InputInterface.h"
+#include "FizzGen/Core/InputInterface.h"
 #include "FizzGen/InputCodes/Keycodes.h"
 #include "FizzGen/InputCodes/MouseButtonCodes.h"
 
@@ -25,6 +25,6 @@
 #include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
 #include "FizzGen/Renderer/Camera/Orthographic/OrthographicCameraControler.h"
 
-#include "FizzGen/EnteryPoint.h"
+#include "FizzGen/Core/EnteryPoint.h"
 
 

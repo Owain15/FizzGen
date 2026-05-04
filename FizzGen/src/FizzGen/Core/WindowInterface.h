@@ -2,8 +2,8 @@
 
 #include "fgpch.h"
 
-#include "Core.h"
-#include "Events/Event.h"
+#include "FizzGen/Core/Core.h"
+#include "FizzGen/Events/Event.h"
 
 namespace FizzGen
 {

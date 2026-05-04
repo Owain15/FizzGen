@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "FizzGen/Core.h"
+#include "FizzGen/Core/Core.h"
 
 namespace FizzGen
 {

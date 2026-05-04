@@ -1,5 +1,6 @@
 @echo off
 setlocal enabledelayedexpansion
+pushd "%~dp0\.."
 
 set PREMAKE_DIR=vendor\premake\bin
 set PREMAKE_EXE=%PREMAKE_DIR%\premake5.exe
@@ -35,4 +36,5 @@ git submodule sync --recursive
 git submodule update --init --recursive
 
 call %PREMAKE_EXE% vs2026
+popd
 PAUSE

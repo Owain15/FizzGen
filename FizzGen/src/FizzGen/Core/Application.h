@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Core.h"
-#include "FizzGen/LayerStack.h"
-#include "Events/Event.h"
+#include "FizzGen/Core/Core.h"
+#include "FizzGen/Core/LayerStack.h"
+#include "FizzGen/Events/Event.h"
 #include "FizzGen/Events/ApplicationEvent.h"
-#include "WindowInterface.h"
-#include "ImGui/ImGuiLayer.h"
+#include "FizzGen/Core/WindowInterface.h"
+#include "FizzGen/ImGui/ImGuiLayer.h"
 
 #include "FizzGen/Core/Timestep.h"
 

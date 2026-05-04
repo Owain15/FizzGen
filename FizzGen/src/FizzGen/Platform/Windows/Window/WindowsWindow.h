@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FizzGen/WindowInterface.h"
+#include "FizzGen/Core/WindowInterface.h"
 #include "FizzGen/Renderer/GraphicsContext/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>

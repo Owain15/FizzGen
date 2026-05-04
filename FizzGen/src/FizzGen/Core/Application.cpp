@@ -3,7 +3,7 @@
 
 #include "Application.h"
 
-#include "FizzGen/Log.h"
+#include "FizzGen/Core/Log.h"
 
 #include "FizzGen/Renderer/Renderer.h"
 

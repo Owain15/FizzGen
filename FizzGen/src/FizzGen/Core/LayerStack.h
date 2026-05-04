@@ -1,7 +1,7 @@
 #pragma once
 
-#include "FizzGen/Core.h"
-#include "Layer.h"
+#include "FizzGen/Core/Core.h"
+#include "FizzGen/Core/Layer.h"
 
 #include <vector>
 

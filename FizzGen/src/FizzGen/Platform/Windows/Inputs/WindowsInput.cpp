@@ -3,7 +3,7 @@
 
 #include "WindowsInput.h"
 
-#include "FizzGen/Application.h"
+#include "FizzGen/Core/Application.h"
 #include <GLFW/glfw3.h>
 
 namespace FizzGen

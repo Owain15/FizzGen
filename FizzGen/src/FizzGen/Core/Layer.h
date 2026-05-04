@@ -1,6 +1,6 @@
 #pragma once
 
-#include "FizzGen/Core.h"
+#include "FizzGen/Core/Core.h"
 #include "FizzGen/Events/Event.h"
 
 #include "FizzGen/Core/Timestep.h"
