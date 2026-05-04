@@ -15,3 +15,8 @@ Premake
 . look into premake, cmake, meson, and other build systems. premake
 
 consider a Renderer cofig file to prepar solution for different architecturs. ie. ARM or X64.
+
+Window Resize
+. orthographic Camera, consider how to handle window resize events and adjust 
+the camera accordingly. a.display a lager area. b. resize so the image renderd is the same but at the new window size.
+c. wright both options and allow the user to choose which one they want to use. 

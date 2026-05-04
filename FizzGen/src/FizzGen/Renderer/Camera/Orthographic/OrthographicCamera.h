@@ -1,6 +1,7 @@
 #pragma once
 // class may need clean up. remove the rotation and position from the camera class and make it a pure camera class. 
 // The controller will handle the position and rotation of the camera.
+
 #include <glm/glm.hpp>
 
 namespace FizzGen

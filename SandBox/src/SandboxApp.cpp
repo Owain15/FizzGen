@@ -138,6 +138,12 @@ class ExampleLayer : public FizzGen::Layer
 		void OnEvent(FizzGen::Event& event) override
 		{
 			m_CameraController.OnEvent(event);
+
+			//if (event.GetEventType() == FizzGen::EventType::WindowResize && m_ResizeBehaviorFlag)
+			//{
+				//auto& e = static_cast<FizzGen::WindowResizeEvent&>(event);
+				//auto width = e.GetWidth();
+			//}
 		}
 
 
@@ -160,6 +166,8 @@ class ExampleLayer : public FizzGen::Layer
 
 		glm::vec3 m_SquarePosition;
 		glm::vec3 m_SquareColor;
+
+		bool m_ResizeBehaviorFlag = true;
 };
 
 class Sandbox : public FizzGen::Application
