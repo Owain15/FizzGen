@@ -25,6 +25,6 @@
 #include "FizzGen/Renderer/Camera/Orthographic/OrthographicCamera.h"
 #include "FizzGen/Renderer/Camera/Orthographic/OrthographicCameraControler.h"
 
-#include "FizzGen/Core/EnteryPoint.h"
+//#include "FizzGen/Core/EnteryPoint.h"
 
 

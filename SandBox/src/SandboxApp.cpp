@@ -1,11 +1,14 @@
 
-#include "FizzGen.h"
+#include <FizzGen.h>
+#include <FizzGen/Core/EnteryPoint.h>
 
 //temp
 #include "imgui/imgui.h"
 
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+
+#include "Sandbox/2D/Sandbox2D.h"
 
 #include "FizzGen/Platform/OpenGL/Shader/OpenGLShader.h"
 
@@ -16,7 +19,7 @@ class ExampleLayer : public FizzGen::Layer
 		ExampleLayer() : Layer("Example"), m_CameraController(1.6f, true),
 			m_SquarePosition(0.0f), m_SquareColor(0.0f, 0.0f, 0.0f)
 		{
-			m_TriangleVA.reset(FizzGen::VertexArray::Create());
+			m_TriangleVA = FizzGen::VertexArray::Create();
 
 			//temp render code
 
@@ -47,7 +50,7 @@ class ExampleLayer : public FizzGen::Layer
 
 
 
-			m_SquareVA.reset(FizzGen::VertexArray::Create());
+			m_SquareVA = FizzGen::VertexArray::Create();
 
 			float squareVertices[5 * 4] =
 			{
@@ -176,8 +179,9 @@ class Sandbox : public FizzGen::Application
 	
 		Sandbox()
 		{
-			auto testLayer = new ExampleLayer();
-			PushLayer(testLayer);
+			//auto testLayer = new ExampleLayer();
+			//PushLayer(testLayer);
+			PushLayer(new Sandbox2D());
 		}
 	
 		~Sandbox()

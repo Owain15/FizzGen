@@ -20,7 +20,7 @@ namespace FizzGen
 			virtual const std::vector<FizzGen::Ref<VertexBuffer>>& GetVertexBuffers() const = 0;
 			virtual const FizzGen::Ref<IndexBuffer>& GetIndexBuffer() const = 0;
 
-			static VertexArray* Create();
+			static FizzGen::Ref<VertexArray> Create();
 
 	};
 }

@@ -21,13 +21,13 @@
     <ClCompile Include="src\SandboxApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\Sandbox\2D\Sandbox2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\Shaders\texture.angle.glsl" />
-    <None Include="res\Shaders\texture.opengl.glsl" />
-    <None Include="res\Shaders\vertexposition.angle.glsl" />
-    <None Include="res\Shaders\vertexposition.opengl.glsl" />
-    <None Include="res\Shaders\flatcolor.angle.glsl" />
-    <None Include="res\Shaders\flatcolor.opengl.glsl" />
+    <ClInclude Include="src\Sandbox\2D\Sandbox2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

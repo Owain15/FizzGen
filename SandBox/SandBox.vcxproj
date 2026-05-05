@@ -301,6 +301,7 @@ IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll"\ (xco
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Sandbox\2D\Sandbox2D.cpp" />
     <ClCompile Include="src\SandboxApp.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -310,6 +311,9 @@ IF EXIST "$(SolutionDir)FizzGen\vendor\ANGLE\ARM64\bin\d3dcompiler_47.dll"\ (xco
     <ProjectReference Include="..\FizzGen\vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Sandbox\2D\Sandbox2D.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
