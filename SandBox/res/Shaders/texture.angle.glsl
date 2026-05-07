@@ -32,4 +32,7 @@ uniform sampler2D u_Texture;
 void main()
 {
 	FragColor = texture(u_Texture, v_TexCoords);
+	
+	//indexed color output for debugging
+	//FragColor = vec4(v_TexCoords, 0.0, 1.0);
 }

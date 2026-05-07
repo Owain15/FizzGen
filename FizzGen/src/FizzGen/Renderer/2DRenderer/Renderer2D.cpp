@@ -20,6 +20,7 @@ namespace FizzGen
 	{
 		FizzGen::Ref<VertexArray> QuadVertexArray;
 		FizzGen::Ref<Shader> FlatColorShader;
+		FizzGen::Ref<Shader> TextureShader;
 	};
 
 	static Renderer2DData* s_Data;
@@ -57,6 +58,10 @@ namespace FizzGen
 
 		//should not be hardcoded, but is fine for now.
 		s_Data->FlatColorShader = FizzGen::Shader::Create("res/shaders/flatcolor.angle.glsl");
+		s_Data->TextureShader = FizzGen::Shader::Create("res/shaders/texture.angle.glsl");
+
+		s_Data->TextureShader->Bind();
+		s_Data->TextureShader->SetInt("u_Texture", 0);
 
 	}
 
@@ -69,6 +74,9 @@ namespace FizzGen
 	{
 		s_Data->FlatColorShader->Bind();
 		s_Data->FlatColorShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
+
+		s_Data->TextureShader->Bind();
+		s_Data->TextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 
 	void Renderer2D::EndScene()
@@ -76,21 +84,15 @@ namespace FizzGen
 
 	}
 
-
+	//draw quad by color
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color)
-	{
-		DrawQuad({ position.x, position.y, 0.0f }, size, 0, color);
-	}
+	{ DrawQuad({ position.x, position.y, 0.0f }, size, 0, color); }
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color)
-	{
-		DrawQuad(position, size, 0, color);
-	}
+	{ DrawQuad(position, size, 0, color); }
 
 	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotationInDegrees, const glm::vec4& color)
-	{
-		DrawQuad({ position.x, position.y, 0.0f }, size, rotationInDegrees, color);
-	}	
+	{ DrawQuad({ position.x, position.y, 0.0f }, size, rotationInDegrees, color); }	
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotationInDegrees, const glm::vec4& color)
 	{
@@ -107,5 +109,33 @@ namespace FizzGen
 		s_Data->QuadVertexArray->Bind();
 		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
 	}
+
+	//draw quad by texture
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture)
+	{ DrawQuad({position.x, position.y, 0.0f}, size, 0.0f, texture); }
+	
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture)
+	{ DrawQuad(position, size, 0.0f, texture); }
+	
+	void Renderer2D::DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotationInDegrees, const FizzGen::Ref<FizzGen::Texture2D>& texture)
+	{ DrawQuad({position.x, position.y, 0.0f}, size, rotationInDegrees, texture); }
+	
+	void Renderer2D::DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotationInDegrees, const FizzGen::Ref<FizzGen::Texture2D>& texture)
+	{ 
+		s_Data->TextureShader->Bind();
+
+		//position,rotation,scale
+		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) *
+							  glm::rotate(glm::mat4(1.0f), glm::radians(rotationInDegrees), { 0.0f, 0.0f, 1.0f }) *
+							  glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
+
+		s_Data->TextureShader->SetMat4("u_Transform", transform);
+
+		texture->Bind();
+
+		s_Data->QuadVertexArray->Bind();
+		RenderCommand::DrawIndexed(s_Data->QuadVertexArray);
+	}
+
 
 }
