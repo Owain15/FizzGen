@@ -7,7 +7,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 //temp
-#include "FizzGen/Platform/OpenGL/Shader/OpenGLShader.h"
+//#include "FizzGen/Platform/OpenGL/Shader/OpenGLShader.h"
 
 
 Sandbox2D::Sandbox2D()
@@ -24,11 +24,12 @@ void Sandbox2D::OnUpdate(FizzGen::Timestep timestep)
 
 	FizzGen::Renderer2D::BeginScene(m_CameraController.GetCamera());
 	{
-		FizzGen::Renderer2D::DrawQuad({ 0.0f, 0.0f }, { 0.8f, 0.8f }, {0.8f, 0.2f, 0.3f, 1.0f});
+		FizzGen::Renderer2D::DrawQuad({ -0.5f, 0.0f }, { 0.8f, 0.8f }, 0, { 0.8f, 0.2f, 0.3f, 1.0f });
+		FizzGen::Renderer2D::DrawQuad({ 0.5f, 0.5f }, { 0.5f, 0.75f },30, { 0.0f, 0.2f, 0.3f, 1.0f });
 
-		////TODO: + functions = Shader::SetMat4, Shadder::SetFloat4
-		//std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_Shader)->Bind();
-		//std::dynamic_pointer_cast<FizzGen::OpenGLShader>(m_Shader)->UploadUniformFloat4("u_Color", m_SquareColor);
+
+		//m_Shader->Bind();
+		//m_Shader->SetFloat4("u_Color", m_SquareColor);
 
 		//FizzGen::Renderer::Submit(m_Shader, m_VertexArray, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 	}
