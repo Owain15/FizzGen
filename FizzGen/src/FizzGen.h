@@ -15,6 +15,7 @@
 #include "FizzGen/ImGui/ImGuiLayer.h"
 
 #include "FizzGen/Renderer/Renderer.h"
+#include "FizzGen/Renderer/2DRenderer/Renderer2D.h"
 #include "FizzGen/Renderer/RenderCommand/RenderCommand.h"
 
 #include "FizzGen/Renderer/Buffer/Buffer.h"

@@ -3,6 +3,9 @@
 
 #include "Renderer.h"
 
+
+#include "FizzGen/Renderer/2DRenderer/Renderer2D.h"
+
 //temp
 #include"FizzGen/Platform/OpenGL/Shader/OpenGLShader.h"
 
@@ -13,6 +16,7 @@ namespace FizzGen
 	void Renderer::Init()
 	{
 		RenderCommand::Init();
+		Renderer2D::Init();
 	}
 
 	void Renderer::BeginScene(const OrthographicCamera& camera)
