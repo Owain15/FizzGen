@@ -19,7 +19,7 @@ namespace FizzGen
 			static void BeginScene(const FizzGen::OrthographicCamera& camera);
 			static void EndScene();
 
-			
+			//could include a tile count vareable
 			static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const glm::vec4& color);
 			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const glm::vec4& color);
 			static void DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotationInDegrees, const glm::vec4& color);
@@ -27,8 +27,16 @@ namespace FizzGen
 
 			static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture);
 			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture);
+			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture);
 			static void DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotationInDegrees, const FizzGen::Ref<FizzGen::Texture2D>& texture);
 			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotationInDegrees, const FizzGen::Ref<FizzGen::Texture2D>& texture);
+
+			static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture, const glm::vec4& color);
+			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture, const glm::vec4& color);
+			static void DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotationInDegrees, const FizzGen::Ref<FizzGen::Texture2D>& texture, const glm::vec4& color);
+			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotationInDegrees, const FizzGen::Ref<FizzGen::Texture2D>& texture, const glm::vec4& color);
+
+
 
 		private:
 

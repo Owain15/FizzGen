@@ -19,9 +19,23 @@ namespace FizzGen
 		{
 			case RendererAPI::API::None: FG_CORE_ASSERT(false, "RendererAPI::None is not supported!"); return nullptr;
 #ifdef FG_USE_ANGLE
-			case RendererAPI::API::ANGLE: return std::make_shared<ANGLETexture2D>(path);
+			case RendererAPI::API::ANGLE: return CreateRef<ANGLETexture2D>(path);
 #else
-			case RendererAPI::API::OpenGL: return std::make_shared<OpenGLTexture2D>(path);
+			case RendererAPI::API::OpenGL: return CreateRef<OpenGLTexture2D>(path);
+#endif
+		}
+		return nullptr;
+	}
+
+	FizzGen::Ref<FizzGen::Texture2D> Texture2D::Create(uint32_t width, uint32_t height)
+	{
+		switch (RendererAPI::GetAPI())
+		{
+		case RendererAPI::API::None: FG_CORE_ASSERT(false, "RendererAPI::None is not supported!"); return nullptr;
+#ifdef FG_USE_ANGLE
+		case RendererAPI::API::ANGLE: return CreateRef<ANGLETexture2D>(width, height);
+#else
+		case RendererAPI::API::OpenGL: return CreateRef<OpenGLTexture2D>(width, height);
 #endif
 		}
 		return nullptr;

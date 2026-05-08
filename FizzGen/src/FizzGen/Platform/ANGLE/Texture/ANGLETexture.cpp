@@ -4,8 +4,6 @@
 
 #include "stb_image.h"
 
-#include <GLES3/gl3.h>
-
 
 namespace FizzGen
 {
@@ -23,7 +21,8 @@ namespace FizzGen
 		GLenum internalFormat = (channels == 4) ? GL_RGBA8 : GL_RGB8;
 		GLenum dataFormat = (channels == 4) ? GL_RGBA : GL_RGB;
 
-		
+		m_InternalFormat = internalFormat;
+		m_DataFormat = dataFormat;
 
 		glGenTextures(1, &m_RendererID);
 		glBindTexture(GL_TEXTURE_2D, m_RendererID);
@@ -32,10 +31,33 @@ namespace FizzGen
 		
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+
+		glTexParameteri(m_RendererID, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(m_RendererID, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		
 		glBindTexture(GL_TEXTURE_2D, 0);
 
 		stbi_image_free(data);
+	}
+
+	ANGLETexture2D::ANGLETexture2D(uint32_t width, uint32_t height)
+		: m_Width(width), m_Height(height)
+	{
+		m_InternalFormat = GL_RGBA8;
+		m_DataFormat = GL_RGBA;
+	
+		glGenTextures(1, &m_RendererID);
+		glBindTexture(GL_TEXTURE_2D, m_RendererID);
+		glTexStorage2D(GL_TEXTURE_2D, 1, m_InternalFormat, m_Width, m_Height);
+		
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+		
+		glTexParameteri(m_RendererID, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(m_RendererID, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		
+		glBindTexture(GL_TEXTURE_2D, 0);
 	}
 
 	ANGLETexture2D::~ANGLETexture2D()
@@ -47,6 +69,15 @@ namespace FizzGen
 	{
 		glActiveTexture(GL_TEXTURE0 + slot);                                                                               
 		glBindTexture(GL_TEXTURE_2D, m_RendererID);
+	}
+
+	void ANGLETexture2D::SetData(void* data, uint32_t size)
+	{
+		uint32_t bpp = (m_DataFormat == GL_RGBA) ? 4 : 3;
+		FG_CORE_ASSERT(size == m_Width * m_Height * bpp, "Data must be entire texture!");
+	
+		glBindTexture(GL_TEXTURE_2D, m_RendererID);
+		glTexSubImage2D(GL_TEXTURE_2D, 0, 0, 0, m_Width, m_Height, m_DataFormat, GL_UNSIGNED_BYTE, data);
 	}
 
 }

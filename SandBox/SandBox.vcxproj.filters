@@ -30,4 +30,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Shaders\colortextureshader.angle.glsl" />
+    <None Include="res\Shaders\colortextureshader.opengl.glsl" />
+  </ItemGroup>
 </Project>
