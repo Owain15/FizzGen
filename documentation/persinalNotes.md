@@ -20,3 +20,8 @@ Window Resize
 . orthographic Camera, consider how to handle window resize events and adjust 
 the camera accordingly. a.display a lager area. b. resize so the image renderd is the same but at the new window size.
 c. wright both options and allow the user to choose which one they want to use. 
+
+Diagnostics/ Profiling
+. consider implementing a diagnostics or profiling system to help identify performance bottlenecks and optimize the engine
+	- currntly a crude class in sandbox2D, code could be extracted and kep within FizGen, and expanded upon.
+

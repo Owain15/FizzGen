@@ -27,7 +27,6 @@ namespace FizzGen
 
 			static void DrawQuad(const glm::vec2& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture);
 			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture);
-			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, const FizzGen::Ref<FizzGen::Texture2D>& texture);
 			static void DrawQuad(const glm::vec2& position, const glm::vec2& size, float rotationInDegrees, const FizzGen::Ref<FizzGen::Texture2D>& texture);
 			static void DrawQuad(const glm::vec3& position, const glm::vec2& size, float rotationInDegrees, const FizzGen::Ref<FizzGen::Texture2D>& texture);
 
