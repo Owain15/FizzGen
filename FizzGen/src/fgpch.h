@@ -20,6 +20,7 @@
 #include <unordered_set>
 
 #include "FizzGen/Core/Log.h"
+#include "FizzGen/Diagnostics/Instrumentor.h"
 
 
 //Platform detection

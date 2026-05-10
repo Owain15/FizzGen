@@ -1,37 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    <Filter Include="Sandbox">
+      <UniqueIdentifier>{F4C124E3-60A1-A37E-69B9-2E55D5170AE0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    <Filter Include="Sandbox\2D">
+      <UniqueIdentifier>{19BCFF2A-0574-4178-6E7B-1AD45A52DC68}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Resource Files\Textures">
-      <UniqueIdentifier>{afa1585f-3b60-4d3b-825b-b0378e2e0168}</UniqueIdentifier>
-    </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\SandboxApp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Sandbox\2D\Sandbox2D.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Sandbox\2D\Sandbox2D.h">
-      <Filter>Header Files</Filter>
+      <Filter>Sandbox\2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\Shaders\colortextureshader.angle.glsl" />
-    <None Include="res\Shaders\colortextureshader.opengl.glsl" />
+    <ClCompile Include="src\Sandbox\2D\Sandbox2D.cpp">
+      <Filter>Sandbox\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SandboxApp.cpp" />
   </ItemGroup>
 </Project>

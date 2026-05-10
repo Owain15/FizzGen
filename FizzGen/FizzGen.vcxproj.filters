@@ -10,6 +10,9 @@
     <Filter Include="src\FizzGen\Core">
       <UniqueIdentifier>{71EBB8DA-5DE4-D72C-8616-BDB1726EB738}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\FizzGen\Diagnostics">
+      <UniqueIdentifier>{001C64FB-6C53-AC92-755D-10B6E113D38B}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\FizzGen\Events">
       <UniqueIdentifier>{3D9DC371-2981-84C7-92E1-7E1A7EE46E49}</UniqueIdentifier>
     </Filter>
@@ -72,6 +75,9 @@
     </Filter>
     <Filter Include="src\FizzGen\Renderer">
       <UniqueIdentifier>{3FEF1AE8-2B7E-A4B1-D49C-B8ACC00AB557}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\FizzGen\Renderer\2DRenderer">
+      <UniqueIdentifier>{FBB1C1EE-6795-D02E-7098-FE6ADCFA967F}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\FizzGen\Renderer\Buffer">
       <UniqueIdentifier>{48F42FE5-B401-5ECB-3DE8-59B6A9F42982}</UniqueIdentifier>
@@ -138,6 +144,9 @@
     <ClInclude Include="src\FizzGen\Core\WindowInterface.h">
       <Filter>src\FizzGen\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Diagnostics\Instrumentor.h">
+      <Filter>src\FizzGen\Diagnostics</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h">
       <Filter>src\FizzGen\Events</Filter>
     </ClInclude>
@@ -198,6 +207,9 @@
     <ClInclude Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.h">
       <Filter>src\FizzGen\Platform\Windows\Window</Filter>
     </ClInclude>
+    <ClInclude Include="src\FizzGen\Renderer\2DRenderer\Renderer2D.h">
+      <Filter>src\FizzGen\Renderer\2DRenderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\FizzGen\Renderer\Buffer\Buffer.h">
       <Filter>src\FizzGen\Renderer\Buffer</Filter>
     </ClInclude>
@@ -240,7 +252,6 @@
     <ClInclude Include="vendor\stb_image\stb_image.h">
       <Filter>vendor\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\FizzGen\Renderer\2DRenderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\FizzGen\Core\Application.cpp">
@@ -297,6 +308,9 @@
     <ClCompile Include="src\FizzGen\Platform\Windows\Window\WindowsWindow.cpp">
       <Filter>src\FizzGen\Platform\Windows\Window</Filter>
     </ClCompile>
+    <ClCompile Include="src\FizzGen\Renderer\2DRenderer\Renderer2D.cpp">
+      <Filter>src\FizzGen\Renderer\2DRenderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\FizzGen\Renderer\Buffer\Buffer.cpp">
       <Filter>src\FizzGen\Renderer\Buffer</Filter>
     </ClCompile>
@@ -330,6 +344,5 @@
     <ClCompile Include="vendor\stb_image\stb_image.cpp">
       <Filter>vendor\stb_image</Filter>
     </ClCompile>
-    <ClCompile Include="src\FizzGen\Renderer\2DRenderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

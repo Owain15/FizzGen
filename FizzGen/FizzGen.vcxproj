@@ -305,6 +305,7 @@
     <ClInclude Include="src\FizzGen\Core\Log.h" />
     <ClInclude Include="src\FizzGen\Core\Timestep.h" />
     <ClInclude Include="src\FizzGen\Core\WindowInterface.h" />
+    <ClInclude Include="src\FizzGen\Diagnostics\Instrumentor.h" />
     <ClInclude Include="src\FizzGen\Events\ApplicationEvent.h" />
     <ClInclude Include="src\FizzGen\Events\Event.h" />
     <ClInclude Include="src\FizzGen\Events\KeyEvent.h" />
@@ -419,7 +420,7 @@
     <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\FizzGenFizzGen\vendor\ImGui\ImGui.vcxproj">
+    <ProjectReference Include="vendor\ImGui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">
