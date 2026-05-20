@@ -63,6 +63,8 @@ void Sandbox2D::OnEvent(FizzGen::Event& event)
 
 void Sandbox2D::OnAttach()
 {
+	FG_PROFILE_FUNCTION();
+
 	m_Texture = FizzGen::Texture2D::Create("res/Textures/20x20sqaures.png");
 
 	m_VertexArray = FizzGen::VertexArray::Create();
@@ -97,11 +99,13 @@ void Sandbox2D::OnAttach()
 
 void Sandbox2D::OnDetach()
 {
-
+	FG_PROFILE_FUNCTION();
 }
 
 void Sandbox2D::OnImGuiRender()
 {
+	FG_PROFILE_FUNCTION();
+
 	ImGui::Begin("Settings");
 	ImGui::ColorEdit3("Square Color", &m_SquareColor.x);
 	ImGui::End();

@@ -30,6 +30,8 @@ namespace FizzGen
 
 	void Renderer2D::Init()
 	{
+		FG_PROFILE_FUNCTION();
+
 		s_Data = new Renderer2DData();
 
 		s_Data->QuadVertexArray = FizzGen::VertexArray::Create();
@@ -76,18 +78,20 @@ namespace FizzGen
 
 	void Renderer2D::Shutdown()
 	{
+		FG_PROFILE_FUNCTION();
 		delete s_Data;
 	}
 
 	void Renderer2D::BeginScene(const FizzGen::OrthographicCamera& camera)
 	{
+		FG_PROFILE_FUNCTION();
 		s_Data->ColorTextureShader->Bind();
 		s_Data->ColorTextureShader->SetMat4("u_ViewProjection", camera.GetViewProjectionMatrix());
 	}
 
 	void Renderer2D::EndScene()
 	{
-
+		FG_PROFILE_FUNCTION();
 	}
 
 //draw quad by color

@@ -21,6 +21,8 @@ namespace FizzGen
 
 	Application::Application()
 	{
+		FG_PROFILE_FUNCTION();
+
 		FG_ASSERT(!s_Instance, "Application already exists!");
 		s_Instance = this;
 
@@ -37,26 +39,33 @@ namespace FizzGen
 
 	Application::~Application()
 	{
+		FG_PROFILE_FUNCTION();
 		//m_ImGuiLayer->OnDetach();
 	}
 
 	void Application::PushLayer(Layer* layer)
 	{
+		FG_PROFILE_FUNCTION();
+
 		m_LayerStack.PushLayer(layer);
 		layer->OnAttach();
 	}
 
 	void Application::PushOverlay(Layer* layer)
 	{
+		FG_PROFILE_FUNCTION();
+
 		m_LayerStack.PushOverlay(layer);
 		layer->OnAttach();
 	}
 
 	void Application::Run()
 	{
+		FG_PROFILE_FUNCTION();
 
 		while (m_Running)
 		{
+			FG_PROFILE_SCOPE("RunLoop");
 
 			float time = (float)glfwGetTime(); // Platform::GetTime()
 			Timestep timestep = time - m_LastFrameTime;
@@ -64,20 +73,27 @@ namespace FizzGen
 
 			if (!m_Minimized)
 			{
-				for (Layer* layer : m_LayerStack)
 				{
-					layer->OnUpdate(timestep);
+					FG_PROFILE_SCOPE("LayerStack OnUpdate");
+					for (Layer* layer : m_LayerStack)
+					{
+						layer->OnUpdate(timestep);
+					}
 				}
+				m_ImGuiLayer->Begin();
+				{
+					FG_PROFILE_SCOPE("LayerStack ImGui Render");
+
+					for (Layer* layer : m_LayerStack)
+					{
+						layer->OnImGuiRender();
+					}
+
+				}
+				m_ImGuiLayer->End();
+
 			}
-			
-			m_ImGuiLayer->Begin();
-			for (Layer* layer : m_LayerStack)
-			{
-				layer->OnImGuiRender();
-			}
-			m_ImGuiLayer->End();
-			
-			
+		
 			m_Window->OnUpdate();
 		
 		}
@@ -85,6 +101,8 @@ namespace FizzGen
 
 	void Application::OnEvent(Event& e)
 	{
+		FG_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(e);
 
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
@@ -109,6 +127,9 @@ namespace FizzGen
 
 	bool Application::OnWindowResize(WindowResizeEvent& event)
 	{
+
+		FG_PROFILE_FUNCTION();
+
 		if (event.GetWidth() == 0 || event.GetHeight() == 0)
 		{
 			m_Minimized = true;

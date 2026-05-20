@@ -35,21 +35,25 @@ namespace FizzGen
 
 	ANGLEVertexArray::ANGLEVertexArray()
 	{
+		FG_PROFILE_FUNCTION();
 		glGenVertexArrays(1, &m_RendererID);
 	}
 
 	ANGLEVertexArray::~ANGLEVertexArray()
 	{
+		FG_PROFILE_FUNCTION();
 		glDeleteVertexArrays(1, &m_RendererID);
 	}
 
 	void ANGLEVertexArray::Bind() const
 	{
+		FG_PROFILE_FUNCTION();
 		glBindVertexArray(m_RendererID);
 	}
 
 	void ANGLEVertexArray::Unbind() const
 	{
+		FG_PROFILE_FUNCTION();
 		glBindVertexArray(0);
 	}
 

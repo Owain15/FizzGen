@@ -18,6 +18,7 @@ namespace FizzGen
 
 	void OrthographicCameraControler::OnUpdate(Timestep timestep)
 	{
+		FG_PROFILE_FUNCTION();
 
 		//camera movement		
 		if (FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_CONTROL) && !FizzGen::Input::IsKeyPressed(FG_KEY_LEFT_SHIFT))
@@ -73,6 +74,8 @@ namespace FizzGen
 
 	void OrthographicCameraControler::OnEvent(Event& event)
 	{
+		FG_PROFILE_FUNCTION();
+
 		EventDispatcher dispatcher(event);
 
 		dispatcher.Dispatch<MouseScrolledEvent>(FG_BIND_EVENT_FN(OrthographicCameraControler::OnMouseScrolled));
@@ -85,6 +88,8 @@ namespace FizzGen
 {
 	bool OrthographicCameraControler::OnMouseScrolled(MouseScrolledEvent& event)
 	{
+		FG_PROFILE_FUNCTION();
+
 		m_ZoomLevel -= event.GetYOffset() * 0.25f;
 		
 		//bounds check
@@ -101,6 +106,8 @@ namespace FizzGen
 
 	bool OrthographicCameraControler::OnWindowResized(WindowResizeEvent& event)
 	{
+		FG_PROFILE_FUNCTION();
+
 		m_AspectRatio = (float)event.GetWidth() / (float)event.GetHeight();
 		m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
 

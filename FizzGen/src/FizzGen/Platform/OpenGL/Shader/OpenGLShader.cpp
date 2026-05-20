@@ -33,7 +33,8 @@ namespace FizzGen
 
 	OpenGLShader::OpenGLShader(const std::string& filepath)
 	{
-		
+		FG_PROFILE_FUNCTION();
+
 		std::string source = ReadFile(filepath);
 		auto shaderSources = PreProcess(source);
 		std::string vertexSrc;
@@ -53,21 +54,25 @@ namespace FizzGen
 
 	OpenGLShader::~OpenGLShader()
 	{
+		FG_PROFILE_FUNCTION();
 		glDeleteProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Bind() const
 	{
+		FG_PROFILE_FUNCTION();
 		glUseProgram(m_RendererID);
 	}
 
 	void OpenGLShader::Unbind() const
 	{
+		FG_PROFILE_FUNCTION();
 		glUseProgram(0);
 	}
 
 	void OpenGLShader::SetInt(const std::string& name, int value)
 	{
+
 		UploadUniformInt(name, value);
 	}
 	
@@ -152,6 +157,8 @@ namespace FizzGen
 {
 	void OpenGLShader::Compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
+		FG_PROFILE_FUNCTION();
+
 		FG_CORE_ASSERT(shaderSources.size() <= 2, "Only 2 shaders are supported");
 
 		GLuint program = glCreateProgram();
@@ -224,6 +231,8 @@ namespace FizzGen
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath)
 	{
+		FG_PROFILE_FUNCTION();
+
 		std::ifstream in(filepath, std::ios::in | std::ios::binary);
 		std::string result;
 
@@ -253,6 +262,8 @@ namespace FizzGen
 
 	std::unordered_map<GLenum, std::string> OpenGLShader::PreProcess(const std::string& source)
 	{
+		FG_PROFILE_FUNCTION();
+
 		std::unordered_map<GLenum, std::string> shaderSources;
 
 

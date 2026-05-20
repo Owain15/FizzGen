@@ -15,6 +15,8 @@ namespace FizzGen
 
 	void ANGLEGraphicsContext::Init()
 	{
+		FG_PROFILE_FUNCTION();
+
 		FG_CORE_INFO("Creating OpenGL ANGLE graphics context");
 		glfwMakeContextCurrent(m_windowHandle);
 
@@ -29,6 +31,8 @@ namespace FizzGen
 
 	void ANGLEGraphicsContext::SwapBuffers()
 	{
+		FG_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_windowHandle);
 	}
 

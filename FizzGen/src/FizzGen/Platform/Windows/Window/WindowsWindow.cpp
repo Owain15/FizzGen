@@ -25,6 +25,8 @@ namespace FizzGen
 
 	WindowsWindow::WindowsWindow(const WindowProperties& props)
 	{
+		FG_PROFILE_FUNCTION();
+
 		Init(props);
 	}
 
@@ -35,6 +37,8 @@ namespace FizzGen
 
 	void WindowsWindow::Init(const WindowProperties& props)
 	{
+		FG_PROFILE_FUNCTION();
+
 		m_Data.Title = props.Title;
 		m_Data.Width = props.Width;
 		m_Data.Height = props.Height;
@@ -177,11 +181,15 @@ namespace FizzGen
 
 	void WindowsWindow::Shutdown()
 	{
+		FG_PROFILE_FUNCTION();
+
 		glfwDestroyWindow(m_Window);
 	}
 
 	void WindowsWindow::OnUpdate()
 	{
+		FG_PROFILE_FUNCTION();
+
 		glfwPollEvents();
 		m_Context->SwapBuffers();
 	}

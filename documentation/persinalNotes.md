@@ -25,4 +25,5 @@ Diagnostics/ Profiling
 . consider implementing a diagnostics or profiling system to help identify performance bottlenecks and optimize the engine
 	- currntly a crude class in sandbox2D, code could be extracted and kep within FizGen, and expanded upon.
 	- currently visulizing though chrom/tracer. could diagnostics be visualized though local code?
+	- look int difernt styles of collecting data. more focused on collecting all data indefinatly
 

@@ -31,6 +31,8 @@ namespace FizzGen
 
 	void OpenGLGraphicsContext::SwapBuffers()
 	{
+		FG_PROFILE_FUNCTION();
+
 		glfwSwapBuffers(m_windowHandle);
 	}
 }

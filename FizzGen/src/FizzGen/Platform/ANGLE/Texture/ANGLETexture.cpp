@@ -44,6 +44,8 @@ namespace FizzGen
 	ANGLETexture2D::ANGLETexture2D(uint32_t width, uint32_t height)
 		: m_Width(width), m_Height(height)
 	{
+		FG_PROFILE_FUNCTION();
+
 		m_InternalFormat = GL_RGBA8;
 		m_DataFormat = GL_RGBA;
 	
@@ -62,17 +64,20 @@ namespace FizzGen
 
 	ANGLETexture2D::~ANGLETexture2D()
 	{
+		FG_PROFILE_FUNCTION();
 		glDeleteTextures(1, &m_RendererID);
 	}
 
 	void ANGLETexture2D::Bind(uint32_t slot) const
 	{
+		FG_PROFILE_FUNCTION();
 		glActiveTexture(GL_TEXTURE0 + slot);                                                                               
 		glBindTexture(GL_TEXTURE_2D, m_RendererID);
 	}
 
 	void ANGLETexture2D::SetData(void* data, uint32_t size)
 	{
+		FG_PROFILE_FUNCTION();
 		uint32_t bpp = (m_DataFormat == GL_RGBA) ? 4 : 3;
 		FG_CORE_ASSERT(size == m_Width * m_Height * bpp, "Data must be entire texture!");
 	
